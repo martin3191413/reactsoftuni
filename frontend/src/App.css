@@ -40,7 +40,7 @@ ul{
   list-style-type: none;
 }
 
-ul > li{
+ nav ul > li{
   font-size:20px;
   margin-top: 20px;
   margin-right:20px;
@@ -48,3 +48,58 @@ ul > li{
   box-sizing: border-box;
   cursor: pointer;
 }
+
+.search  .fa{
+  font-size: 25px;
+  cursor: pointer;
+  justify-content: space-between;
+  margin-left: 15px;
+}
+
+.mainContent{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width:70%;
+  height:100%;
+ margin:50px auto;
+ padding:50px 0 0;
+  box-sizing: border-box;
+ justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.card{
+  width: 30%;
+  height: auto;
+  border-radius: 15px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+  background-color:#F0FFFF;
+  margin-bottom: 25px;
+}
+
+.card .img{
+  width: 250px;
+}
+
+.card:hover{
+  transform: scale(1.1);
+}
+
+.btn{
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 41px 41px 41px 41px;
+-moz-border-radius: 41px 41px 41px 41px;
+-webkit-border-radius: 41px 41px 41px 41px;
+border: 2px solid #000000;
+cursor: pointer;
+}
+

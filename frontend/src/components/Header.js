@@ -13,8 +13,8 @@ const Header = () => {
                 <li>Login</li>
             </ul>
             <div className="search">
-            <i className="fa fa-search"></i>
-         <i className="fa fa-shopping-basket"></i>
+                <i className="fa fa-search"></i>
+                <i className="fa fa-shopping-cart"></i>
             </div>
         </nav>
     );
