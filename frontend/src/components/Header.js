@@ -1,6 +1,14 @@
 import React from 'react';
 
-const Header = () => {
+const Header = ({searchInput, setSearchInput}) => {
+
+    const searchIconHandler = () => {
+        setSearchInput(!searchInput);
+    };
+
+    const toggleInputField = 'input-show';
+    const hideInputField = 'input-hide';
+ 
     return (
         <nav>
             <div className="logo">
@@ -13,7 +21,8 @@ const Header = () => {
                 <li>Login</li>
             </ul>
             <div className="search">
-                <i className="fa fa-search"></i>
+                <input type="text" className={searchInput === true ? toggleInputField : hideInputField } placeholder="Search.."></input>
+                <i className="fa fa-search" onClick={searchIconHandler}></i>
                 <i className="fa fa-shopping-cart"></i>
             </div>
         </nav>

@@ -36,8 +36,8 @@ ul{
   display:flex;
   justify-content: center;
   align-items: center;
-  margin:0;
   padding:0;
+  margin-right: 150px;
   list-style-type: none;
 }
 
@@ -45,15 +45,19 @@ ul{
   font-size:20px;
   font-weight: bold;
   margin-top: 20px;
-  margin-right:20px;
+  margin-left:20px;
   padding:10px;
   box-sizing: border-box;
   cursor: pointer;
+  padding-left: 20px;
+  background-color: white;
+  border-radius:100% 0% 23% 77% / 31% 65% 35% 69%;
+  transition: background-color 0.5s ease-in-out;
 }
 
 nav ul > li:hover{
-  background: linear-gradient(#d88a8a, #9198e5);
-  border-radius: 50%;
+  background-color: turquoise;
+  border-radius:100% 0% 23% 77% / 31% 65% 35% 69%  ;
 }
 
 .search  .fa{
@@ -86,7 +90,7 @@ nav ul > li:hover{
   flex-direction: column;
   cursor: pointer;
   margin-bottom: 25px;
-  transition:  background-color ease-in-out 0.7s;
+  transition:  background-color 1s ease-in-out;
 }
 
 .card .img{
@@ -96,8 +100,7 @@ nav ul > li:hover{
 .card:hover{
   transform: scale(1.1);
   background: linear-gradient(#d88a8a, #9198e5);
-  opacity: 0.8;
-  border-radius: 50%;
+  border-radius: 200px 300px 200px;
 }
 
 .btn{
@@ -123,3 +126,27 @@ font-size: 13px;
 display: flex;
 flex-direction: column;
 }
+
+.input-show{
+  display:inline;
+  animation: slide 1s ease;
+  height: 35px;
+ border-radius: 4px 4px 4px 4px;
+ box-shadow: none;
+}
+
+.input-hide{
+  display:none;
+}
+
+@keyframes slide{
+  0%{
+    opacity: 0;
+    transform: translateX(100px)
+  }
+  100%{
+    opacity: 1;
+    tranform: translateY(0);
+  }
+}
+
