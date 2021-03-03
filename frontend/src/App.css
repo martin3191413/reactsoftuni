@@ -29,6 +29,7 @@ nav{
 
 nav .logo{
   font-size:30px;
+  font-weight: bold;
 }
 
 ul{
@@ -42,11 +43,17 @@ ul{
 
  nav ul > li{
   font-size:20px;
+  font-weight: bold;
   margin-top: 20px;
   margin-right:20px;
   padding:10px;
   box-sizing: border-box;
   cursor: pointer;
+}
+
+nav ul > li:hover{
+  background: linear-gradient(#d88a8a, #9198e5);
+  border-radius: 50%;
 }
 
 .search  .fa{
@@ -73,14 +80,13 @@ ul{
 .card{
   width: 30%;
   height: auto;
-  border-radius: 15px;
   display:flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   cursor: pointer;
-  background-color:#F0FFFF;
   margin-bottom: 25px;
+  transition:  background-color ease-in-out 0.7s;
 }
 
 .card .img{
@@ -89,17 +95,31 @@ ul{
 
 .card:hover{
   transform: scale(1.1);
+  background: linear-gradient(#d88a8a, #9198e5);
+  opacity: 0.8;
+  border-radius: 50%;
 }
 
 .btn{
-  width: 200px;
+  width: 180px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 41px 41px 41px 41px;
--moz-border-radius: 41px 41px 41px 41px;
--webkit-border-radius: 41px 41px 41px 41px;
+  border-radius: 50px;
 border: 2px solid #000000;
 cursor: pointer;
+background-color: black;
+color:white;
+font-weight: bold;
+transition: width 1s;
 }
 
+.btn:hover{
+  width: 200px;
+}
+
+.footer{
+font-size: 13px;
+display: flex;
+flex-direction: column;
+}
