@@ -1,4 +1,6 @@
 import React from 'react';
+import {BrowserRouter as Router,Link,Switch,Route} from 'react-router-dom';
+import Login from '../components/Login'
 
 const Header = ({searchInput, setSearchInput}) => {
 
@@ -21,7 +23,7 @@ const Header = ({searchInput, setSearchInput}) => {
                 <li>Login</li>
             </ul>
             <div className="search">
-                <input type="text" className={searchInput === true ? toggleInputField : hideInputField } placeholder="Search.."></input>
+                <input type="text"className={searchInput === true ? toggleInputField : hideInputField }  placeholder="Search.."></input>
                 <i className="fa fa-search" onClick={searchIconHandler}></i>
                 <i className="fa fa-shopping-cart"></i>
             </div>

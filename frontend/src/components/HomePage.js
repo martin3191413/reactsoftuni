@@ -8,7 +8,7 @@ const MainContent = () => {
     <div className="card" key={item.id}>
         <img className="img" src={item.thumb} alt="item "></img>
         <h3>{item.product_name}</h3>
-        <p>{item.description}</p>
+        <p className="card-desc">{item.description}</p>
         <span className="price">{item.price}</span>
         <div className="btn">
             <span className="btn btn-text">Add to Cart</span>
@@ -17,8 +17,10 @@ const MainContent = () => {
     );
 
     return (
+        <div className="trd"> Men's Collection Trending Now
         <div className="mainContent">
             {listItems}
+        </div>
         </div>
     );
 };
