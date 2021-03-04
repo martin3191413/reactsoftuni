@@ -6,15 +6,17 @@ import HomePage from './components/HomePage';
 import Footer from './components/Footer';
 import  Login from './components/Login';
 import ImageBanner from './components/imageBanner';
+import HomePageWomen from './components/homePageWomen';
+import WomenImageBanner from './components/womenImageBanner'
 
 function App() {
-  const [searchInput, setSearchInput] = useState(false);
   return (
     <div className="container">
-      <Header searchInput={searchInput} setSearchInput={setSearchInput}/>
+      <Header/>
       <HomePage/>
       <ImageBanner/>
-      <HomePage/>
+      <HomePageWomen/>
+      <WomenImageBanner />
       <Footer />
     </div>
   );

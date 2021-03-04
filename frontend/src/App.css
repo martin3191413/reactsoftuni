@@ -18,8 +18,8 @@ body{
 }
  
 nav{
-  height: 100%;
   width: 100%;
+  top:0;
   padding: 50;
   display: flex;
   justify-content: space-between;
@@ -41,6 +41,10 @@ ul{
   list-style-type: none;
 }
 
+.bannerLogo{
+  height: 80px;
+}
+
 
 a{
   font-size:20px;
@@ -58,8 +62,8 @@ a{
 }
 
 ul > li{
-  font-size:20px;
-  font-weight: bold;
+  font-size:18px;
+  font-weight: 500;
   text-decoration: none;
   margin-top: 20px;
   margin-left:20px;
@@ -67,13 +71,12 @@ ul > li{
   box-sizing: border-box;
   cursor: pointer;
   padding-left: 20px;
-  background-color: white;
   border-radius:100% 0% 23% 77% / 31% 65% 35% 69%;
   transition: background-color 0.5s ease-in-out;
 }
 
 ul > li:hover{
-  background-color: turquoise;
+  background-color: rgb(224, 224, 224);
   border-radius: 100% 0% 23% 77% / 31% 65% 35% 69%;
 }
 
@@ -84,10 +87,26 @@ a:hover{
 
 
 .search  .fa{
-  font-size: 25px;
+  font-size: 20px;
+  opacity: 0.8;
   cursor: pointer;
   justify-content: space-between;
-  margin-left: 15px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  padding: 5px;
+  border-radius: 50;
+  padding: 10px;
+}
+
+
+.search .fa:hover{
+  background-color: rgb(224, 224, 224);
+  border-radius: 50%;
+}
+
+
+.loop > i{
+  font-size: 10px;
 }
 
 .mainContent{
@@ -113,7 +132,7 @@ a:hover{
   flex-direction: column;
   cursor: pointer;
   margin-bottom: 25px;
-  transition:  background-color 1s ease-in-out;
+  transition: background 1s ease-in-out;
 }
 
 .card .img{
@@ -165,15 +184,29 @@ margin-top: 50px;
 .input-show{
   display:inline;
   animation: slide 1s ease;
-  height: 35px;
- border-radius: 4px 4px 4px 4px;
+  height: 42px;
+  border-radius: 58px 58px 58px 58px;
+  border: none;
+  background-color: rgb(245, 244, 244);
+}
+
+.input-show:focus{
+  outline: none;
 }
 
 .input-show:hover{
-  -webkit-box-shadow: -2px 0px 9px 0px rgba(0,0,0,0.75);
--moz-box-shadow: -2px 0px 9px 0px rgba(0,0,0,0.75);
-box-shadow: -2px 0px 9px 0px rgba(0,0,0,0.75);
+  background-color: rgb(224, 224, 224);
 }
+
+.input-show::placeholder{
+  opacity: 0.4;
+  font-size: 16px;
+  text-indent: 40px;
+}
+
+
+
+
 
 .input-hide{
   display:none;
@@ -224,20 +257,78 @@ box-shadow: -2px 0px 9px 0px rgba(0,0,0,0.75);
 }
 
 .imageBanner{
-  display:flex;
-  align-content: center;
+  display: flex;
+  justify-content: flex-end;
   flex-direction: column;
-  justify-content: center;
   color: white;
-  align-items: center;
   width: 1800px;
   height: 700px;
-  background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.3)), url("https://wallpaperaccess.com/full/2232321.jpg") center/cover no-repeat;
+  background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.3)), url("https://mvcmagazine.com/wp-content/uploads/2019/11/mvcmagazine-diorxairjordan-05.jpg") center/cover no-repeat;
 }
 
 .imageBanner button{
-  width: 10%;
+  height: 40px;
+  width: 100px;
+  border-radius: 58px 58px 58px 58px;
+  outline: none;
   display: flex;
-  justify-content:flex-start;
+  justify-content:center;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 30px;
+  margin-left: 20px;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  border: 0.5px solid black;
+  background-color: rgb(255, 255, 255);
 }
 
+.imageBanner button:hover{
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.imageBnrLogo{
+  display: flex;
+  margin-bottom: 400px;
+  margin-left: 20px;
+  font-size: 40px;
+  font-family: 'Fredoka One', cursive;
+}
+
+.searchBar{
+  display: inline-block;
+}
+
+
+.womenImageBanner{
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  color: white;
+  width: 1800px;
+  height: 700px;
+  background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.3)), url("https://gcs.justfreshkicks.com/2020/04/5e54d1d4-7548f133-b153-47fa-80a3-06898f433430.png") center/cover no-repeat;
+}
+
+.womenImageBanner button{
+  height: 40px;
+  width: 100px;
+  border-radius: 58px 58px 58px 58px;
+  outline: none;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 30px;
+  margin-left: 20px;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  border: 0.5px solid black;
+  background-color: rgb(255, 255, 255);
+}
+
+.womenImageBanner button:hover{
+  opacity: 0.6;
+  cursor: pointer;
+}
