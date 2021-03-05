@@ -76,8 +76,9 @@ ul > li{
 }
 
 ul > li:hover{
-  background-color: rgb(224, 224, 224);
+  background: linear-gradient(#d88a8a, #9198e5);
   border-radius: 100% 0% 23% 77% / 31% 65% 35% 69%;
+  transform: scale(1.1);
 }
 
 a:hover{
@@ -170,6 +171,10 @@ transition: width 1s;
 }
 
 .footer{
+  position: fixed;
+    height: 50px;
+    bottom: 0px;
+    margin-bottom: 0px;
 font-size: 13px;
 display: flex;
 flex-direction: column;
@@ -185,9 +190,12 @@ margin-top: 50px;
   display:inline;
   animation: slide 1s ease;
   height: 42px;
+  width: 180px;
   border-radius: 58px 58px 58px 58px;
+  padding:10px;
   border: none;
   background-color: rgb(245, 244, 244);
+  font-size: 14px;
 }
 
 .input-show:focus{
@@ -201,7 +209,7 @@ margin-top: 50px;
 .input-show::placeholder{
   opacity: 0.4;
   font-size: 16px;
-  text-indent: 40px;
+  text-indent: 20px;
 }
 
 
@@ -224,19 +232,28 @@ margin-top: 50px;
 }
 
 .login{
-  width:800px; 
+  width: 800px; 
+  height: 400px;
   margin:0 auto;
+  margin-top: 50px;
   display: flex;
+  margin-top: 150px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: rgb(243, 242, 255);
+  border: 1px solid gray;
+
 }
 
-.login label{
-  padding-bottom: 10px;
-  font-weight: bold;
-  padding-bottom: 20px;
+.input-field{
+  width: 30%; 
+  margin-bottom: 30px;
+  padding: 10px; 
+  text-align: center; 
 }
+
+
 
 .login h1{
   padding-bottom: 20px;
@@ -251,6 +268,7 @@ margin-top: 50px;
   margin-top: 20px;
   padding-bottom: 10px;
   width: 200px;
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -331,4 +349,41 @@ margin-top: 50px;
 .womenImageBanner button:hover{
   opacity: 0.6;
   cursor: pointer;
+}
+
+.signIn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 30px;
+  background-color: black;
+  color:white;
+  font-weight: bold;
+  font-size: 15px;
+  padding-top: 10px;
+  border-radius: 7px 7px 7px 7px;
+}
+
+.underline{
+  width: 30%;
+  height: 2px;
+  color: black;
+}
+
+.input-field:focus{
+  border: #595f6e;
+  outline: none;
+}
+
+
+
+.contactInfo{
+  margin-bottom: 60px;
+}
+
+.contactDiv{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
