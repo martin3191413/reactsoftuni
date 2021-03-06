@@ -7,6 +7,9 @@
 body{
   font-family: 'Shippori Mincho B1', serif;
 }
+html {
+  scroll-behavior: smooth;
+}
 
 .container{
   display:flex;
@@ -171,7 +174,6 @@ transition: width 1s;
 }
 
 .footer{
-  position: fixed;
     height: 50px;
     bottom: 0px;
     margin-bottom: 0px;
@@ -376,14 +378,26 @@ margin-top: 50px;
   outline: none;
 }
 
-
-
-.contactInfo{
-  margin-bottom: 60px;
-}
-
 .contactDiv{
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+}
+
+.map{
+ margin-top: 60px;
+}
+
+
+.contactHeader{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.contactInfo{
+  width: 400px;
+  border: 1px solid gray;
 }

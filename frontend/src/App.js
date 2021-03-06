@@ -15,8 +15,10 @@ function App() {
   return (
     <div className="container">
       <Header />
-      <ContactInfo/>
-      <Map />
+      <HomePage />
+      <ImageBanner />
+      <HomePageWomen />
+      <WomenImageBanner />
       <Footer />
     </div>
   );
