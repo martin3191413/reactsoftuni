@@ -1,12 +1,13 @@
 import React from 'react';
 
-import product_card_women from './product_data_women';
 
-const MainContent = () => {
+const MainContent = ({data}) => {
 
-    const listItems = product_card_women.map((item) =>
+    const filteredData = data.filter((item) => item.category == 'Women');
+
+    const listItems = filteredData.map((item) =>
     <div className="card" key={item.id}>
-        <img className="img" src={item.thumb} alt="item "></img>
+        <img className="img" src={item.image} alt="item "></img>
         <h3>{item.product_name}</h3>
         <p className="card-desc">{item.description}</p>
         <span className="price">{item.price}</span>

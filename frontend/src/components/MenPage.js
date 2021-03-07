@@ -1,19 +1,28 @@
-import React from 'react';
-import {Link} from "react-router-dom";
-import ImageBanner from './imageBanner';
-import HomePageWomen from './homePageWomen';
-import WomenImageBanner from './womenImageBanner';
+import axios from 'axios';
+import React, {useState, useEffect} from 'react';
 import Footer from './Footer';
 
-const MainContent = ({data, isLoading}) => {
+const MainContent = () => {
+
+    const [data,setData] = useState([]);
+
+
+    const fetchData = (e) => {
+
+        axios({
+            url: '/api/men',
+            method: 'GET'
+        })
+        .then((response) => {
+            setData(response);
+        });
+    };
 
     const myHeader = <h1>Loading...</h1>;
 
-    const filteredData = data.filter((item) =>  item.category == "Men");
     
-    const listItems = filteredData.map((item) =>
-    <Link to={`details/${item._id}`}>
-    <div className="card" key={item._id} >
+    const listItems = data.map((item) =>
+    <div className="card" key={item._id}>
         <img className="img" src={item.image} alt="item "></img>
         <h3>{item.product_name}</h3>
         <p className="card-desc">{item.description}</p>
@@ -22,7 +31,6 @@ const MainContent = ({data, isLoading}) => {
             <span className="btn btn-text">Add to Cart</span>
         </div>
     </div>
-    </Link>
     );
 
     return (
@@ -31,9 +39,6 @@ const MainContent = ({data, isLoading}) => {
             {isLoading == true ? myHeader : listItems}
         </div>
 
-        <ImageBanner />
-        <HomePageWomen data={data} />
-        <WomenImageBanner />
         <Footer />
         </div>
 

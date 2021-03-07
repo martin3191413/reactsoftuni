@@ -1,14 +1,12 @@
 import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
-import { MDBInput } from "mdbreact";
 
 const Login = () => {
 
     return (
         <div>
-            <Header />
-            <form className="login"  method="POST">
+            <form className="login">
             <h1>Login</h1>
             <i className="fa fa-user icon"></i>
             <input id="username" type="text" placeholder="Username" name="username" className="input-field"></input>
@@ -17,7 +15,6 @@ const Login = () => {
             <span className="underline"></span>
             <button type="submit" className="signIn">SIGN IN</button>
         </form>
-        <Footer />
         </div>
     );
 };
