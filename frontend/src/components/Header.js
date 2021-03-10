@@ -1,29 +1,32 @@
 import React from 'react';
-import {BrowserRouter as Router,Link} from 'react-router-dom';
-const Header = () => {
+import {Link} from 'react-router-dom';
+const Header = ({loggedIn}) => {
     return (
         <nav>
             <div className="logo">
                 mySite
             </div>
             <ul>
-                <Link to="/">
+                <Link className="a-header" to="/">
                 <li>Home</li>
                 </Link>
-                <Link to="/men">
+                <Link className="a-header" to="/men">
                 <li>Men</li>
                 </Link>
-                <Link to="/women">
+                <Link className="a-header" to="/women">
                 <li>Women</li>
                 </Link>
-                <Link to="/about">
+                <Link className="a-header"   to="/about">
                 <li>About</li>
                 </Link>
-                <Link to="/contacts">
+                <Link className="a-header" to="/contacts">
                 <li>Contacts</li>
                 </Link>
-                <Link to="/login">
+                <Link className="a-header" to="/login">
                 <li>Login</li>
+                </Link>
+                <Link className="a-header" to="/register">
+                <li>Register</li>
                 </Link>
             </ul>
 

@@ -4,14 +4,14 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "concurrently": "^6.0.0"
+    "concurrently": "^6.0.0",
+    "react-cookie": "^4.0.3"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "client": "cd frontend && npm run start",
     "dev": "concurrently -n 'server,client' -c 'red,green' \"cd backend && nodemon server.js\" \"npm run client\""
-
   },
   "repository": {
     "type": "git",

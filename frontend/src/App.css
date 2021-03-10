@@ -53,17 +53,24 @@ a{
   font-size:20px;
   font-weight: bold;
   text-decoration: none;
-  box-sizing: border-box;
   cursor: pointer;
   color: black;
-  padding-left: 20px;
-  border-radius: 50%;
-  transition: 0.2s all;
+  margin-left: 30px;
+  border-radius: 200px 200px 200px 200px;
+  width: fit-content;
+  padding: 20;
+}
+
+.a-header{
+  border-radius: 200px 200px 200px 200px;
+  padding: 10px;
 }
 
 a:active{
   transform: scale(0.98);
 }
+
+
 
 
 ul > li{
@@ -127,31 +134,30 @@ a:hover{
   width:70%;
   height:100%;
  margin:50px auto;
- padding:50px 0 0;
   box-sizing: border-box;
  justify-content: space-between;
   flex-wrap: wrap;
 }
 
 .card{
-  width: 30%;
-  height: auto;
   display:flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   cursor: pointer;
   margin-bottom: 25px;
-  transition: background 1s ease-in-out;
+  transition: 0.2s all;
 }
+
+.card:active{
+  transform: scale(0.98);
+}
+
 
 .card .img{
   width: 250px;
 }
 
-.card:hover{
-  transform: scale(0.98);
-}
 
 .btn{
   width: 150px;
@@ -428,7 +434,9 @@ margin-top: 50px;
 }
 
 .column img{
-  width: 100%;
+  margin-top: 30px;
+  width: 80%;
+  height: auto;
 }
 
 .column .product-home{
@@ -457,12 +465,8 @@ margin-top: 50px;
   margin-top: 20px;
   padding-left: 10px;
   margin-bottom: 20px;
-  transition: 0.2s all;
 }
 
-.details-input:active{
-  transform: scale(0.98);
-}
 
 .details-input:focus{
   outline: none;
@@ -473,11 +477,6 @@ margin-top: 50px;
   height: 45px;
   border: 1px solid #f5a40f;
   padding-left: 15px;
-  transition: 0.2s all;
-}
-
-.details-select:active{
-  transform: scale(0.98);
 }
 
 .details-select:focus{
@@ -521,4 +520,51 @@ margin-top: 50px;
   color:#f5740f;
 }
 
+.register{
+  margin-top: 100px;
+}
 
+.register h1{
+  padding-bottom: 20px;
+}
+
+.registerBtn{
+ display: flex;
+ justify-content: center;
+align-items: center;
+border-radius: 8px;
+padding: 20px;
+width: 150px;
+border: 1px solid black;
+}
+
+
+.register > input{
+  border-radius: 8px;
+  border: 1px solid black;
+}
+
+.register > input:focus{
+border: 1px solid #58abee;
+}
+
+.notifications {
+  display: block;
+  margin: 0 auto;
+  background-color: rgb(236, 129, 129);
+  border-radius: 6px;
+  width: 50%;
+  margin-top: 40px;
+  padding: 0.5%;
+}
+
+.notifications p.notification-message {
+  color: #234465;
+  text-decoration: underline;
+  text-align: center;
+}
+
+
+.notifications .none{
+  display: none;
+}

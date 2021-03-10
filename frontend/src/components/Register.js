@@ -1,11 +1,16 @@
+
 import axios from 'axios';
 import React, {useState} from 'react';
+import { useHistory } from "react-router-dom";
 
-const Register = () => {
+const Register = ({loggedIn,setLoggedIn}) => {
+
+    const history = useHistory();
 
     const [username,setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [repeatPassword, setRepeatPassword] = useState('');
+    const [isError, setIsError] = useState(false);
 
     const onUsernameChange = e => {
         setUsername(e.target.value);
@@ -19,17 +24,16 @@ const Register = () => {
     };
 
     const resetHandler = e => {
-        setUsername("");
-        setPassword("");
-        setRepeatPassword("");
+        setUsername('');
+        setPassword('');
+        setRepeatPassword('');
     };
 
     const onSubmit = (e) => {
         e.preventDefault();
 
         if (password !== repeatPassword){
-           return console.log('Invalid passwords');
-           
+           return setIsError(true);
         }
 
         const payload = {
@@ -49,18 +53,30 @@ const Register = () => {
 
 
         resetHandler();
+
+
+        history.push('/');
+        setLoggedIn(true);
+
     };
+
+    const isErrorMessage = "Passwords must match!";
+    const classes = "notifications";
 
     return (
              <div>
+             <section className={isError == false ? "" : classes}>
+            <p className="notification-message">{isError == false ? "" : isErrorMessage}</p>
+        </section>
             <form className="register">
             <h1>Register</h1>
             <i className="fa fa-user icon"></i>
             <input id="username" type="text" placeholder="Username" name="username" className="input-field" value={username} onChange={onUsernameChange}></input>
-            <i class="fas fa-lock"></i>
+            <i className="fas fa-lock"></i>
             <input id="password" type="password" placeholder="Password" name="password"className="input-field" value={password} onChange={onPasswordChange}></input>
-            <input id="re-password" type="password" placeholder="Re-Password" name="re-password"className="input-field" value={repeatPassword} onChange={onRePasswordChange}></input>
-            <button type="submit" className="signIn" onClick={onSubmit}>Register</button>
+            <i className="fas fa-lock"></i>
+            <input id="re-password" type="password" placeholder="Re-Password" name="re-password"className="input-field register-re-password" value={repeatPassword} onChange={onRePasswordChange}></input>
+            <button type="submit" className="registerBtn" onClick={onSubmit}>Register</button>
         </form>
         </div>
     );

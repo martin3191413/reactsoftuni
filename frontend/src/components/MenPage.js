@@ -6,20 +6,6 @@ const MainContent = () => {
 
     const [data,setData] = useState([]);
 
-
-    const fetchData = (e) => {
-
-        axios({
-            url: '/api/men',
-            method: 'GET'
-        })
-        .then((response) => {
-            setData(response);
-        });
-    };
-
-    const myHeader = <h1>Loading...</h1>;
-
     
     const listItems = data.map((item) =>
     <div className="card" key={item._id}>
@@ -36,7 +22,7 @@ const MainContent = () => {
     return (
         <div className="trd"> Men's Collection Trending Now
         <div className="mainContent">
-            {isLoading == true ? myHeader : listItems}
+            {listItems}
         </div>
 
         <Footer />

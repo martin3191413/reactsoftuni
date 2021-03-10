@@ -5,14 +5,14 @@ import HomePageWomen from './homePageWomen';
 import WomenImageBanner from './womenImageBanner';
 import Footer from './Footer';
 
-const MainContent = ({data, isLoading}) => {
+const MainContent = ({data}) => {
 
-    const myHeader = <h1>Loading...</h1>;
+    
 
     const filteredData = data.filter((item) =>  item.category == "Men");
     
     const listItems = filteredData.map((item) =>
-    <Link to={`details/${item._id}`}>
+    <Link className="a-home" to={`details/${item._id}`}>
     <div className="card" key={item._id} >
         <img className="img" src={item.image} alt="item "></img>
         <h3>{item.product_name}</h3>
@@ -28,7 +28,7 @@ const MainContent = ({data, isLoading}) => {
     return (
         <div className="trd"> Men's Collection Trending Now
         <div className="mainContent">
-            {isLoading == true ? myHeader : listItems}
+            {listItems}
         </div>
 
         <ImageBanner />
