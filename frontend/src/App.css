@@ -1,4 +1,6 @@
+
 * {
+
   margin: 0;
   padding: 0;
    box-sizing: border-box;
@@ -567,4 +569,13 @@ border: 1px solid #58abee;
 
 .notifications .none{
   display: none;
+}
+
+.a-home{
+  border-radius: 50%;
+  transition: 0.2s all;
+}
+
+.a-home:hover{
+  transform: scale(1.11);
 }

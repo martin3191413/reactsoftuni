@@ -17,16 +17,15 @@ import DetailsPage from './components/DetailsPage';
 import MenSection from './components/MenSection';
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
-import SecuredRoute from './components/securedRoute';
 import axios from 'axios';
+import jwt from 'jsonwebtoken';
 
 
 function App() {
 
   const [data, setData] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
-  const token = localStorage.getItem('userId');
-  console.log(token);
+  const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
     fetchData();
@@ -57,10 +56,10 @@ function App() {
   return (
     <Router>
     <div className="container">
-      <Header loggedIn={loggedIn} />
+      <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
       <Switch>
       <PublicRoute path="/" exact component={HomePage} loggedIn={loggedIn} restricted={false} data={data} />
-      <SecuredRoute path="/login" exact component={Login}    loggedIn={loggedIn}/>
+      <PublicRoute path="/login" exact component={Login}  setLoggedIn={setLoggedIn}  loggedIn={loggedIn} restricted={false}/>
       <Route path="/contacts"
        exact
        render={(props) => (

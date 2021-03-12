@@ -33,7 +33,8 @@ const Register = ({loggedIn,setLoggedIn}) => {
         e.preventDefault();
 
         if (password !== repeatPassword){
-           return setIsError(true);
+            setIsError(true);
+            return resetHandler();
         }
 
         const payload = {
@@ -57,7 +58,6 @@ const Register = ({loggedIn,setLoggedIn}) => {
 
         history.push('/');
         setLoggedIn(true);
-
     };
 
     const isErrorMessage = "Passwords must match!";

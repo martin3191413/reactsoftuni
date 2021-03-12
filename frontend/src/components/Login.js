@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, {useState} from 'react';
 import { useHistory } from "react-router-dom";
 
-const Login = () => {
+const Login = ({setLoggedIn}) => {
 
     const history = useHistory();
 
@@ -33,6 +33,7 @@ const Login = () => {
         .then((response) => {
             localStorage.setItem('userId', response.data);
             history.push('/');
+            setLoggedIn(true);
         } );
     };
 
