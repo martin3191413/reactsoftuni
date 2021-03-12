@@ -151,9 +151,6 @@ a:hover{
   transition: 0.2s all;
 }
 
-.card:active{
-  transform: scale(0.98);
-}
 
 
 .card .img{
@@ -172,11 +169,11 @@ cursor: pointer;
 background-color: black;
 color:white;
 font-weight: bold;
-transition: width 1s;
+transition: width 0.5s;
 }
 
 .btn:hover{
-  width: 200px;
+  width: 170px;
 }
 
 .trd{
@@ -572,10 +569,49 @@ border: 1px solid #58abee;
 }
 
 .a-home{
-  border-radius: 50%;
+  border-radius: 200px 200px 200px 200px;
   transition: 0.2s all;
 }
 
 .a-home:hover{
   transform: scale(1.11);
 }
+
+.item-img{
+  height: 150px;
+}
+
+.item-info{
+  display: flex;
+  flex-direction: row;
+  margin-left: 80px;
+  margin-top: 15px;
+}
+
+table{
+  margin-top: 150px;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th{
+  width: 320px;
+}
+
+
+.cart-quantity-item{
+  height: 35px;
+  width: 35px;
+  padding-left: 10px;
+  margin-left: 280px;
+}
+
+.price-cart{
+  margin-left: 280px;
+  font-weight: bold;
+}
+
+.table-header{
+  background-color: turquoise;
+}
+

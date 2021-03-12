@@ -43,7 +43,7 @@ const Header = ({loggedIn, setLoggedIn}) => {
             </ul>
             <div className="search">
                 <span className="searchBar"><i className="fa fa-search"></i><input type="text"className="input-show"  placeholder="Search"></input> </span>
-                <i className="fa fa-shopping-cart"></i>
+                <Link to="/cart"><i className="fa fa-shopping-cart"></i></Link>
             </div>
         </nav>
     );

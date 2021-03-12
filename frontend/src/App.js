@@ -17,6 +17,7 @@ import DetailsPage from './components/DetailsPage';
 import MenSection from './components/MenSection';
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
+import Cart from './components/Cart';
 import axios from 'axios';
 import jwt from 'jsonwebtoken';
 
@@ -79,6 +80,13 @@ function App() {
         exact
         render={(props) => (
           <Register {...props} loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+        )}
+        />
+        <Route 
+        path="/cart"
+        exact
+        render={(props) => (
+          <Cart  {...props}/>
         )}
         />
     </Switch>
