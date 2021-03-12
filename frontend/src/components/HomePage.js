@@ -5,9 +5,11 @@ import HomePageWomen from './homePageWomen';
 import WomenImageBanner from './womenImageBanner';
 import Footer from './Footer';
 
-const MainContent = ({data}) => {
+const MainContent = ({data,setCartItems, cartItems}) => {
 
-    
+    const onClickCartHandler = (item) => {
+        setCartItems(oldCartItems => [...cartItems, item]);
+    };
 
     const filteredData = data.filter((item) =>  item.category == "Men");
     
@@ -19,7 +21,7 @@ const MainContent = ({data}) => {
         <p className="card-desc">{item.description}</p>
         <span className="price">{item.price}</span>
         <div className="btn">
-            <span className="btn btn-text">Add to Cart</span>
+            <span className="btn btn-text" onClick={() => onClickCartHandler(item)}>Add to Cart</span>
         </div>
     </div>
     </Link>

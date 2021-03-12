@@ -59,7 +59,7 @@ function App() {
     <div className="container">
       <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
       <Switch>
-      <PublicRoute path="/" exact component={HomePage} loggedIn={loggedIn} restricted={false} data={data} />
+      <PublicRoute path="/" exact component={HomePage} loggedIn={loggedIn} restricted={false} data={data} setCartItems={setCartItems} cartItems={cartItems} />
       <PublicRoute path="/login" exact component={Login}  setLoggedIn={setLoggedIn}  loggedIn={loggedIn} restricted={false}/>
       <Route path="/contacts"
        exact
@@ -86,7 +86,7 @@ function App() {
         path="/cart"
         exact
         render={(props) => (
-          <Cart  {...props}/>
+          <Cart  {...props} cartItems={cartItems}/>
         )}
         />
     </Switch>

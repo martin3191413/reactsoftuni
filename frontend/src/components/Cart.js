@@ -1,44 +1,57 @@
 import React from 'react';
+import Footer from './Footer';
 
-const Cart = () => {
+const Cart = ({cartItems}) => {
+
+    const items = cartItems.map((item) => (
+        <tr>
+                <td>
+                    <div className="item-info">
+                        <img src={item.image} alt="tshirt" className="item-img"></img>
+                        <div className="item-details">
+                            <p>White Thisrt</p>
+                            <span>Price: {item.price}</span>
+                            <br></br>
+                            <button className="cart-btn">Remove</button>
+                        </div>
+                    </div>
+                </td>
+                <td><input type="number" value="1" className="cart-quantity-item"></input></td>
+                <td><span className="price-cart">50.00$</span></td>
+            </tr>
+    ));
+
     return (
-        <table>
+        <>
+        <table className="cart-table">
             <tr className="table-header">
             <th>Product</th>
             <th>Quantity</th>
             <th>Subtotal</th>
             </tr>
+            {items}
+        </table>
+        <div className="price-table">
+        <table className="final-price">
             <tr>
-                <td>
-                    <div className="item-info">
-                        <img src="https://media.gq-magazine.co.uk/photos/5f575108020908336ccd4d82/master/w_1000,c_limit/20200907-tshirt-05.jpg" alt="tshirt" className="item-img"></img>
-                        <div className="item-details">
-                            <p>White Thisrt</p>
-                            <span>Price</span>
-                            <br></br>
-                            <button>Remove</button>
-                        </div>
-                    </div>
-                </td>
-                <td><input type="number" value="1" className="cart-quantity-item"></input></td>
-                <td><span className="price-cart">50.00$</span></td>
+                <td className="final-price-td">Subtotal:</td>
+                <td className="final-price-td-price" >100.00$</td>
             </tr>
             <tr>
-                <td>
-                    <div className="item-info">
-                        <img src="https://media.gq-magazine.co.uk/photos/5f575108020908336ccd4d82/master/w_1000,c_limit/20200907-tshirt-05.jpg" alt="tshirt" className="item-img"></img>
-                        <div className="item-details">
-                            <p>White Thisrt</p>
-                            <span>Price</span>
-                            <br></br>
-                            <button>Remove</button>
-                        </div>
-                    </div>
-                </td>
-                <td><input type="number" value="1" className="cart-quantity-item"></input></td>
-                <td><span className="price-cart">50.00$</span></td>
+                <td className="final-price-td">Tax:</td>
+                <td className="final-price-td-price">35.00$</td>
+            </tr>
+            <tr>
+                <td className="final-price-td" >Total:</td>
+                <td className="final-price-td-price" >135.00$</td>
             </tr>
         </table>
+        </div>
+        <div className="cart-buy">
+            <button className="cart-buy-btn">Buy</button>
+        </div>
+        <Footer />
+        </>
     );
 };
 

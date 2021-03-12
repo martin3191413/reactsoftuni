@@ -189,7 +189,7 @@ transition: width 0.5s;
 font-size: 13px;
 display: flex;
 flex-direction: column;
-margin-top: 50px;
+margin-top: 130px;
 }
 
 .card-desc{
@@ -585,10 +585,10 @@ border: 1px solid #58abee;
   display: flex;
   flex-direction: row;
   margin-left: 80px;
-  margin-top: 15px;
+  margin-top: 25px;
 }
 
-table{
+.cart-table{
   margin-top: 150px;
   width: 100%;
   border-collapse: collapse;
@@ -612,6 +612,48 @@ th{
 }
 
 .table-header{
-  background-color: turquoise;
+  height: 35px;
+  background-color: #f5740f;
+  color: white;
 }
 
+.cart-btn{
+  border: none;
+  color: #f5740f;
+  background-color: white;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.price-table{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.final-price{
+  border-top: 1px solid gainsboro;
+  margin-right: 200px;
+  width: 350px;
+}
+
+.final-price-td{
+  padding: 10px;
+  font-weight: bold;
+}
+
+.final-price-td-price{
+  font-weight: bold;
+}
+
+.cart-buy{
+  display: flex;
+  justify-content: flex-end;
+
+}
+
+.cart-buy-btn{
+  width: 100px;
+  padding: 5px;
+  margin-right: 240px;
+  margin-top: 50px;
+}
