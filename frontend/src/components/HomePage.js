@@ -4,27 +4,14 @@ import ImageBanner from './imageBanner';
 import HomePageWomen from './homePageWomen';
 import WomenImageBanner from './womenImageBanner';
 import Footer from './Footer';
+import HomePageListItem from './HomePageListItem';
 
 const MainContent = ({data,setCartItems, cartItems}) => {
-
-    const onClickCartHandler = (item) => {
-        setCartItems(oldCartItems => [...cartItems, item]);
-    };
 
     const filteredData = data.filter((item) =>  item.category == "Men");
     
     const listItems = filteredData.map((item) =>
-    <Link className="a-home" to={`details/${item._id}`}>
-    <div className="card" key={item._id} >
-        <img className="img" src={item.image} alt="item "></img>
-        <h3>{item.product_name}</h3>
-        <p className="card-desc">{item.description}</p>
-        <span className="price">{item.price}</span>
-        <div className="btn">
-            <span className="btn btn-text" onClick={() => onClickCartHandler(item)}>Add to Cart</span>
-        </div>
-    </div>
-    </Link>
+    <HomePageListItem item={item} setCartItems={setCartItems} cartItems={cartItems}/>
     );
 
     return (

@@ -31,6 +31,7 @@ function App() {
   useEffect(() => {
     fetchData();
     loggedUser();
+    localStorageCartItems();
   }, []);
 
   const fetchData = (e) => {
@@ -54,10 +55,18 @@ function App() {
     }
   };
 
+  const localStorageCartItems = () => {
+   const cartItems = localStorage.getItem('cartItems');
+
+   if (cartItems){
+     setCartItems(JSON.parse(cartItems));
+   }
+  };
+
   return (
     <Router>
     <div className="container">
-      <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
+      <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCartItems={setCartItems}/>
       <Switch>
       <PublicRoute path="/" exact component={HomePage} loggedIn={loggedIn} restricted={false} data={data} setCartItems={setCartItems} cartItems={cartItems} />
       <PublicRoute path="/login" exact component={Login}  setLoggedIn={setLoggedIn}  loggedIn={loggedIn} restricted={false}/>

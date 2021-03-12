@@ -1,11 +1,12 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-const Header = ({loggedIn, setLoggedIn}) => {
+const Header = ({loggedIn, setLoggedIn, setCartItems}) => {
 
     const logout = () => {
         localStorage.clear();
         setLoggedIn(false);
+        setCartItems([]);
         window.location.href = '/';
     };
 

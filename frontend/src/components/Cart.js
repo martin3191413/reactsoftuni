@@ -9,15 +9,15 @@ const Cart = ({cartItems}) => {
                     <div className="item-info">
                         <img src={item.image} alt="tshirt" className="item-img"></img>
                         <div className="item-details">
-                            <p>White Thisrt</p>
-                            <span>Price: {item.price}</span>
+                            <p>{item.model}</p>
+                            <span>Price:  {item.price.toFixed(2)}$</span>
                             <br></br>
                             <button className="cart-btn">Remove</button>
                         </div>
                     </div>
                 </td>
                 <td><input type="number" value="1" className="cart-quantity-item"></input></td>
-                <td><span className="price-cart">50.00$</span></td>
+                <td><span className="price-cart">{item.price.toFixed(2)}$</span></td>
             </tr>
     ));
 
