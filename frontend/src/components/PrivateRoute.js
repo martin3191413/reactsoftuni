@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
-const PrivateRoute = ({ loggedIn,component: Component, match}) => {
+const PrivateRoute = ({ loggedIn,component: Component}) => {
     return (
         <Route render={(props) => (
             loggedIn == true?

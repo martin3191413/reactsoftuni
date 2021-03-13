@@ -25,11 +25,10 @@ html {
 nav{
   width: 100%;
   top:0;
-  padding: 50;
+  padding: 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 50;
 }
 
 nav .logo{
@@ -50,7 +49,9 @@ ul{
   height: 80px;
 }
 
-a{
+
+
+.a-header{
   text-decoration: none;
   font-size:20px;
   font-weight: bold;
@@ -60,20 +61,12 @@ a{
   margin-left: 30px;
   border-radius: 200px 200px 200px 200px;
   width: fit-content;
-  padding: 20;
-}
-
-.a-header{
-  border-radius: 200px 200px 200px 200px;
   padding: 10px;
 }
 
 a:active{
   transform: scale(0.98);
 }
-
-
-
 
 ul > li{
   font-size:18px;
@@ -96,14 +89,16 @@ ul > li:hover{
   text-decoration: none;
 }
 
-a:hover{
+.a-header:hover{
   background: linear-gradient(#d88a8a, #9198e5);
   transform: scale(0.98);
   text-decoration: none;
 }
 
 
-
+.cart-link{
+  color: black;
+}
 
 .search  .fa{
   font-size: 20px;
@@ -117,12 +112,17 @@ a:hover{
   padding: 10px;
 }
 
-
 .search .fa:hover{
   background-color: rgb(224, 224, 224);
   border-radius: 50%;
 }
 
+.cart-items-number{
+  padding: 10px;
+  border-radius: 50%;
+  background-color: rgb(224, 224, 224);
+  margin-bottom: 10px;
+}
 
 .loop > i{
   font-size: 10px;
@@ -151,6 +151,10 @@ a:hover{
   transition: 0.2s all;
 }
 
+.card:hover{
+  transform: scale(1.11);
+}
+
 
 
 .card .img{
@@ -169,11 +173,15 @@ cursor: pointer;
 background-color: black;
 color:white;
 font-weight: bold;
-transition: width 0.5s;
+transition: 0.4s all;
 }
 
 .btn:hover{
   width: 170px;
+}
+
+.btn:active{
+  transform: scale(0.98);
 }
 
 .trd{
@@ -602,7 +610,7 @@ th{
 .cart-quantity-item{
   height: 35px;
   width: 35px;
-  padding-left: 10px;
+  padding-left: 7px;
   margin-left: 280px;
 }
 

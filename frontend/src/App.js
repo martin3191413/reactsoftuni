@@ -19,19 +19,18 @@ import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
 import Cart from './components/Cart';
 import axios from 'axios';
-import jwt from 'jsonwebtoken';
 
 
 function App() {
+  
 
   const [data, setData] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState(JSON.parse((localStorage.getItem('cartItems'))) || ([]));
 
   useEffect(() => {
     fetchData();
     loggedUser();
-    localStorageCartItems();
   }, []);
 
   const fetchData = (e) => {
@@ -55,13 +54,6 @@ function App() {
     }
   };
 
-  const localStorageCartItems = () => {
-   const cartItems = localStorage.getItem('cartItems');
-
-   if (cartItems){
-     setCartItems(JSON.parse(cartItems));
-   }
-  };
 
   return (
     <Router>
@@ -95,7 +87,7 @@ function App() {
         path="/cart"
         exact
         render={(props) => (
-          <Cart  {...props} cartItems={cartItems}/>
+          <Cart  {...props} cartItems={cartItems} setCartItems={setCartItems}/>
         )}
         />
     </Switch>
