@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 
 const MainContent = ({data}) => {
@@ -7,7 +8,7 @@ const MainContent = ({data}) => {
 
     const listItems = filteredData.map((item) =>
     <div className="card" key={item.id}>
-        <img className="img" src={item.image} alt="item "></img>
+        <Link className="a-home" to={`details/${item._id}`}><img className="img" src={item.image} alt="item "></img></Link>
         <h3>{item.product_name}</h3>
         <p className="card-desc">{item.description}</p>
         <span className="price">{item.price}</span>

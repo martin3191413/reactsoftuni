@@ -18,7 +18,6 @@ const HomePageListItem = ({item,setCartItems, cartItems}) => {
         <>
         <div className="card" key={item._id} >
       <Link className="a-home" to={`details/${item._id}`}><img className="img" src={item.image} alt="item "></img></Link>
-        <h3>{item.product_name}</h3>
         <p className="card-desc">{item.description}</p>
         <span className="price">{item.price}</span>
         <div className="btn">

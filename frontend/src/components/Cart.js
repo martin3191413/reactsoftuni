@@ -1,8 +1,11 @@
-import React, {useState} from 'react';
+import React, {useEffect} from 'react';
 import Footer from './Footer';
 
 const Cart = ({cartItems, setCartItems}) => {
 
+    useEffect(() => {
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    }, [cartItems]);
 
     const removeClickHandler = (id) => {
         const cartItems = JSON.parse(localStorage.getItem('cartItems'));
@@ -11,8 +14,30 @@ const Cart = ({cartItems, setCartItems}) => {
         localStorage.setItem('cartItems', JSON.stringify(filteredCartItems));
     };
 
+    const onChangeHandler = (e, item) => {
+        if (e.target.value > item.qty){
+            let oldCartItems = [...cartItems];
+            oldCartItems = oldCartItems.filter((x) => x._id !== item._id);
+            const editedItem = {...item, qty: item.qty + 1};
+            setCartItems([...oldCartItems, editedItem]);
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        }
+        else{
+            if (item.qty == 1){
+                return;
+            }
+            let oldCartItems = [...cartItems];
+            oldCartItems = oldCartItems.filter((x) => x._id !== item._id);
+            const editedItem = {...item, qty: item.qty - 1};
+            setCartItems([...oldCartItems, editedItem]);
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        }
+
+    };
+
+
     const items = cartItems.map((item) => (
-        <tr className="item-row">
+        <tr className="item-row" key={item._id}>
                 <td>
                     <div className="item-info">
                         <img src={item.image} alt="tshirt" className="item-img"></img>
@@ -24,7 +49,7 @@ const Cart = ({cartItems, setCartItems}) => {
                         </div>
                     </div>
                 </td>
-                <td><input type="number" className="cart-quantity-item" value={item.qty}></input></td>
+                <td><input type="number" className="cart-quantity-item" onChange={(e) => onChangeHandler(e, item)}  value={item.qty}></input></td>
                 <td><span className="price-cart">{item.price.toFixed(2)}$</span></td>
             </tr>
     ));
@@ -33,7 +58,7 @@ const Cart = ({cartItems, setCartItems}) => {
         let subtotalPrice = 0;
 
         cartItems.forEach((item) => {
-            subtotalPrice += Number(item.price);
+            subtotalPrice += Number(item.price) * Number(item.qty);
         });
         return subtotalPrice;
     };

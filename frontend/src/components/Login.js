@@ -37,16 +37,20 @@ const Login = ({setLoggedIn}) => {
         } );
     };
 
+
     return (
         <div>
             <form className="login">
-            <h1>Login</h1>
-            <i className="fa fa-user icon"></i>
-            <input id="username" type="text" placeholder="Username" name="username" className="input-field" onChange={onChangeUsername}></input>
-            <i className="fas fa-lock"></i>
-            <input id="password" type="password" placeholder="Password" name="password"className="input-field" onChange={onChangePassword}></input>
-            <span className="underline"></span>
+            <h1 className="login-header">Sign In</h1>
+            <label for="email" className="login-email">Email Adress</label>
+            <input id="email" type="text"  name="email" className="input-field" onChange={onChangeUsername}></input>
+            <label for="password" className="login-label">Password</label>
+            <input id="password" type="password" name="password"className="input-field" onChange={onChangePassword}></input>
             <button type="submit" className="signIn" onClick={submitHandler}>SIGN IN</button>
+            <div className="login-divider">
+               <span>OR</span>
+            </div>
+            <button className="register-btn" onClick={() => history.push('/register')}>Create Account</button>
         </form>
         </div>
     );

@@ -46,6 +46,7 @@ const Header = ({loggedIn, setLoggedIn, setCartItems}) => {
                 <span className="searchBar"><i className="fa fa-search"></i><input type="text"className="input-show"  placeholder="Search"></input> </span>
                 <Link to="/cart" className="cart-link"><i className="fa fa-shopping-cart"><small className="cart-items-number">1</small></i></Link>
             </div>
+            
         </nav>
     );
 };

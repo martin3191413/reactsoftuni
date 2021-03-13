@@ -144,6 +144,7 @@ ul > li:hover{
 .card{
   display:flex;
   justify-content: center;
+  padding-right: 5px;
   align-items: center;
   flex-direction: column;
   cursor: pointer;
@@ -251,27 +252,44 @@ margin-top: 130px;
 }
 
 .login{
-  width: 800px; 
-  height: 400px;
-  margin:0 auto;
-  margin-top: 50px;
   display: flex;
-  margin-top: 150px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: rgb(243, 242, 255);
-  border: 1px solid gray;
-
+  margin-top: 100px;
 }
 
 .input-field{
-  width: 30%; 
+  width: 350px;
+  border-radius: 28px;
+  height: 45px;
+  border: none;
   margin-bottom: 30px;
-  padding: 10px; 
-  text-align: center; 
+  padding-left: 18px;
+  background-color: rgb(245, 244, 244);
 }
 
+.login-header{
+  margin-bottom: 15px;
+  margin-left: -250px;
+  font-size: 40px;
+}
+
+.login-label{
+  margin-left: -250px;
+}
+
+.login-divider{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.login-divider > hr{
+  height: 150px;
+  width: 1px solid gray;
+  opacity: 0.3;
+}
 
 
 .login h1{
@@ -365,23 +383,58 @@ margin-top: 130px;
   background-color: rgb(255, 255, 255);
 }
 
+.login-email{
+  margin-left: -220px;
+}
+
 .womenImageBanner button:hover{
   opacity: 0.6;
   cursor: pointer;
 }
 
-.signIn{
+.login .signIn{
+  padding-top: 8px;
+  width: 350px;
+  height: 40px;
+ font-weight: bold;
+  border-radius: 28px;
+  border: none;
+  background-color: royalblue;
+  color: white;
+  cursor: pointer;
+}
+
+.register-btn{
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 250px;
-  height: 30px;
-  background-color: black;
-  color:white;
+  width: 650px;
+  padding-top: 8px;
+  height: 40px;
+  border-radius: 28px;
+  border: none;
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  border: 2px solid black;
   font-weight: bold;
-  font-size: 15px;
-  padding-top: 10px;
-  border-radius: 7px 7px 7px 7px;
+  cursor: pointer;
+}
+
+.register-btn:hover{
+  background-color: black;
+  color: white;
+}
+
+.register-btn:active{
+  outline: none;
+}
+
+.login .signIn:focus{
+  outline: none;
+}
+
+.or-login{
+  margin-top: 40px;
 }
 
 .underline{
