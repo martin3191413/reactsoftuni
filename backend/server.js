@@ -20,6 +20,16 @@ app.use(express.urlencoded({extended:false}));
 
 app.listen(port, console.log(`Server is listening on port ${port}...`));
 
+//const newShoe = new Shoe({
+   // model: "Asics",
+  //  image : "https://github.com/bedimcode/responsive-ecommerce-website-sneakers/blob/master/assets/img/women1.png?raw=true",
+   // price: 120,
+  //  description: 'Lorem',
+ //  category: "Men"
+//});
+
+//newShoe.save();
+
 app.get('/', (req,res) => {
     res.redirect('/api');
 })
@@ -42,7 +52,7 @@ app.get('/api/shoes', (req,res) => {
 app.post('/save/user', async (req,res) => {
     console.log("BODY: ", req.body);
 
-    authServices.register(req.body);
+    res.status(500).send('Error has occured');
 })
 
 app.get('/api/shoes/:shoeId', async (req,res) => {
@@ -54,11 +64,11 @@ app.get('/api/shoes/:shoeId', async (req,res) => {
     res.json(currentShoe);
 })
 
-app.get('/api/shoes/men', async (req,res) => {
-    
-    const allMenSHoes = await Shoe.find({category: "Men"});
+app.get('/api/men', async(req,res) => {
 
-    res.json(allMenSHoes)
+    const allMenShoes = await Shoe.find({category: "Men"});
+
+    res.json(allMenShoes);
 })
 
 app.post('/api/login', async (req,res) => {

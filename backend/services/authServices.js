@@ -4,6 +4,12 @@ const bcrypt = require('bcrypt');
 
  async function register(data){
 
+    const user = User.findOne({username: data.username});
+
+    if (user !== undefined){
+        throw new Error('There is user with this username!');
+    }
+
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(data.password, salt);
 

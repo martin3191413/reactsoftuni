@@ -112,6 +112,8 @@ ul > li:hover{
   padding: 10px;
 }
 
+
+
 .search .fa:hover{
   background-color: rgb(224, 224, 224);
   border-radius: 50%;
@@ -135,7 +137,7 @@ ul > li:hover{
   position: relative;
   width:70%;
   height:100%;
- margin:50px auto;
+ margin:70px auto;
   box-sizing: border-box;
  justify-content: space-between;
   flex-wrap: wrap;
@@ -144,11 +146,11 @@ ul > li:hover{
 .card{
   display:flex;
   justify-content: center;
-  padding-right: 5px;
   align-items: center;
   flex-direction: column;
   cursor: pointer;
   margin-bottom: 25px;
+  margin-right: 20px;
   transition: 0.2s all;
 }
 
@@ -493,10 +495,27 @@ margin-top: 130px;
   padding: 20px;
 }
 
+.dropdown{
+  display: flex;
+  margin-left: auto;
+  margin-right: 200px;
+  border: none;
+  font-size: 16px;
+  justify-content: center;
+  align-items: center;
+  width: 90px;
+}
+
+
+
+.dropdown:focus{
+  outline: none;
+}
+
 .column img{
-  margin-top: 30px;
-  width: 80%;
-  height: auto;
+  margin-top: 130px;
+  width: 600px;
+  height: 600px;
 }
 
 .column .product-home{
@@ -639,7 +658,12 @@ border: 1px solid #58abee;
 }
 
 .item-img{
-  height: 150px;
+  height: 100px;
+  width: 150px;
+}
+
+.re-label{
+  margin-right: 200px;
 }
 
 .item-info{

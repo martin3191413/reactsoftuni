@@ -14,9 +14,9 @@ import ContactInfo from './components/ContactInfo';
 import Form from './components/Form';
 import Register from './components/Register';
 import DetailsPage from './components/DetailsPage';
-import MenSection from './components/MenSection';
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
+import MenSection from './components/MenSection';
 import Cart from './components/Cart';
 import axios from 'axios';
 
@@ -62,6 +62,7 @@ function App() {
       <Switch>
       <PublicRoute path="/" exact component={HomePage} loggedIn={loggedIn} restricted={false} data={data} setCartItems={setCartItems} cartItems={cartItems} />
       <PublicRoute path="/login" exact component={Login}  setLoggedIn={setLoggedIn}  loggedIn={loggedIn} restricted={false}/>
+      <PublicRoute path="/men" exact component={MenSection} restricted={false} cartItems={cartItems} setCartItems={setCartItems} data={data} />
       <Route path="/contacts"
        exact
        render={(props) => (
@@ -69,13 +70,6 @@ function App() {
        )}
        />
        <PrivateRoute path="/details/:id" exact component={DetailsPage} loggedIn={loggedIn} restricted={true} />
-        <Route
-       path="/men"
-        exact
-        render={(props) => (
-          <MenSection {...props}  />
-        )}
-        />
         <Route
        path="/register"
         exact

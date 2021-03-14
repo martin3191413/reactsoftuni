@@ -8,7 +8,8 @@ import HomePageListItem from './HomePageListItem';
 
 const MainContent = ({data,setCartItems, cartItems}) => {
 
-    const filteredData = data.filter((item) =>  item.category == "Men");
+    let filteredData = data.filter((item) =>  item.category == "Men").slice(0,3);
+
     
     const listItems = filteredData.map((item) =>
     <HomePageListItem item={item} setCartItems={setCartItems} cartItems={cartItems}/>
