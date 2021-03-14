@@ -39,7 +39,7 @@ const Register = ({setLoggedIn}) => {
             return resetHandler();
         }
 
-        if (username.length == 0){
+        if (!username){
             setIsError(true);
             setErrorMessage('You must specify your email adress!');
             return resetHandler();
@@ -50,22 +50,25 @@ const Register = ({setLoggedIn}) => {
             password
         };
 
-        axios({
-            url: '/save/user',
-            method: 'POST',
-            data: payload
-        })
-        .catch((err) => {
-            console.log(`Internal Server Error: ${err.response.data}`);
-        });
 
+     
+            axios({
+                url: '/save/user',
+                method: 'POST',
+                data: payload
+            })
+            .then((res) => {
 
-
-        resetHandler();
-
-
-        history.push('/');
-        setLoggedIn(true);
+                history.push('/');
+                setLoggedIn(true);
+            })
+            .catch((err) => {
+                setIsError(true);
+                console.log(err);
+              setErrorMessage(err.response.data);
+              return resetHandler();
+            });
+    
     };
 
 

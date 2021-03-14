@@ -4,9 +4,9 @@ const bcrypt = require('bcrypt');
 
  async function register(data){
 
-    const user = User.findOne({username: data.username});
+    const user = await User.findOne({username: data.username});
 
-    if (user !== undefined){
+    if (user){
         throw new Error('There is user with this username!');
     }
 

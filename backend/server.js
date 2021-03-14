@@ -52,7 +52,13 @@ app.get('/api/shoes', (req,res) => {
 app.post('/save/user', async (req,res) => {
     console.log("BODY: ", req.body);
 
-    res.status(500).send('Error has occured');
+    try{
+        await authServices.register(req.body);
+    }
+    catch(err){
+        console.log(err);
+        res.status(404).send(err.message);
+    }
 })
 
 app.get('/api/shoes/:shoeId', async (req,res) => {
