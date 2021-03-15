@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-const Header = ({loggedIn, setLoggedIn, setCartItems}) => {
+const Header = ({loggedIn, setLoggedIn, setCartItems, cartItems}) => {
 
     const logout = () => {
         localStorage.clear();
@@ -9,6 +9,18 @@ const Header = ({loggedIn, setLoggedIn, setCartItems}) => {
         setCartItems([]);
         window.location.href = '/';
     };
+
+    const displayCartItems = (cartItems) => {
+        let classes = '';
+        if (cartItems.length == 0){
+            classes += 'none';
+        }
+        else{
+            classes = 'display';
+        }
+        return classes;
+    };
+
 
     return (
         <nav>
@@ -44,7 +56,7 @@ const Header = ({loggedIn, setLoggedIn, setCartItems}) => {
             </ul>
             <div className="search">
                 <span className="searchBar"><i className="fa fa-search"></i><input type="text"className="input-show"  placeholder="Search"></input> </span>
-                <Link to="/cart" className="cart-link"><i className="fa fa-shopping-cart"><small className="cart-items-number">1</small></i></Link>
+                <Link to="/cart" className="cart-link"><i className="fa fa-shopping-cart"><small className="cart-items-number" className={displayCartItems(cartItems)}>{cartItems.length}</small></i></Link>
             </div>
             
         </nav>

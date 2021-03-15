@@ -4,13 +4,14 @@ import Footer from './Footer';
 import axios from 'axios';
 
 const MenSection = ({data,cartItems, setCartItems}) => {
-  console.log('component rendered!');
-    const [sortType, setSortType] = useState('');
+
+    const [sortType, setSortType] = useState('0');
     const [menShoes, setMenShoes] = useState(data);
 
 
     const sortMenShoes = (data) => {
       if (sortType == "0"){
+        console.log('I will render them all');
         setMenShoes(data);
       }
       if (sortType == "1"){
@@ -28,9 +29,8 @@ const MenSection = ({data,cartItems, setCartItems}) => {
     };
 
     useEffect(() => {
-      console.log('rendered');
       sortMenShoes(data);
-    }, [sortType, menShoes]);
+    }, [sortType]);
 
 
     const listItems = menShoes.map((item) =>

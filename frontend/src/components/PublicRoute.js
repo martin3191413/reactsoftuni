@@ -5,7 +5,7 @@ const PublicRoute = ({component: Component, restricted, data, setLoggedIn, setCa
     return (
         <Route render={props => (
             restricted == false?
-               <Component {...props} data={data} setLoggedIn={setLoggedIn} setCartItems={setCartItems} cartItems={cartItems} />
+               <Component {...props} data={data} setLoggedIn={setLoggedIn} setCartItems={setCartItems} cartItems={cartItems} menShoes={menShoes} />
             : <Redirect to="/"/>
         )} />
     );

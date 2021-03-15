@@ -25,6 +25,9 @@ function App() {
   const [data, setData] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
   const [cartItems, setCartItems] = useState(JSON.parse((localStorage.getItem('cartItems'))) || ([]));
+  const [menShoes, setMenShoes] = useState([]);
+  const [womenShoes, setWomenShoes] = useState([]);
+
 
   useEffect(() => {
     fetchData();
@@ -38,6 +41,8 @@ function App() {
     })
     .then((response) => {
       setData(response.data);
+      setMenShoes(response.data.filter(item => item.category == "Men"));
+      setWomenShoes(response.data.filter(item => item.category == "Women"));
     });
   };
 
@@ -52,13 +57,10 @@ function App() {
     }
   };
 
-  const menShoes = data.filter(item => item.category == "Men");
-  const womenShoes = data.filter(item => item.category == "Women");
-
   return (
     <Router>
     <div className="container">
-      <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCartItems={setCartItems}/>
+      <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCartItems={setCartItems} cartItems={cartItems}/>
       <Switch>
       <PublicRoute path="/" exact component={HomePage} loggedIn={loggedIn} restricted={false} data={data} setCartItems={setCartItems} cartItems={cartItems} />
       <PublicRoute path="/login" exact component={Login}  setLoggedIn={setLoggedIn}  loggedIn={loggedIn} restricted={false}/>
