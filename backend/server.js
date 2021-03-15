@@ -86,7 +86,7 @@ app.post('/api/login', async (req,res) => {
         res.json(token);
     }
     catch(err){
-        res.status(404).send({ message: err.message });
+        res.status(404).send(err.message);
     }
 })
 

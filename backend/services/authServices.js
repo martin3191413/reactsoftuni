@@ -21,7 +21,7 @@ const bcrypt = require('bcrypt');
 async function login(data){
     const user = await User.findOne({username: data.username});
 
-
+    
     if (!user){
         throw new Error('No such user!');
     }

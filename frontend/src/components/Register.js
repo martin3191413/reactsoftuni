@@ -36,13 +36,15 @@ const Register = ({setLoggedIn}) => {
         if (password !== repeatPassword){
             setIsError(true);
             setErrorMessage('Passwords must match!');
-            return resetHandler();
+             resetHandler();
+             return;
         }
 
         if (!username){
             setIsError(true);
             setErrorMessage('You must specify your email adress!');
-            return resetHandler();
+             resetHandler();
+             return;
         }
 
         const payload = {
@@ -64,9 +66,18 @@ const Register = ({setLoggedIn}) => {
             })
             .catch((err) => {
                 setIsError(true);
-                console.log(err);
-              setErrorMessage(err.response.data);
-              return resetHandler();
+                const message = err.response.data;
+                if (message.includes('User validation')){
+                    const needed = err.response.data.split(':')[2];
+                    setErrorMessage(needed);
+                     resetHandler();
+                     return;
+                }
+                else{
+                    setErrorMessage(err.response.data);
+                     resetHandler();
+                     return;
+                }
             });
     
     };
@@ -82,11 +93,11 @@ const Register = ({setLoggedIn}) => {
         <form className="login">
             <h1 className="login-header">Register</h1>
             <label htmlFor="email" className="login-email">Email Adress</label>
-            <input id="email" type="text"  name="email" className="input-field" onChange={onUsernameChange}></input>
+            <input id="email" type="text"  name="email" className="input-field" value={username} onChange={onUsernameChange}></input>
             <label htmlFor="password" className="login-label">Password</label>
-            <input id="password" type="password" name="password"className="input-field" onChange={onPasswordChange}></input>
+            <input id="password" type="password" name="password"className="input-field" value={password} onChange={onPasswordChange}></input>
             <label htmlFor="password" className="re-label">Repeat Password</label>
-            <input id="re-password" type="password" name="password"className="input-field" onChange={onRePasswordChange}></input>
+            <input id="re-password" type="password" name="password"className="input-field" value={repeatPassword} onChange={onRePasswordChange}></input>
             <button type="submit" className="signIn" onClick={onSubmit}>Create Account</button>
             <div className="login-divider">
                <span>OR</span>

@@ -34,6 +34,7 @@ nav{
 nav .logo{
   font-size:30px;
   font-weight: bold;
+  font-family: 'Ranchers', cursive;
 }
 
 ul{
@@ -639,7 +640,7 @@ border: 1px solid #58abee;
 
 .notifications p.notification-message {
   color: #234465;
-  text-decoration: underline;
+  font-weight: bold;
   text-align: center;
 }
 
