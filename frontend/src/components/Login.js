@@ -79,7 +79,7 @@ const Login = ({setLoggedIn}) => {
             <input id="email" type="text"  name="email" className="input-field" value={username} onChange={onChangeUsername}></input>
             <label for="password" className="login-label">Password</label>
             <input id="password" type="password" name="password"className="input-field" value={password} onChange={onChangePassword}></input>
-            <button type="submit" className="signIn" onClick={submitHandler}>SIGN IN</button>
+            <button type="submit" className="signIn" onClick={submitHandler}>Sign In</button>
             <div className="login-divider">
                <span>OR</span>
             </div>

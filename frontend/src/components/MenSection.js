@@ -3,41 +3,49 @@ import HomePageListItem from './HomePageListItem';
 import Footer from './Footer';
 import axios from 'axios';
 
-const MenSection = ({data, cartItems, setCartItems}) => {
+const MenSection = ({data,cartItems, setCartItems}) => {
+  console.log('component rendered!');
+    const [sortType, setSortType] = useState('');
+    const [menShoes, setMenShoes] = useState(data);
 
-    const [sortType,setSortType] = useState('');
 
-    let allMenShoes = data.filter(item => item.category == "Men");
-
-    const [shoesData, setShoesData] = useState([]);
- 
-    const listItems = allMenShoes.map((item) =>
-    <HomePageListItem item={item} setCartItems={setCartItems} cartItems={cartItems}/>
-    );
+    const sortMenShoes = (data) => {
+      if (sortType == "0"){
+        setMenShoes(data);
+      }
+      if (sortType == "1"){
+        const sortedShoes = [...menShoes].sort(function(a,b){
+          return a.price - b.price;
+        });
+         setMenShoes(sortedShoes);
+      }
+      if (sortType == "2"){
+        const sortedShoes = [...menShoes].sort(function(a,b){
+          return b.price - a.price;
+        });
+        setMenShoes(sortedShoes);
+      }
+    };
 
     useEffect(() => {
-        const sortArray = type => {
-          const types = {
-            1: "1",
-            2: "2"
-          };
-          const sortProperty = types[type];
-          const sorted = [...allMenShoes].sort((a, b) => b[sortProperty] - a[sortProperty]);
-          setShoesData(sorted);
-        };
-    
-        sortArray(sortType);
-      }, [sortType]);
+      console.log('rendered');
+      sortMenShoes(data);
+    }, [sortType, menShoes]);
+
+
+    const listItems = menShoes.map((item) =>
+    <HomePageListItem item={item} key={item._id} setCartItems={setCartItems} cartItems={cartItems}/>
+    );
 
     return (
         <>
-        <div className="trd">Men's Trainers & Shoes ({allMenShoes.length})
+        <div className="trd">Men's Trainers & Shoes ({data.length})
         <form>
         <select className="dropdown" onChange={(e) => setSortType(e.target.value)}>
-    <option value="0" defaultValue>Sort By</option>
-    <option value="1" >Price: Low-High</option>
-    <option value="2">Price: High-Low</option>
-  </select>
+       <option value="0">Sort By</option>
+       <option value="1" >Price: Low-High</option>
+        <option value="2">Price: High-Low</option>
+        </select>
         </form>
         <div className="mainContent">
             {listItems}

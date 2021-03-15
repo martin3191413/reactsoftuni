@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import {BrowserRouter as Router,Link, Route,Switch} from 'react-router-dom';
-import {useJwt} from 'react-jwt';
+import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
 import Header from './components/Header';
 import HomePage from './components/HomePage';
 import Footer from './components/Footer';
@@ -11,7 +10,6 @@ import HomePageWomen from './components/homePageWomen';
 import WomenImageBanner from './components/womenImageBanner';
 import Map from './components/Map';
 import ContactInfo from './components/ContactInfo';
-import Form from './components/Form';
 import Register from './components/Register';
 import DetailsPage from './components/DetailsPage';
 import PrivateRoute from './components/PrivateRoute';
@@ -54,6 +52,8 @@ function App() {
     }
   };
 
+  const menShoes = data.filter(item => item.category == "Men");
+  const womenShoes = data.filter(item => item.category == "Women");
 
   return (
     <Router>
@@ -62,7 +62,7 @@ function App() {
       <Switch>
       <PublicRoute path="/" exact component={HomePage} loggedIn={loggedIn} restricted={false} data={data} setCartItems={setCartItems} cartItems={cartItems} />
       <PublicRoute path="/login" exact component={Login}  setLoggedIn={setLoggedIn}  loggedIn={loggedIn} restricted={false}/>
-      <PublicRoute path="/men" exact component={MenSection} restricted={false} cartItems={cartItems} setCartItems={setCartItems} data={data} />
+      <PublicRoute path="/men" exact component={MenSection} restricted={false} cartItems={cartItems} setCartItems={setCartItems} data={menShoes} />
       <Route path="/contacts"
        exact
        render={(props) => (

@@ -12,7 +12,7 @@ const MainContent = ({data,setCartItems, cartItems}) => {
 
     
     const listItems = filteredData.map((item) =>
-    <HomePageListItem item={item} setCartItems={setCartItems} cartItems={cartItems}/>
+    <HomePageListItem item={item} key={item._id} setCartItems={setCartItems} cartItems={cartItems}/>
     );
 
     return (
