@@ -1,8 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 
 const Header = ({loggedIn, setLoggedIn, setCartItems, cartItems}) => {
+    
+    const [isActive, setIsActive] = useState('');
 
+    const toggleClass = (e) => {
+        setIsActive(prevState => {
+                setIsActive(e.target.value);
+        });
+    };
     const logout = () => {
         localStorage.clear();
         setLoggedIn(false);
@@ -25,29 +32,30 @@ const Header = ({loggedIn, setLoggedIn, setCartItems, cartItems}) => {
     return (
         <nav>
             <div className="logo">
-                mySite
+                <Link to="/" className="link-logo">mySite</Link>
+                <img className="header-logo"></img>
             </div>
             <ul>
                 <Link className="a-header" to="/">
-                <li>Home</li>
+                <li onClick={toggleClass} className={isActive == "0 "? 'dot' : ""} value="0">Home</li>
                 </Link>
-                <Link className="a-header" to="/men">
-                <li>Men</li>
+                <Link  className="a-header" to="/men">
+                <li onClick={toggleClass} className={isActive == "1" ? 'dot' : ""} value="1">Men</li>
                 </Link>
                 <Link className="a-header" to="/women">
-                <li>Women</li>
+                <li onClick={toggleClass} className={isActive == "2" ? 'dot' : ""}  value="2">Women</li>
                 </Link>
                 <Link className="a-header"   to="/about">
-                <li>About</li>
+                <li  onClick={toggleClass} className={isActive == "3" ? 'dot' : ""} value="3">About</li>
                 </Link>
                 <Link className="a-header" to="/contacts">
-                <li>Contacts</li>
+                <li onClick={toggleClass} className={isActive == "4" ? 'dot' : ""}  value="4">Contacts</li>
                 </Link>
                 {loggedIn == false ?<Link className="a-header" to="/register">
-                <li>Register</li>
+                <li  onClick={toggleClass} className={isActive == "5" ? 'dot' : ""} value="5">Register</li>
                 </Link> : ""}
                 {loggedIn == false ?<Link className="a-header" to="/login">
-                <li>Login</li>
+                <li onClick={toggleClass} className={isActive == "6" ? 'dot' : ""}  value="6">Login</li>
                 </Link> : ""}
                 {loggedIn == true ?<Link className="a-header" to="/logout">
                 <li onClick={logout}>Logout</li>
@@ -56,7 +64,9 @@ const Header = ({loggedIn, setLoggedIn, setCartItems, cartItems}) => {
             </ul>
             <div className="search">
                 <span className="searchBar"><i className="fa fa-search"></i><input type="text"className="input-show"  placeholder="Search"></input> </span>
-                <Link to="/cart" className="cart-link"><i className="fa fa-shopping-cart"><small className="cart-items-number" className={displayCartItems(cartItems)}>{cartItems.length}</small></i></Link>
+                <span className="cart-items">
+                <Link to="/cart" className="cart-link"><i className="fa fa-shopping-cart"><small className="cart-items-qty">1</small></i></Link>
+                </span>
             </div>
             
         </nav>

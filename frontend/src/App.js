@@ -15,6 +15,7 @@ import DetailsPage from './components/DetailsPage';
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
 import MenSection from './components/MenSection';
+import WomenSection from './components/WomenSection';
 import Cart from './components/Cart';
 import axios from 'axios';
 
@@ -64,7 +65,20 @@ function App() {
       <Switch>
       <PublicRoute path="/" exact component={HomePage} loggedIn={loggedIn} restricted={false} data={data} setCartItems={setCartItems} cartItems={cartItems} />
       <PublicRoute path="/login" exact component={Login}  setLoggedIn={setLoggedIn}  loggedIn={loggedIn} restricted={false}/>
-      <PublicRoute path="/men" exact component={MenSection} restricted={false} cartItems={cartItems} setCartItems={setCartItems} data={menShoes} />
+      <Route 
+        path="/men"
+        exact
+        render={(props) => (
+          <MenSection  {...props} cartItems={cartItems} setCartItems={setCartItems} data={menShoes}/>
+        )}
+        />
+        <Route 
+        path="/women"
+        exact
+        render={(props) => (
+          <WomenSection  {...props} cartItems={cartItems} setCartItems={setCartItems} data={womenShoes}/>
+        )}
+        />
       <Route path="/contacts"
        exact
        render={(props) => (

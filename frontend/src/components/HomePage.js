@@ -20,8 +20,8 @@ const MainContent = ({data,setCartItems, cartItems}) => {
         <div className="mainContent">
             {listItems}
         </div>
-
         <ImageBanner />
+        
         <HomePageWomen data={data} />
         <WomenImageBanner />
         <Footer />

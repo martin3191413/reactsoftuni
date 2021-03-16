@@ -37,6 +37,10 @@ nav .logo{
   font-family: 'Ranchers', cursive;
 }
 
+.header-logo{
+  background-image: url('./components/logo.png');
+}
+
 ul{
   display:flex;
   justify-content: center;
@@ -56,13 +60,20 @@ ul{
   text-decoration: none;
   font-size:20px;
   font-weight: bold;
-  text-decoration: none;
   cursor: pointer;
   color: black;
   margin-left: 30px;
-  border-radius: 200px 200px 200px 200px;
   width: fit-content;
   padding: 10px;
+}
+
+.link-logo{
+text-decoration: none;
+color: black;
+}
+
+.link-logo:hover{
+  color: rgb(82, 80, 80);
 }
 
 a:active{
@@ -90,24 +101,14 @@ ul > li:hover{
   text-decoration: none;
 }
 
-.a-header:hover{
+.dot{
+  padding: 10px;
   background: linear-gradient(#d88a8a, #9198e5);
-  transform: scale(0.98);
-  text-decoration: none;
+  border-radius: 50%;
 }
-
 
 .cart-link{
   color: black;
-}
-
-.search  .fa{
-  font-size: 20px;
-  opacity: 0.8;
-  cursor: pointer;
-  justify-content: space-between;
-  border-radius: 50;
-  padding: 10px;
 }
 
 
@@ -128,6 +129,8 @@ ul > li:hover{
   border-radius: 50%;
   background-color: rgb(218, 24, 24);
 }
+
+.display:on
 
 .loop > i{
   font-size: 10px;
@@ -237,9 +240,18 @@ margin-top: 130px;
   text-indent: 20px;
 }
 
+.fa.fa-shopping-cart{
+  font-size: 20px;
+}
 
-
-
+.cart-items-qty{
+  position: relative;
+  bottom: 10px;
+  right: 5px;
+  padding: 7px;
+  background-color: rgb(218, 93, 93);
+  border-radius: 50%;
+}
 
 .input-hide{
   display:none;
@@ -322,8 +334,8 @@ margin-top: 130px;
   flex-direction: column;
   color: white;
   width: 1800px;
-  height: 700px;
-  background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.3)), url("https://mvcmagazine.com/wp-content/uploads/2019/11/mvcmagazine-diorxairjordan-05.jpg") center/cover no-repeat;
+  height: 500px;
+  background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.3)), url("./components/photos/men.jpg") center/cover no-repeat;
 }
 
 .imageBanner button{
@@ -367,8 +379,8 @@ margin-top: 130px;
   flex-direction: column;
   color: white;
   width: 1800px;
-  height: 700px;
-  background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.3)), url("https://gcs.justfreshkicks.com/2020/04/5e54d1d4-7548f133-b153-47fa-80a3-06898f433430.png") center/cover no-repeat;
+  height: 500px;
+  background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.3)), url('./components/photos/shop.jpg') center/cover no-repeat;
 }
 
 .womenImageBanner button{
@@ -661,7 +673,7 @@ border: 1px solid #58abee;
 }
 
 .item-img{
-  height: 100px;
+  height: 150px;
   width: 150px;
 }
 

@@ -3,44 +3,44 @@ import HomePageListItem from './HomePageListItem';
 import Footer from './Footer';
 import axios from 'axios';
 
-const MenSection = ({data,cartItems, setCartItems}) => {
+const WomenSection = ({data,cartItems, setCartItems}) => {
 
 
   const [sortType, setSortType] = useState('0');
-  const [menShoes, setMenShoes] = useState([data]);
+  const [womenShoes, setWomenShoes] = useState([data]);
 
   useEffect(() => {
-    setMenShoes(data);
-    sortMenShoes(data);
+    setWomenShoes(data);
+    sortWomenShoes(data);
   }, [data,sortType]);
 
 
-    const sortMenShoes = (data) => {
+    const sortWomenShoes = (data) => {
       if (sortType == "0"){
-        setMenShoes(data);
+        setWomenShoes(data);
       }
       if (sortType == "1"){
-        const sortedShoes = [...menShoes].sort(function(a,b){
+        const sortedShoes = [...womenShoes].sort(function(a,b){
           return a.price - b.price;
         });
-         setMenShoes(sortedShoes);
+         setWomenShoes(sortedShoes);
       }
       if (sortType == "2"){
-        const sortedShoes = [...menShoes].sort(function(a,b){
+        const sortedShoes = [...womenShoes].sort(function(a,b){
           return b.price - a.price;
         });
-        setMenShoes(sortedShoes);
+        setWomenShoes(sortedShoes);
       }
     };
 
   
-    const listItems = menShoes.map((item) =>
+    const listItems = womenShoes.map((item) =>
     <HomePageListItem item={item} key={item._id} setCartItems={setCartItems} cartItems={cartItems}/>
     );
 
     return (
         <>
-        <div className="trd">Men's Trainers & Shoes ({data.length})
+        <div className="trd">Women's Trainers & Shoes ({data.length})
         <form>
         <select className="dropdown" onChange={(e) => setSortType(e.target.value)}>
        <option value="0">Sort By</option>
@@ -57,4 +57,4 @@ const MenSection = ({data,cartItems, setCartItems}) => {
     );
 };
 
-export default MenSection;
+export default WomenSection;

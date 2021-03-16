@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 
 const MainContent = ({data}) => {
 
-    const filteredData = data.filter((item) => item.category == 'Women');
+    const filteredData = data.filter((item) => item.category == 'Women').slice(0,3);
 
     const listItems = filteredData.map((item) =>
     <div className="card" key={item.id}>

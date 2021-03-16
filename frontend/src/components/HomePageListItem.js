@@ -9,8 +9,18 @@ const HomePageListItem = ({item,setCartItems, cartItems}) => {
     }, [cartItems]);
 
     const onClickHandler = (item) => {
-        const editedItem = {...item, qty: 1};
-        setCartItems([...cartItems, editedItem]);
+        let itemInCart = cartItems.find(x => x._id == item._id);
+
+        if (itemInCart){
+            let oldCartItems = [...cartItems];
+           oldCartItems = oldCartItems.filter(x => x._id !== item._id);
+
+           setCartItems([...oldCartItems, {...itemInCart, qty: itemInCart.qty + 1}]);
+        }
+        else{
+            const editedItem = {...item, qty: 1};
+          setCartItems([...cartItems, editedItem]);
+        }
     };
 
 
