@@ -65,7 +65,7 @@ const Header = ({loggedIn, setLoggedIn, setCartItems, cartItems}) => {
             <div className="search">
                 <span className="searchBar"><i className="fa fa-search"></i><input type="text"className="input-show"  placeholder="Search"></input> </span>
                 <span className="cart-items">
-                <Link to="/cart" className="cart-link"><i className="fa fa-shopping-cart"><small className="cart-items-qty">1</small></i></Link>
+                <Link to="/cart" className="cart-link"><i className="fa fa-shopping-cart"><small className={`cart-items-qty ${displayCartItems(cartItems)}`}>{cartItems.length}</small></i></Link>
                 </span>
             </div>
             

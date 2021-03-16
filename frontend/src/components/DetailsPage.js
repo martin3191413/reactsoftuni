@@ -3,7 +3,7 @@ import Footer from './Footer';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 
-const DetailsPage = ({id}) => {
+const DetailsPage = ({id, cartItems, setCartItems}) => {
     const [data,setData] = useState({});
     const [inputValue, setInputValue] = useState(1);
 
@@ -29,6 +29,25 @@ const DetailsPage = ({id}) => {
         setInputValue(e.target.value);
     };
 
+    const onClickHandler = (id) => {
+        let itemInCart = cartItems.find(x => x._id == id);
+
+
+        if (itemInCart){
+            let oldCartItems = [...cartItems];
+           oldCartItems = oldCartItems.filter(x => x._id !== id);
+
+           setCartItems([...oldCartItems, {...itemInCart, qty: itemInCart.qty + 1}]);
+        }
+          else{
+           const item = {...data, qty: inputValue};
+          setCartItems([...cartItems, item]);
+        }
+    };
+
+
+
+
     return (
         <div>
         <div className="row">
@@ -47,7 +66,7 @@ const DetailsPage = ({id}) => {
                     <option>43</option>
                 </select>
                 <input type="number" value={inputValue} className="details-input" onChange={onChangeInput}></input> 
-                <button className="details-btn">Add to Cart</button>
+                <button className="details-btn" onClick={() => onClickHandler(id)}>Add to Cart</button>
                 </div>
                 <h3>Product Details    <i className="fa fa-indent"></i> </h3>
                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 

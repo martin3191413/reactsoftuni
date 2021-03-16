@@ -37,9 +37,6 @@ nav .logo{
   font-family: 'Ranchers', cursive;
 }
 
-.header-logo{
-  background-image: url('./components/logo.png');
-}
 
 ul{
   display:flex;
@@ -111,26 +108,10 @@ ul > li:hover{
   color: black;
 }
 
-
-
-.search .fa:hover{
-  background-color: rgb(224, 224, 224);
-  border-radius: 50%;
+.fa.fa-search:hover{
+    background-color: rgb(224, 224, 224);
+    border-radius: 50%;
 }
-
-.none{
-  display: none;
-}
-
-.display{
-  position: fixed;
-  top: 60px;
-  padding: 7px;
-  border-radius: 50%;
-  background-color: rgb(218, 24, 24);
-}
-
-.display:on
 
 .loop > i{
   font-size: 10px;
@@ -240,17 +221,32 @@ margin-top: 130px;
   text-indent: 20px;
 }
 
-.fa.fa-shopping-cart{
+.fa.fa-search{
+  position: relative;
+  top: 3px;
+  right: 4px;
   font-size: 20px;
+  padding: 5px;
 }
 
-.cart-items-qty{
+.fa.fa-shopping-cart{
+  font-size: 20px;
   position: relative;
-  bottom: 10px;
+  top: 2px;
+  padding: 5px;
+}
+
+.cart-items-qty.display{
+  position: relative;
+  bottom: 12px;
   right: 5px;
-  padding: 7px;
+  padding: 6px;
   background-color: rgb(218, 93, 93);
   border-radius: 50%;
+}
+
+.cart-items-qty.none{
+  display: none;
 }
 
 .input-hide{

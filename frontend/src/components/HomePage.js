@@ -1,7 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import ImageBanner from './imageBanner';
-import HomePageWomen from './homePageWomen';
 import WomenImageBanner from './womenImageBanner';
 import Footer from './Footer';
 import HomePageListItem from './HomePageListItem';
@@ -15,14 +14,23 @@ const MainContent = ({data,setCartItems, cartItems}) => {
     <HomePageListItem item={item} key={item._id} setCartItems={setCartItems} cartItems={cartItems}/>
     );
 
+    const filteredWomenData = data.filter((item) => item.category == "Women").slice(0,3);
+
+    const womenItems = filteredWomenData.map((item) => 
+    <HomePageListItem item={item} key={item._id} setCartItems={setCartItems} cartItems={cartItems} />
+    );
+
     return (
         <div className="trd"> Men's Collection Trending Now
         <div className="mainContent">
             {listItems}
         </div>
         <ImageBanner />
-        
-        <HomePageWomen data={data} />
+        <div className="trd"> Women's Collection Trending Now
+        <div className="mainContent">
+            {womenItems}
+        </div>
+        </div>
         <WomenImageBanner />
         <Footer />
         </div>

@@ -6,7 +6,6 @@ import HomePage from './components/HomePage';
 import Footer from './components/Footer';
 import  Login from './components/Login';
 import ImageBanner from './components/imageBanner';
-import HomePageWomen from './components/homePageWomen';
 import WomenImageBanner from './components/womenImageBanner';
 import Map from './components/Map';
 import ContactInfo from './components/ContactInfo';
@@ -85,7 +84,7 @@ function App() {
          <ContactInfo {...props} />
        )}
        />
-       <PrivateRoute path="/details/:id" exact component={DetailsPage} loggedIn={loggedIn} restricted={true} />
+       <PrivateRoute path="/details/:id" exact component={DetailsPage} loggedIn={loggedIn} restricted={true} cartItems={cartItems} setCartItems={setCartItems} />
         <Route
        path="/register"
         exact
