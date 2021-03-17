@@ -46,28 +46,27 @@ function App() {
   return (
     <Router>
     <div className="container">
-      <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCartItems={setCartItems} cartItems={cartItems}/>
       <Switch>
-      <PublicRoute path="/" exact component={HomePage} loggedIn={loggedIn} restricted={false} data={data} setCartItems={setCartItems} cartItems={cartItems} />
+      <PublicRoute path="/" exact component={HomePage} loggedIn={loggedIn} setLoggedIn={setLoggedIn} restricted={false} data={data} setCartItems={setCartItems} cartItems={cartItems} />
       <PublicRoute path="/login" exact component={Login}  setLoggedIn={setLoggedIn}  loggedIn={loggedIn} restricted={false}/>
       <Route 
         path="/men"
         exact
         render={(props) => (
-          <MenSection  {...props} cartItems={cartItems} setCartItems={setCartItems} data={menShoes}/>
+          <MenSection  {...props} cartItems={cartItems} setCartItems={setCartItems} data={menShoes} loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
         )}
         />
         <Route 
         path="/women"
         exact
         render={(props) => (
-          <WomenSection  {...props} cartItems={cartItems} setCartItems={setCartItems} data={womenShoes}/>
+          <WomenSection  {...props} cartItems={cartItems} setCartItems={setCartItems} data={womenShoes} loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
         )}
         />
       <Route path="/contacts"
        exact
        render={(props) => (
-         <ContactInfo {...props} />
+         <ContactInfo {...props} loggedIn={loggedIn} setLoggedIn={setLoggedIn} cartItems={cartItems} setCartItems={setCartItems} />
        )}
        />
        <PrivateRoute path="/details/:id" exact component={DetailsPage} loggedIn={loggedIn} restricted={true} cartItems={cartItems} setCartItems={setCartItems} />
@@ -78,7 +77,7 @@ function App() {
           <Register {...props} loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
         )}
         />
-        <PrivateRoute path="/cart" exact component={Cart} loggedIn={loggedIn} restricted={true} cartItems={cartItems} setCartItems={setCartItems} /> 
+        <PrivateRoute path="/cart" exact component={Cart} loggedIn={loggedIn} setLoggedIn={setLoggedIn} restricted={true} cartItems={cartItems} setCartItems={setCartItems} /> 
     </Switch>
     </div>
     </Router>

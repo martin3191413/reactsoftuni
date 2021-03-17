@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
+import Header from './Header';
 import Footer from './Footer';
 
-const Cart = ({cartItems, setCartItems}) => {
-
+const Cart = ({loggedIn, setLoggedIn, cartItems, setCartItems}) => {
     useEffect(() => {
         localStorage.setItem('cartItems', JSON.stringify(cartItems));
     }, [cartItems]);
@@ -95,6 +95,7 @@ const Cart = ({cartItems, setCartItems}) => {
 
     return (
         <>
+        <Header  loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCartItems={setCartItems} cartItems={cartItems}/>
         {cartItems.length === 0 ? message : cart }
       
         <div className="price-table">

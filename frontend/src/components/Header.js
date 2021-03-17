@@ -21,9 +21,9 @@ const Header = ({loggedIn, setLoggedIn, setCartItems, cartItems}) => {
         return classes;
     };
 
-    const successfull = <><span className="email">Hi, {localStorage.getItem('userEmail')}</span><i className="far fa-user"></i></>;
+    const successfull = <Link to="/profile" className="user-link"><span className="email">Hi, {localStorage.getItem('userEmail')}</span><i className="far fa-user"></i></Link>;
 
-    const unsuccessfull = <>Login | Register</>;
+    const unsuccessfull = <><Link to="/login" className="user-link-login">Login</Link> | <Link to="/register" className="user-link-register">Register</Link></>;
 
 
     return (

@@ -1,9 +1,9 @@
 import React, {useState,useEffect} from 'react';
 import HomePageListItem from './HomePageListItem';
 import Footer from './Footer';
-import axios from 'axios';
+import Header from './Header';
 
-const WomenSection = ({data,cartItems, setCartItems}) => {
+const WomenSection = ({loggedIn, setLoggedIn,data,cartItems, setCartItems}) => {
 
 
   const [sortType, setSortType] = useState('0');
@@ -40,6 +40,7 @@ const WomenSection = ({data,cartItems, setCartItems}) => {
 
     return (
         <>
+        <Header  loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCartItems={setCartItems} cartItems={cartItems}/>
         <div className="trd">Women's Trainers & Shoes ({data.length})
         <form>
         <select className="dropdown" onChange={(e) => setSortType(e.target.value)}>

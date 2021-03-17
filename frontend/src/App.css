@@ -842,3 +842,20 @@ th{
   font-size: 16px;
   margin-top: 3px;
 }
+
+.user-link{
+  color: black;
+  text-decoration: none;
+}
+
+.user-link-login{
+  color: black;
+  text-decoration: none;
+  margin-right: 4px;
+}
+
+.user-link-register{
+  color: black;
+  text-decoration: none;
+  margin-left: 4px;
+}

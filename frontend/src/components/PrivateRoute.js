@@ -5,7 +5,7 @@ const PrivateRoute = ({ loggedIn,component: Component, cartItems, setCartItems})
     return (
         <Route render={(props) => (
             loggedIn === true?
-                <Component {...props} id={window.location.pathname.split('/')[2]} cartItems={cartItems} setCartItems={setCartItems} />
+                <Component {...props} id={window.location.pathname.split('/')[2]} cartItems={cartItems} setCartItems={setCartItems} loggedIn={loggedIn} />
             : <Redirect to="/login" />
         )} />
     );

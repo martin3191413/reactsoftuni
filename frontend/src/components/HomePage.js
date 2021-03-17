@@ -3,8 +3,9 @@ import ImageBanner from './imageBanner';
 import WomenImageBanner from './womenImageBanner';
 import Footer from './Footer';
 import HomePageListItem from './HomePageListItem';
+import Header from './Header';
 
-const MainContent = ({data,setCartItems, cartItems}) => {
+const MainContent = ({loggedIn, setLoggedIn, data,setCartItems, cartItems}) => {
 
     let filteredData = data.filter((item) =>  item.category === "Men").slice(0,3);
 
@@ -20,6 +21,8 @@ const MainContent = ({data,setCartItems, cartItems}) => {
     );
 
     return (
+        <>
+        <Header  loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCartItems={setCartItems} cartItems={cartItems}/>
         <div className="trd"> Men's Collection Trending Now
         <div className="mainContent">
             {listItems}
@@ -33,6 +36,7 @@ const MainContent = ({data,setCartItems, cartItems}) => {
         <WomenImageBanner />
         <Footer />
         </div>
+        </>
 
     );
 
