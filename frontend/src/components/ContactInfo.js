@@ -1,13 +1,10 @@
 import React from 'react';
+import Map from './Map';
+import PromoOffer from './PromoOffer';
 
 const ContactInfo = () => {
     return (
-        <div className="contactInfo">
-        <h2 className="contactHeader">Contact US</h2>
-        <div className="contactDiv">
-            <span>Contact Number</span>
-        </div>
-        </div>
+       <PromoOffer />
     );
 };
 

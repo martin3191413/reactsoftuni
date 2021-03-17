@@ -3,11 +3,7 @@ import './App.css';
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
 import Header from './components/Header';
 import HomePage from './components/HomePage';
-import Footer from './components/Footer';
 import  Login from './components/Login';
-import ImageBanner from './components/imageBanner';
-import WomenImageBanner from './components/womenImageBanner';
-import Map from './components/Map';
 import ContactInfo from './components/ContactInfo';
 import Register from './components/Register';
 import DetailsPage from './components/DetailsPage';
@@ -23,7 +19,7 @@ function App() {
   
 
   const [data, setData] = useState([]);
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState((localStorage.getItem('userId') ? true : false));
   const [cartItems, setCartItems] = useState(JSON.parse((localStorage.getItem('cartItems'))) || ([]));
   const [menShoes, setMenShoes] = useState([]);
   const [womenShoes, setWomenShoes] = useState([]);
@@ -31,8 +27,8 @@ function App() {
 
   useEffect(() => {
     fetchData();
-    loggedUser();
   }, []);
+
 
   const fetchData = (e) => {
     axios({
@@ -41,21 +37,11 @@ function App() {
     })
     .then((response) => {
       setData(response.data);
-      setMenShoes(response.data.filter(item => item.category == "Men"));
-      setWomenShoes(response.data.filter(item => item.category == "Women"));
+      setMenShoes(response.data.filter(item => item.category === "Men"));
+      setWomenShoes(response.data.filter(item => item.category === "Women"));
     });
   };
-
-  const loggedUser = () => {
-    const cookie = localStorage.getItem('userId');
-
-    if (!cookie){
-      setLoggedIn(false);
-    }
-    else{
-      setLoggedIn(true);
-    }
-  };
+  
 
   return (
     <Router>
@@ -92,13 +78,7 @@ function App() {
           <Register {...props} loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
         )}
         />
-        <Route 
-        path="/cart"
-        exact
-        render={(props) => (
-          <Cart  {...props} cartItems={cartItems} setCartItems={setCartItems}/>
-        )}
-        />
+        <PrivateRoute path="/cart" exact component={Cart} loggedIn={loggedIn} restricted={true} cartItems={cartItems} setCartItems={setCartItems} /> 
     </Switch>
     </div>
     </Router>

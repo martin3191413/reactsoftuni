@@ -1,15 +1,8 @@
-import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
+import jwt from 'jsonwebtoken';
+import {NavLink, Link} from 'react-router-dom';
 
 const Header = ({loggedIn, setLoggedIn, setCartItems, cartItems}) => {
-    
-    const [isActive, setIsActive] = useState('');
 
-    const toggleClass = (e) => {
-        setIsActive(prevState => {
-                setIsActive(e.target.value);
-        });
-    };
     const logout = () => {
         localStorage.clear();
         setLoggedIn(false);
@@ -19,7 +12,7 @@ const Header = ({loggedIn, setLoggedIn, setCartItems, cartItems}) => {
 
     const displayCartItems = (cartItems) => {
         let classes = '';
-        if (cartItems.length == 0){
+        if (cartItems.length === 0){
             classes += 'none';
         }
         else{
@@ -28,48 +21,48 @@ const Header = ({loggedIn, setLoggedIn, setCartItems, cartItems}) => {
         return classes;
     };
 
+    const successfull = <><span className="email">Hi, {localStorage.getItem('userEmail')}</span><i className="far fa-user"></i></>;
+
+    const unsuccessfull = <>Login | Register</>;
+
 
     return (
+        <>
+        <div className="header-profile">
+            {localStorage.getItem('userEmail')!== null ? successfull : unsuccessfull }
+        </div>
         <nav>
             <div className="logo">
                 <Link to="/" className="link-logo">mySite</Link>
                 <img className="header-logo"></img>
             </div>
             <ul>
-                <Link className="a-header" to="/">
-                <li onClick={toggleClass} className={isActive == "0 "? 'dot' : ""} value="0">Home</li>
-                </Link>
-                <Link  className="a-header" to="/men">
-                <li onClick={toggleClass} className={isActive == "1" ? 'dot' : ""} value="1">Men</li>
-                </Link>
-                <Link className="a-header" to="/women">
-                <li onClick={toggleClass} className={isActive == "2" ? 'dot' : ""}  value="2">Women</li>
-                </Link>
-                <Link className="a-header"   to="/about">
-                <li  onClick={toggleClass} className={isActive == "3" ? 'dot' : ""} value="3">About</li>
-                </Link>
-                <Link className="a-header" to="/contacts">
-                <li onClick={toggleClass} className={isActive == "4" ? 'dot' : ""}  value="4">Contacts</li>
-                </Link>
-                {loggedIn == false ?<Link className="a-header" to="/register">
-                <li  onClick={toggleClass} className={isActive == "5" ? 'dot' : ""} value="5">Register</li>
-                </Link> : ""}
-                {loggedIn == false ?<Link className="a-header" to="/login">
-                <li onClick={toggleClass} className={isActive == "6" ? 'dot' : ""}  value="6">Login</li>
-                </Link> : ""}
-                {loggedIn == true ?<Link className="a-header" to="/logout">
+                <NavLink className="a-header" to="/" activeClassName="active" exact>Home
+                </NavLink>
+                <NavLink  className="a-header" to="/men" activeClassName="active">Men
+                </NavLink>
+                <NavLink className="a-header" to="/women"activeClassName="active" >Women
+                </NavLink>
+                <NavLink className="a-header" to="/contacts" activeClassName="active">Contacts
+                </NavLink>
+                {loggedIn === false ?<NavLink className="a-header" to="/register" activeClassName="active">Register
+                </NavLink> : ""}
+                {loggedIn === false ?<NavLink className="a-header" to="/login" activeClassName="active">Login
+                </NavLink> : ""}
+                {loggedIn === true ?<NavLink className="a-header" to="/logout" >
                 <li onClick={logout}>Logout</li>
-                </Link> : ""}
+                </NavLink> : ""}
                 
             </ul>
             <div className="search">
                 <span className="searchBar"><i className="fa fa-search"></i><input type="text"className="input-show"  placeholder="Search"></input> </span>
                 <span className="cart-items">
-                <Link to="/cart" className="cart-link"><i className="fa fa-shopping-cart"><small className={`cart-items-qty ${displayCartItems(cartItems)}`}>{cartItems.length}</small></i></Link>
+                <NavLink to="/cart" className="cart-link" activeClassName="active-cart"><i className="fa fa-shopping-cart"><small className={`cart-items-qty ${displayCartItems(cartItems)}`}>{cartItems.length}</small></i></NavLink>
                 </span>
             </div>
             
         </nav>
+        </>
     );
 };
 

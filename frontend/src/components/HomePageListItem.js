@@ -9,7 +9,7 @@ const HomePageListItem = ({item,setCartItems, cartItems}) => {
     }, [cartItems]);
 
     const onClickHandler = (item) => {
-        let itemInCart = cartItems.find(x => x._id == item._id);
+        let itemInCart = cartItems.find(x => x._id === item._id);
 
         if (itemInCart){
             let oldCartItems = [...cartItems];

@@ -1,7 +1,6 @@
 import React, {useState,useEffect} from 'react';
 import HomePageListItem from './HomePageListItem';
 import Footer from './Footer';
-import axios from 'axios';
 
 const MenSection = ({data,cartItems, setCartItems}) => {
 
@@ -16,16 +15,16 @@ const MenSection = ({data,cartItems, setCartItems}) => {
 
 
     const sortMenShoes = (data) => {
-      if (sortType == "0"){
+      if (sortType === "0"){
         setMenShoes(data);
       }
-      if (sortType == "1"){
+      if (sortType === "1"){
         const sortedShoes = [...menShoes].sort(function(a,b){
           return a.price - b.price;
         });
          setMenShoes(sortedShoes);
       }
-      if (sortType == "2"){
+      if (sortType === "2"){
         const sortedShoes = [...menShoes].sort(function(a,b){
           return b.price - a.price;
         });

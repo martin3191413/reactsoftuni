@@ -30,7 +30,7 @@ const DetailsPage = ({id, cartItems, setCartItems}) => {
     };
 
     const onClickHandler = (id) => {
-        let itemInCart = cartItems.find(x => x._id == id);
+        let itemInCart = cartItems.find(x => x._id === id);
 
 
         if (itemInCart){

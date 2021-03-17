@@ -87,8 +87,8 @@ const Register = ({setLoggedIn}) => {
 
     return (
              <div>
-             <section className={isError == false ? "" : classes}>
-            <p className="notification-message">{isError == false ? "" : errorMessage}</p>
+             <section className={isError === false ? "" : classes}>
+            <p className="notification-message">{isError === false ? "" : errorMessage}</p>
         </section>
         <form className="login">
             <h1 className="login-header">Register</h1>

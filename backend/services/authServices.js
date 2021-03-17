@@ -32,7 +32,7 @@ async function login(data){
         throw new Error('Wrong username or password!');
     }
 
-    const token = jwt.sign({id: user._id}, 'mySecretSecret');
+    const token = jwt.sign({id: user._id, email: data.username}, 'mySecretSecret');
 
     return token;
 }

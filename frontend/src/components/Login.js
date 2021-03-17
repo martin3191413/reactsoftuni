@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, {useState} from 'react';
 import { useHistory } from "react-router-dom";
 
-const Login = ({setLoggedIn}) => {
+const Login = ({setLoggedIn, setUserCredentials}) => {
 
     const history = useHistory();
     const classes = "notifications";
@@ -47,6 +47,7 @@ const Login = ({setLoggedIn}) => {
         })
         .then((response) => {
             localStorage.setItem('userId', response.data);
+            localStorage.setItem('userEmail', username);
             history.push('/');
             setLoggedIn(true);
         })
@@ -70,8 +71,8 @@ const Login = ({setLoggedIn}) => {
 
     return (
         <div>
-            <section className={isError == false ? "" : classes}>
-            <p className="notification-message">{isError == false ? "" : errorMessage}</p>
+            <section className={isError === false ? "" : classes}>
+            <p className="notification-message">{isError === false ? "" : errorMessage}</p>
         </section>
             <form className="login">
             <h1 className="login-header">Sign In</h1>

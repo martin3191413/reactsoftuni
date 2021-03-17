@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 const API_KEY = 'AIzaSyD7eXY9x2mbQ6-eiPsC9Hxljs6QsiWFGJs';
-const API_URL = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCd1T18ewaFOwS7eSv4U4j6qNPiKpXqReE&callback=initMap&libraries=&v=weekly`;
 
 class SimpleMap extends Component {
   static defaultProps = {

@@ -16,16 +16,16 @@ const WomenSection = ({data,cartItems, setCartItems}) => {
 
 
     const sortWomenShoes = (data) => {
-      if (sortType == "0"){
+      if (sortType === "0"){
         setWomenShoes(data);
       }
-      if (sortType == "1"){
+      if (sortType === "1"){
         const sortedShoes = [...womenShoes].sort(function(a,b){
           return a.price - b.price;
         });
          setWomenShoes(sortedShoes);
       }
-      if (sortType == "2"){
+      if (sortType === "2"){
         const sortedShoes = [...womenShoes].sort(function(a,b){
           return b.price - a.price;
         });

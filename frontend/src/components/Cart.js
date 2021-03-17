@@ -23,7 +23,7 @@ const Cart = ({cartItems, setCartItems}) => {
             localStorage.setItem('cartItems', JSON.stringify(cartItems));
         }
         else{
-            if (item.qty == 1){
+            if (item.qty === 1){
                 return;
             }
             let oldCartItems = [...cartItems];
@@ -75,16 +75,28 @@ const Cart = ({cartItems, setCartItems}) => {
         return total;
     };
 
+    const buyItems = () => {
+        setCartItems([]);
+    };
+
+    const message = <div className="empty-bag">
+        <h3>Bag</h3>
+        <h3>There are no items in your bag.</h3>
+    </div>;
+
+    const cart =  <table className="cart-table">
+    <tr className="table-header">
+    <th>Product</th>
+    <th>Quantity</th>
+    <th>Subtotal</th>
+    </tr>
+    {items}
+    </table>;
+
     return (
         <>
-        <table className="cart-table">
-            <tr className="table-header">
-            <th>Product</th>
-            <th>Quantity</th>
-            <th>Subtotal</th>
-            </tr>
-            {items}
-        </table>
+        {cartItems.length === 0 ? message : cart }
+      
         <div className="price-table">
         <table className="final-price">
             <tr>
@@ -102,7 +114,7 @@ const Cart = ({cartItems, setCartItems}) => {
         </table>
         </div>
         <div className="cart-buy">
-            <button className="cart-buy-btn">Checkout</button>
+            <button className="cart-buy-btn" disabled={cartItems.length === 0 ? true : false} onClick={buyItems}>Checkout</button>
         </div>
         <Footer />
         </>
