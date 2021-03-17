@@ -1,7 +1,14 @@
-import jwt from 'jsonwebtoken';
+import React, {useEffect, useState} from 'react';
 import {NavLink, Link} from 'react-router-dom';
 
-const Header = ({loggedIn, setLoggedIn, setCartItems, cartItems}) => {
+const Header = ({loggedIn,setLoggedIn, setCartItems, cartItems}) => {
+
+    useEffect(() => {
+        setUserEmail(localStorage.getItem('userEmail'));
+    }, [loggedIn]);
+
+    const [userEmail,setUserEmail] = useState((localStorage.getItem('userEmail')) || null);
+
 
     const logout = () => {
         localStorage.clear();
@@ -21,20 +28,18 @@ const Header = ({loggedIn, setLoggedIn, setCartItems, cartItems}) => {
         return classes;
     };
 
-    const successfull = <Link to="/profile" className="user-link"><span className="email">Hi, {localStorage.getItem('userEmail')}</span><i className="far fa-user"></i></Link>;
+    const successfull = <Link to="/profile" className="user-link"><span className="email">Hi, {userEmail}</span><i className="far fa-user"></i> | <Link className="user-link" onClick={logout}>Logout</Link></Link>;
 
     const unsuccessfull = <><Link to="/login" className="user-link-login">Login</Link> | <Link to="/register" className="user-link-register">Register</Link></>;
-
 
     return (
         <>
         <div className="header-profile">
-            {localStorage.getItem('userEmail')!== null ? successfull : unsuccessfull }
+            {userEmail !== null ? successfull : unsuccessfull }
         </div>
         <nav>
             <div className="logo">
                 <Link to="/" className="link-logo">mySite</Link>
-                <img className="header-logo"></img>
             </div>
             <ul>
                 <NavLink className="a-header" to="/" activeClassName="active" exact>Home
@@ -45,14 +50,6 @@ const Header = ({loggedIn, setLoggedIn, setCartItems, cartItems}) => {
                 </NavLink>
                 <NavLink className="a-header" to="/contacts" activeClassName="active">Contacts
                 </NavLink>
-                {loggedIn === false ?<NavLink className="a-header" to="/register" activeClassName="active">Register
-                </NavLink> : ""}
-                {loggedIn === false ?<NavLink className="a-header" to="/login" activeClassName="active">Login
-                </NavLink> : ""}
-                {loggedIn === true ?<NavLink className="a-header" to="/logout" >
-                <li onClick={logout}>Logout</li>
-                </NavLink> : ""}
-                
             </ul>
             <div className="search">
                 <span className="searchBar"><i className="fa fa-search"></i><input type="text"className="input-show"  placeholder="Search"></input> </span>

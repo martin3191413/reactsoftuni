@@ -11,13 +11,13 @@ const MainContent = ({loggedIn, setLoggedIn, data,setCartItems, cartItems}) => {
 
     
     const listItems = filteredData.map((item) =>
-    <HomePageListItem item={item} key={item._id} setCartItems={setCartItems} cartItems={cartItems}/>
+    <HomePageListItem item={item} key={item._id} setCartItems={setCartItems} cartItems={cartItems} loggedIn={loggedIn}/>
     );
 
     const filteredWomenData = data.filter((item) => item.category === "Women").slice(0,3);
 
     const womenItems = filteredWomenData.map((item) => 
-    <HomePageListItem item={item} key={item._id} setCartItems={setCartItems} cartItems={cartItems} />
+    <HomePageListItem item={item} key={item._id} setCartItems={setCartItems} cartItems={cartItems} loggedIn={loggedIn} />
     );
 
     return (

@@ -7,7 +7,7 @@ const bcrypt = require('bcrypt');
     const user = await User.findOne({username: data.username});
 
     if (user){
-        throw new Error('There is user with this username!');
+        throw new Error('This email address is already in use!');
     }
 
     const salt = await bcrypt.genSalt(10);
@@ -23,7 +23,7 @@ async function login(data){
 
     
     if (!user){
-        throw new Error('No such user!');
+        throw new Error('Wrong username or password!');
     }
 
     const isValid = await bcrypt.compare(data.password, user.password);

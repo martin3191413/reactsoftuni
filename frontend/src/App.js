@@ -69,7 +69,7 @@ function App() {
          <ContactInfo {...props} loggedIn={loggedIn} setLoggedIn={setLoggedIn} cartItems={cartItems} setCartItems={setCartItems} />
        )}
        />
-       <PrivateRoute path="/details/:id" exact component={DetailsPage} loggedIn={loggedIn} restricted={true} cartItems={cartItems} setCartItems={setCartItems} />
+       <PrivateRoute path="/details/:id" exact component={DetailsPage} loggedIn={loggedIn} setLoggedIn={setLoggedIn} restricted={true} cartItems={cartItems} setCartItems={setCartItems} />
         <Route
        path="/register"
         exact

@@ -31,12 +31,11 @@ nav{
   align-items: center;
 }
 
-nav .logo{
+.logo{
   font-size:30px;
   font-weight: bold;
   font-family: 'Ranchers', cursive;
 }
-
 
 ul{
   display:flex;
@@ -65,9 +64,14 @@ ul{
   margin-bottom: 5px;
 }
 
+.a-header:hover{
+  color: rgb(82, 80, 80);
+}
+
 .link-logo{
 text-decoration: none;
 color: black;
+cursor: pointer;
 }
 
 .link-logo:hover{
@@ -270,7 +274,7 @@ margin-top: 130px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 100px;
+  margin-top: 150px;
 }
 
 .input-field{
@@ -281,6 +285,7 @@ margin-top: 130px;
   margin-bottom: 30px;
   padding-left: 18px;
   background-color: rgb(245, 244, 244);
+  transition: 0.4s ease-in-out;
 }
 
 .login-header{
@@ -291,6 +296,7 @@ margin-top: 130px;
 
 .login-label{
   margin-left: -250px;
+  opacity: 0.9;
 }
 
 .login-divider{
@@ -399,6 +405,7 @@ margin-top: 130px;
 
 .login-email{
   margin-left: -220px;
+  opacity: 0.9;
 }
 
 .womenImageBanner button:hover{
@@ -416,13 +423,18 @@ margin-top: 130px;
   background-color: royalblue;
   color: white;
   cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.signIn:hover{
+  background-color: rgba(14, 59, 206, 0.918);
 }
 
 .register-btn{
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 650px;
+  width: 350px;
   padding-top: 8px;
   height: 40px;
   border-radius: 28px;
@@ -432,6 +444,7 @@ margin-top: 130px;
   border: 2px solid black;
   font-weight: bold;
   cursor: pointer;
+  transition: 0.4s all;
 }
 
 .register-btn:hover{
@@ -458,7 +471,7 @@ margin-top: 130px;
 }
 
 .input-field:focus{
-  border: #595f6e;
+  border: 1px solid gray ;
   outline: none;
 }
 
@@ -535,6 +548,11 @@ margin-top: 130px;
   margin-top: 100px;
   opacity: 0.8;
   font-size: 20px;
+}
+
+.to-home{
+  text-decoration: none;
+  color:black;
 }
 
 .column h1{
@@ -852,10 +870,12 @@ th{
   color: black;
   text-decoration: none;
   margin-right: 4px;
+  font-size: 15px;
 }
 
 .user-link-register{
   color: black;
   text-decoration: none;
   margin-left: 4px;
+  font-size: 15px;
 }

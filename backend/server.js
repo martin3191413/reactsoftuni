@@ -45,6 +45,7 @@ app.post('/save/user', async (req,res) => {
 
     try{
         await authServices.register(req.body);
+        res.send('user saved successfully!');
     }
     catch(err){
         console.log(err);

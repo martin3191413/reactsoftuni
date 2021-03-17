@@ -70,6 +70,10 @@ const Login = ({setLoggedIn, setUserCredentials}) => {
 
 
     return (
+        <>
+        <div className="logo">
+                <span className="link-logo">mySite</span>
+            </div>
         <div>
             <section className={isError === false ? "" : classes}>
             <p className="notification-message">{isError === false ? "" : errorMessage}</p>
@@ -87,6 +91,7 @@ const Login = ({setLoggedIn, setUserCredentials}) => {
             <button className="register-btn" onClick={() => history.push('/register')}>Create Account</button>
         </form>
         </div>
+        </>
     );
 };
 

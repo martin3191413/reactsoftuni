@@ -60,9 +60,10 @@ const Register = ({setLoggedIn}) => {
                 data: payload
             })
             .then((res) => {
-
+                console.log(res);
                 history.push('/');
                 setLoggedIn(true);
+                localStorage.setItem('userEmail', username);
             })
             .catch((err) => {
                 setIsError(true);
@@ -86,13 +87,17 @@ const Register = ({setLoggedIn}) => {
     const classes = "notifications";
 
     return (
+        <>
+        <div className="logo">
+                <span className="link-logo">mySite</span>
+            </div>
              <div>
              <section className={isError === false ? "" : classes}>
             <p className="notification-message">{isError === false ? "" : errorMessage}</p>
         </section>
         <form className="login">
             <h1 className="login-header">Register</h1>
-            <label htmlFor="email" className="login-email">Email Adress</label>
+            <label htmlFor="email" className="login-email">Email Address</label>
             <input id="email" type="text"  name="email" className="input-field" value={username} onChange={onUsernameChange}></input>
             <label htmlFor="password" className="login-label">Password</label>
             <input id="password" type="password" name="password"className="input-field" value={password} onChange={onPasswordChange}></input>
@@ -105,6 +110,7 @@ const Register = ({setLoggedIn}) => {
             <button className="register-btn" onClick={() => history.push('/login')}>Have an account? Sign in</button>
         </form>
         </div>
+        </>
     );
 };
 

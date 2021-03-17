@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Footer from './Footer';
 import {Link} from 'react-router-dom';
+import Header from './Header';
 import axios from 'axios';
 
-const DetailsPage = ({id, cartItems, setCartItems}) => {
+const DetailsPage = ({loggedIn, setLoggedIn,id, cartItems, setCartItems}) => {
     const [data,setData] = useState({});
     const [inputValue, setInputValue] = useState(1);
 
@@ -50,12 +51,13 @@ const DetailsPage = ({id, cartItems, setCartItems}) => {
 
     return (
         <div>
+<Header  loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCartItems={setCartItems} cartItems={cartItems}/>
         <div className="row">
             <div className="column">
                 <img src={data.image}></img>
             </div>
             <div className="column">
-                <p className="product-home"><Link to="/">Home</Link>/ {data.model}</p>
+                <p className="product-home"><Link className="to-home" to="/">Home </Link>/ {data.model}</p>
                 <h1 >{data.model}</h1>
                 <div className="details-info">
                 <span className="price">{data.price}</span>
