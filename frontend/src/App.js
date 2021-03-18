@@ -23,6 +23,7 @@ function App() {
   const [cartItems, setCartItems] = useState(JSON.parse((localStorage.getItem('cartItems'))) || ([]));
   const [menShoes, setMenShoes] = useState([]);
   const [womenShoes, setWomenShoes] = useState([]);
+  const [userFavItems, setUserFavItems] = useState(JSON.parse(localStorage.getItem('userFavItems')) || []);
 
 
   useEffect(() => {
@@ -69,7 +70,7 @@ function App() {
          <ContactInfo {...props} loggedIn={loggedIn} setLoggedIn={setLoggedIn} cartItems={cartItems} setCartItems={setCartItems} />
        )}
        />
-       <PrivateRoute path="/details/:id" exact component={DetailsPage} loggedIn={loggedIn} setLoggedIn={setLoggedIn} restricted={true} cartItems={cartItems} setCartItems={setCartItems} />
+       <PrivateRoute path="/details/:id" exact component={DetailsPage} loggedIn={loggedIn} userFavItems={userFavItems} setUserFavItems={setUserFavItems} setLoggedIn={setLoggedIn} restricted={true} cartItems={cartItems} setCartItems={setCartItems} />
         <Route
        path="/register"
         exact

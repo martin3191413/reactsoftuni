@@ -616,6 +616,11 @@ margin-top: 130px;
   transition: 0.2s all;
 }
 
+.details-btn.favourite{
+  background-color: black;
+  color: white;
+}
+
 .details-btn:active{
   transform: scale(0.98);
 }

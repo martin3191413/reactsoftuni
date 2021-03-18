@@ -4,9 +4,10 @@ import {Link} from 'react-router-dom';
 import Header from './Header';
 import axios from 'axios';
 
-const DetailsPage = ({loggedIn, setLoggedIn,id, cartItems, setCartItems}) => {
+const DetailsPage = ({loggedIn, setLoggedIn,id, cartItems, setCartItems, userFavItems, setUserFavItems}) => {
     const [data,setData] = useState({});
     const [inputValue, setInputValue] = useState(1);
+    const [favouriteBtn, setFavouriteBtn] = useState('fa fa-heart');
 
     const fetchData = (e) => {
         axios({
@@ -15,13 +16,23 @@ const DetailsPage = ({loggedIn, setLoggedIn,id, cartItems, setCartItems}) => {
         })
         .then((response) => {
             setData(response.data);
+
+            const item = userFavItems.find(item => item._id == response.data._id);
+
+            if (item){
+                setFavouriteBtn('fa fa-heart');
+            }
+            else{
+                setFavouriteBtn('far fa-heart');
+            }
         })
         .catch((err) => console.log(err));
     };
 
     useEffect(() => {
         fetchData();
-    }, []);
+        localStorage.setItem('userFavItems', JSON.stringify(userFavItems));
+    }, [userFavItems]);
 
     const onChangeInput = (e) => {
         if (e.target.value < 1){
@@ -46,12 +57,24 @@ const DetailsPage = ({loggedIn, setLoggedIn,id, cartItems, setCartItems}) => {
         }
     };
 
-
+    const toggleClassName = () => {
+        if (favouriteBtn === 'far fa-heart'){
+            setFavouriteBtn('fa fa-heart');
+            setUserFavItems([...userFavItems, data]);
+            localStorage.setItem('userFavItems', JSON.stringify(userFavItems));
+        }
+        else{
+            setFavouriteBtn('far fa-heart');
+            const filteredItems = userFavItems.filter(item => item._id !== data._id);
+            setUserFavItems(filteredItems);
+            localStorage.setItem('userFavItems', JSON.stringify(userFavItems));
+        }
+    };
 
 
     return (
         <div>
-<Header  loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCartItems={setCartItems} cartItems={cartItems}/>
+     <Header  loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCartItems={setCartItems} cartItems={cartItems}/>
         <div className="row">
             <div className="column">
                 <img src={data.image}></img>
@@ -69,6 +92,7 @@ const DetailsPage = ({loggedIn, setLoggedIn,id, cartItems, setCartItems}) => {
                 </select>
                 <input type="number" value={inputValue} className="details-input" onChange={onChangeInput}></input> 
                 <button className="details-btn" onClick={() => onClickHandler(id)}>Add to Cart</button>
+                <button className="details-btn favourite" onClick={(e) => toggleClassName(e)}>Favourite <i className={favouriteBtn}></i></button>
                 </div>
                 <h3>Product Details    <i className="fa fa-indent"></i> </h3>
                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
