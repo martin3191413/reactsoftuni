@@ -5,7 +5,7 @@ import Footer from './Footer';
 import HomePageListItem from './HomePageListItem';
 import Header from './Header';
 
-const MainContent = ({loggedIn, setLoggedIn, data,setCartItems, cartItems}) => {
+const MainContent = ({loggedIn, setLoggedIn, data,setCartItems, cartItems, setSearchInput}) => {
 
     let filteredData = data.filter((item) =>  item.category === "Men").slice(0,3);
 
@@ -22,7 +22,7 @@ const MainContent = ({loggedIn, setLoggedIn, data,setCartItems, cartItems}) => {
 
     return (
         <>
-        <Header  loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCartItems={setCartItems} cartItems={cartItems}/>
+        <Header  loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCartItems={setCartItems} cartItems={cartItems} setSearchInput={setSearchInput}/>
         <div className="trd"> Men's Collection Trending Now
         <div className="mainContent">
             {listItems}

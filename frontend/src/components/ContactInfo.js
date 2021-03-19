@@ -3,10 +3,10 @@ import Map from './Map';
 import PromoOffer from './PromoOffer';
 import Header from './Header';
 
-const ContactInfo = ({loggedIn,setLoggedIn, cartItems, setCartItems}) => {
+const ContactInfo = ({loggedIn,setLoggedIn, cartItems, setCartItems, setSearchInput}) => {
     return (
         <>
-       <Header  loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCartItems={setCartItems} cartItems={cartItems}/>
+       <Header setSearchInput={setSearchInput} loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCartItems={setCartItems} cartItems={cartItems}/>
        <PromoOffer />
        </>
     );

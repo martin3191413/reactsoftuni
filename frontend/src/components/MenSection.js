@@ -3,7 +3,7 @@ import HomePageListItem from './HomePageListItem';
 import Header from './Header';
 import Footer from './Footer';
 
-const MenSection = ({loggedIn, setLoggedIn,data,cartItems, setCartItems}) => {
+const MenSection = ({loggedIn, setLoggedIn,data,cartItems, setCartItems, setSerchInput}) => {
 
 
   const [sortType, setSortType] = useState('0');
@@ -40,7 +40,7 @@ const MenSection = ({loggedIn, setLoggedIn,data,cartItems, setCartItems}) => {
 
     return (
         <>
-        <Header  loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCartItems={setCartItems} cartItems={cartItems}/>
+        <Header  loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCartItems={setCartItems} cartItems={cartItems} setSearchInput={setSerchInput}/>
         <div className="trd">Men's Trainers & Shoes ({data.length})
         <form>
         <select className="dropdown" onChange={(e) => setSortType(e.target.value)}>

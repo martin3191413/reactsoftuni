@@ -11,6 +11,7 @@ import PublicRoute from './components/PublicRoute';
 import MenSection from './components/MenSection';
 import WomenSection from './components/WomenSection';
 import UserProfile from './components/UserProfile';
+import Searched from './components/Searched';
 import Cart from './components/Cart';
 import axios from 'axios';
 
@@ -24,6 +25,7 @@ function App() {
   const [menShoes, setMenShoes] = useState([]);
   const [womenShoes, setWomenShoes] = useState([]);
   const [userFavItems, setUserFavItems] = useState(JSON.parse(localStorage.getItem('userFavItems')) || []);
+  const [searchInput, setSearchInput] = useState('');
 
 
   useEffect(() => {
@@ -48,29 +50,29 @@ function App() {
     <Router>
     <div className="container">
       <Switch>
-      <PublicRoute path="/" exact component={HomePage} loggedIn={loggedIn} setLoggedIn={setLoggedIn} restricted={false} data={data} setCartItems={setCartItems} cartItems={cartItems} />
+      <PublicRoute path="/" exact component={HomePage} loggedIn={loggedIn} setLoggedIn={setLoggedIn} restricted={false} data={data} setCartItems={setCartItems} cartItems={cartItems} setSearchInput={setSearchInput} />
       <PublicRoute path="/login" exact component={Login}  setLoggedIn={setLoggedIn}  loggedIn={loggedIn} restricted={false}/>
       <Route 
         path="/men"
         exact
         render={(props) => (
-          <MenSection  {...props} cartItems={cartItems} setCartItems={setCartItems} data={menShoes} loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
+          <MenSection  {...props} setSearchInput={setSearchInput} cartItems={cartItems} setCartItems={setCartItems} data={menShoes} loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
         )}
         />
         <Route 
         path="/women"
         exact
         render={(props) => (
-          <WomenSection  {...props} cartItems={cartItems} setCartItems={setCartItems} data={womenShoes} loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
+          <WomenSection  {...props} setSearchInput={setSearchInput} cartItems={cartItems} setCartItems={setCartItems} data={womenShoes} loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
         )}
         />
       <Route path="/contacts"
        exact
        render={(props) => (
-         <ContactInfo {...props} loggedIn={loggedIn} setLoggedIn={setLoggedIn} cartItems={cartItems} setCartItems={setCartItems} />
+         <ContactInfo {...props} setSearchInput={setSearchInput}  loggedIn={loggedIn} setLoggedIn={setLoggedIn} cartItems={cartItems} setCartItems={setCartItems} />
        )}
        />
-       <PrivateRoute path="/details/:id" exact component={DetailsPage} loggedIn={loggedIn} userFavItems={userFavItems} setUserFavItems={setUserFavItems} setLoggedIn={setLoggedIn} restricted={true} cartItems={cartItems} setCartItems={setCartItems} />
+       <PrivateRoute path="/details/:id"  exact component={DetailsPage}setSearchInput={setSearchInput}  loggedIn={loggedIn} userFavItems={userFavItems} setUserFavItems={setUserFavItems} setLoggedIn={setLoggedIn} restricted={true} cartItems={cartItems} setCartItems={setCartItems} />
         <Route
        path="/register"
         exact
@@ -78,13 +80,20 @@ function App() {
           <Register {...props} loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
         )}
         />
-        <PrivateRoute path="/cart" exact component={Cart} loggedIn={loggedIn} setLoggedIn={setLoggedIn} restricted={true} cartItems={cartItems} setCartItems={setCartItems} />
+        <PrivateRoute path="/cart" exact component={Cart} setSearchInput={setSearchInput} loggedIn={loggedIn} setLoggedIn={setLoggedIn} restricted={true} cartItems={cartItems} setCartItems={setCartItems} />
         <Route 
         path="/profile"
         exact
         render={(props) => (
-          <UserProfile {...props} loggedIn={loggedIn} setLoggedIn={setLoggedIn} cartItems={cartItems} setCartItems={setCartItems} userFavItems={userFavItems} setUserFavItems={setUserFavItems}/>
+          <UserProfile {...props} loggedIn={loggedIn}setSearchInput={setSearchInput}  setLoggedIn={setLoggedIn} cartItems={cartItems} setCartItems={setCartItems} userFavItems={userFavItems} setUserFavItems={setUserFavItems}/>
         )}
+        />
+        <Route
+        path="/search"
+        exact
+        render={(props) => (
+          <Searched {...props} searchInput={searchInput} setSearchInput={setSearchInput} data={data} loggedIn={loggedIn} setLoggedIn={setLoggedIn} cartItems={cartItems} setCartItems={setCartItems} />
+        )} 
         />
     </Switch>
     </div>

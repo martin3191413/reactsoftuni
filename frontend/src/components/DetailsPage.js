@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import Header from './Header';
 import axios from 'axios';
 
-const DetailsPage = ({loggedIn, setLoggedIn,id, cartItems, setCartItems, userFavItems, setUserFavItems}) => {
+const DetailsPage = ({loggedIn, setLoggedIn,id, cartItems, setCartItems, userFavItems, setUserFavItems, setSearchInput}) => {
     const [data,setData] = useState({});
     const [inputValue, setInputValue] = useState(1);
     const [favouriteBtn, setFavouriteBtn] = useState('fa fa-heart');
@@ -74,7 +74,7 @@ const DetailsPage = ({loggedIn, setLoggedIn,id, cartItems, setCartItems, userFav
 
     return (
         <div>
-     <Header  loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCartItems={setCartItems} cartItems={cartItems}/>
+     <Header setSearchInput={setSearchInput}  loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCartItems={setCartItems} cartItems={cartItems}/>
         <div className="row">
             <div className="column">
                 <img src={data.image}></img>

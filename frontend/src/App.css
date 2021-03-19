@@ -111,7 +111,9 @@ ul > li:hover{
 
 .cart-link{
   color: black;
+  padding: 5px;
 }
+
 
 .fa.fa-search:hover{
     background-color: rgb(224, 224, 224);
@@ -212,6 +214,12 @@ margin-top: 130px;
   font-size: 14px;
 }
 
+.search-form{
+  position: relative;
+  bottom: 20px;
+  left: 30px;
+}
+
 .input-show:focus{
   outline: none;
 }
@@ -228,17 +236,23 @@ margin-top: 130px;
 
 .fa.fa-search{
   position: relative;
-  top: 3px;
+  top: 18px;
   right: 4px;
   font-size: 20px;
-  padding: 5px;
+  padding: 6px;
 }
 
 .fa.fa-shopping-cart{
   font-size: 20px;
   position: relative;
-  top: 2px;
-  padding: 5px;
+  bottom: 19px;
+  left: 20px;
+  padding: 6px;
+}
+
+.fa.fa-shopping-cart:hover{
+  background-color: rgb(224, 224, 224);
+  border-radius: 50%;
 }
 
 .cart-items-qty.display{
@@ -950,6 +964,8 @@ th{
   bottom: 340px;
   font-size: 25px;
   border-radius: 50%;
+  padding: 6px;
+  background-color: rgb(224, 224, 224);
 }
 
 .user-profile.far.fa-heart{
@@ -958,6 +974,8 @@ th{
   bottom: 340px;
   font-size: 25px;
   border-radius: 50%;
+  padding: 6px;
+  background-color: rgb(224, 224, 224);
 }
 
 .login-logo{
@@ -971,5 +989,37 @@ th{
 .no-fav-items{
   position: relative;
   left: 240px;
+  top: 100px;
+}
+
+.profile-link{
+  font-size: 20px;
+  position: relative;
+  top: 1px;
+  text-decoration: none;
+  color: black;
+  padding: 5px;
+}
+
+.far.fa-heart.header{
+  position: relative;
+  bottom: 20px;
+  left: 30px;
+  padding: 6px;
+  font-size: 23px;
+}
+
+.far.fa-heart.header:hover{
+  background-color: rgb(224, 224, 224);
+  border-radius: 50%;
+}
+
+.search-link{
+  color: black;
+}
+
+.no-search-items{
+  position: relative;
+  left: 300px;
   top: 100px;
 }

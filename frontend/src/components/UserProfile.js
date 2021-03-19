@@ -3,7 +3,7 @@ import Header from './Header';
 import UserProfileItem from './UserProfileItem';
 import Footer from './Footer';
 
-const UserProfile = ({loggedIn,setLoggedIn,setCartItems, cartItems, userFavItems, setUserFavItems}) => {
+const UserProfile = ({loggedIn,setLoggedIn,setCartItems, cartItems, userFavItems, setUserFavItems,setSearchInput }) => {
 
     const [displayIcons, setDisplayIcons] = useState(false);
 
@@ -30,7 +30,7 @@ const UserProfile = ({loggedIn,setLoggedIn,setCartItems, cartItems, userFavItems
 
     return (
         <>
-        <Header  loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCartItems={setCartItems} cartItems={cartItems}/>
+        <Header setSearchInput={setSearchInput}  loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCartItems={setCartItems} cartItems={cartItems}/>
         <h3 className="favourites-h3">Favourites</h3>
         <button className="edit-fav" style={{display: favItems.length == 0 ? 'none' : 'display'}} onClick={(e) => displayEditOption(e) }>Edit</button>
         <div className="mainContent">
