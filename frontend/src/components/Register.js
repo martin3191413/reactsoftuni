@@ -10,6 +10,7 @@ const Register = ({setLoggedIn}) => {
     const [username,setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [repeatPassword, setRepeatPassword] = useState('');
+    const [amountMoney, setAmountMoney] = useState(0);
     const [isError, setIsError] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
 
@@ -28,6 +29,13 @@ const Register = ({setLoggedIn}) => {
         setUsername('');
         setPassword('');
         setRepeatPassword('');
+    };
+
+    const onAmountChange = (e) => {
+        if (e.target.value < 0){
+            return;
+        }
+        setAmountMoney(e.target.value);
     };
 
     const onSubmit = (e) => {
@@ -49,7 +57,8 @@ const Register = ({setLoggedIn}) => {
 
         const payload = {
             username,
-            password
+            password,
+            amountMoney
         };
 
 
@@ -103,6 +112,8 @@ const Register = ({setLoggedIn}) => {
             <input id="password" type="password" name="password"className="input-field" value={password} onChange={onPasswordChange}></input>
             <label htmlFor="password" className="re-label">Repeat Password</label>
             <input id="re-password" type="password" name="password"className="input-field" value={repeatPassword} onChange={onRePasswordChange}></input>
+            <label htmlFor="amount-money" className="amount-label">Amount on Account ($)</label>
+            <input id="amount-money" type="number" name="amount-money"className="input-field" value={amountMoney} onChange={(e) => onAmountChange(e)}></input>
             <button type="submit" className="signIn" onClick={onSubmit}>Create Account</button>
             <div className="login-divider">
                <span>OR</span>

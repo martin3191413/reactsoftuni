@@ -961,7 +961,7 @@ th{
 .user-profile.fa.fa-heart{
   position: relative;
   left: 150px;
-  bottom: 340px;
+  bottom: 250px;
   font-size: 25px;
   border-radius: 50%;
   padding: 6px;
@@ -971,7 +971,7 @@ th{
 .user-profile.far.fa-heart{
   position: relative;
   left: 150px;
-  bottom: 340px;
+  bottom: 240px;
   font-size: 25px;
   border-radius: 50%;
   padding: 6px;
@@ -1022,4 +1022,52 @@ th{
   position: relative;
   left: 300px;
   top: 100px;
+}
+
+.amount-label{
+  margin-right: 150px;
+}
+
+.card-fav{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+    margin-bottom: 25px;
+    margin-right: 20px;
+    transition: 0.2s all;
+    padding: 20px;
+}
+
+.card-fav:hover{
+  transform: scale(1.11);
+}
+
+.card-fav .img{
+  width: 250px;
+  height: 220px;
+}
+
+.account{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  top: 100px;
+}
+
+.far.fa-user-circle{
+  font-size: 100px;
+}
+
+.input-field.profile{
+  padding-left: 40px;
+  width: 200px;
+}
+
+.input-field.profile-amount{
+  padding-left: 85px;
+  width: 200px;
 }

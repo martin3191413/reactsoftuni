@@ -12,6 +12,7 @@ import MenSection from './components/MenSection';
 import WomenSection from './components/WomenSection';
 import UserProfile from './components/UserProfile';
 import Searched from './components/Searched';
+import AccountInfo from './components/AccountInfo';
 import Cart from './components/Cart';
 import axios from 'axios';
 
@@ -93,6 +94,12 @@ function App() {
         exact
         render={(props) => (
           <Searched {...props} searchInput={searchInput} setSearchInput={setSearchInput} data={data} loggedIn={loggedIn} setLoggedIn={setLoggedIn} cartItems={cartItems} setCartItems={setCartItems} />
+        )} 
+        />
+        <Route
+        path="/info"
+        render={(props) => (
+          <AccountInfo {...props}searchInput={searchInput} setSearchInput={setSearchInput} data={data} loggedIn={loggedIn} setLoggedIn={setLoggedIn} cartItems={cartItems} setCartItems={setCartItems}  />
         )} 
         />
     </Switch>

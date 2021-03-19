@@ -48,7 +48,6 @@ app.post('/save/user', async (req,res) => {
         res.send('user saved successfully!');
     }
     catch(err){
-        console.log(err);
         res.status(404).send(err.message);
     }
 })
@@ -80,5 +79,11 @@ app.post('/api/login', async (req,res) => {
     catch(err){
         res.status(404).send(err.message);
     }
+})
+
+app.get('/api/user/:id', async(req,res) => {
+    const user = await User.findOne({_id: req.params.id});
+    
+        res.json(user);
 })
 

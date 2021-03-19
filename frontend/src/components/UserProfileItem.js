@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {Link} from 'react-router-dom';
 
 const UserProfileItem = ({item, cartItems, setCartItems, displayIcons, userFavItems, setUserFavItems}) => {
 
@@ -39,8 +40,8 @@ const UserProfileItem = ({item, cartItems, setCartItems, displayIcons, userFavIt
     };
 
     return (
-        <div className="card">
-            <img className="profile-item-img" src={item.image}></img>
+        <div className="card-fav">
+            <Link className="a-home" to={`details/${item._id}`}><img className="img" src={item.image} alt="item "></img></Link>
             <i style={{display: displayIcons ? 'block' : 'none' }} onClick={() => toggleHeartIcon(item)}   className={heartIcon}></i>
             <span className="profile-item-model">{item.model}</span>
             <span className="profile-item-category">{item.category}</span>
