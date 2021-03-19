@@ -884,3 +884,92 @@ th{
   margin-left: 4px;
   font-size: 15px;
 }
+
+.profile-item-img{
+  width: 350px;
+  height: 350px;
+  margin-bottom: 20px;
+}
+
+.profile-item-btn{
+  margin-top: 20px;
+  width: 110px;
+  height: 35px;
+  border-radius:12px;
+  border: 1px solid gray;
+  background: white;
+  cursor: pointer;
+  position: relative;
+  right: 80px;
+}
+
+.profile-item-price{
+  position: relative;
+  left: 120px;
+  bottom: 50px;
+}
+
+.profile-item-model{
+  position: relative;
+  right: 120px;
+}
+
+.profile-item-category{
+  position: relative;
+  right: 120px;
+}
+
+.favourites-h3{
+  position: relative;
+  left: 20px;
+  top: 40px;
+}
+
+.edit-fav{
+  position: relative;
+  justify-content: flex-end;
+  width: fit-content;
+  margin-left: auto;
+  right: 150px;
+  top: 20px;
+  width: 90px;
+  height: 35px;
+  border-radius:12px;
+  border: 1px solid gray;
+  background: white;
+}
+
+.edit-fav:focus{
+  outline: none;
+}
+
+
+.user-profile.fa.fa-heart{
+  position: relative;
+  left: 150px;
+  bottom: 340px;
+  font-size: 25px;
+  border-radius: 50%;
+}
+
+.user-profile.far.fa-heart{
+  position: relative;
+  left: 150px;
+  bottom: 340px;
+  font-size: 25px;
+  border-radius: 50%;
+}
+
+.login-logo{
+  text-decoration: none;
+}
+
+.register-logo{
+  text-decoration: none;
+}
+
+.no-fav-items{
+  position: relative;
+  left: 240px;
+  top: 100px;
+}

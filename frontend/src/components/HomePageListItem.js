@@ -1,7 +1,9 @@
 import React, {useEffect}  from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 
 const HomePageListItem = ({loggedIn,item,setCartItems, cartItems}) => {
+
+    const history = useHistory();
 
     useEffect(() => {
         localStorage.setItem('cartItems', JSON.stringify(cartItems));
@@ -9,6 +11,7 @@ const HomePageListItem = ({loggedIn,item,setCartItems, cartItems}) => {
 
     const onClickHandler = (item) => {
         if (!loggedIn){
+            history.push('/login');
             return;
         }
         let itemInCart = cartItems.find(x => x._id === item._id);

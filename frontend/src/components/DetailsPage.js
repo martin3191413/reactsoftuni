@@ -60,7 +60,7 @@ const DetailsPage = ({loggedIn, setLoggedIn,id, cartItems, setCartItems, userFav
     const toggleClassName = () => {
         if (favouriteBtn === 'far fa-heart'){
             setFavouriteBtn('fa fa-heart');
-            setUserFavItems([...userFavItems, data]);
+            setUserFavItems([...userFavItems, {...data, liked: true}]);
             localStorage.setItem('userFavItems', JSON.stringify(userFavItems));
         }
         else{

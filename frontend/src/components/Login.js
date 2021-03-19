@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, {useState} from 'react';
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 const Login = ({setLoggedIn, setUserCredentials}) => {
 
@@ -72,7 +72,7 @@ const Login = ({setLoggedIn, setUserCredentials}) => {
     return (
         <>
         <div className="logo">
-                <span className="link-logo">mySite</span>
+                <Link to="/" className="login-logo"><span className="link-logo">mySite</span></Link>
             </div>
         <div>
             <section className={isError === false ? "" : classes}>

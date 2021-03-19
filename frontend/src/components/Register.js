@@ -89,7 +89,7 @@ const Register = ({setLoggedIn}) => {
     return (
         <>
         <div className="logo">
-                <Link to="/"><span className="link-logo">mySite</span></Link>
+                <Link to="/" className="register-logo"><span className="link-logo">mySite</span></Link>
             </div>
              <div>
              <section className={isError === false ? "" : classes}>

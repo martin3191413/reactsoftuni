@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
-import Header from './components/Header';
 import HomePage from './components/HomePage';
 import  Login from './components/Login';
 import ContactInfo from './components/ContactInfo';
@@ -11,6 +10,7 @@ import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
 import MenSection from './components/MenSection';
 import WomenSection from './components/WomenSection';
+import UserProfile from './components/UserProfile';
 import Cart from './components/Cart';
 import axios from 'axios';
 
@@ -78,7 +78,14 @@ function App() {
           <Register {...props} loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
         )}
         />
-        <PrivateRoute path="/cart" exact component={Cart} loggedIn={loggedIn} setLoggedIn={setLoggedIn} restricted={true} cartItems={cartItems} setCartItems={setCartItems} /> 
+        <PrivateRoute path="/cart" exact component={Cart} loggedIn={loggedIn} setLoggedIn={setLoggedIn} restricted={true} cartItems={cartItems} setCartItems={setCartItems} />
+        <Route 
+        path="/profile"
+        exact
+        render={(props) => (
+          <UserProfile {...props} loggedIn={loggedIn} setLoggedIn={setLoggedIn} cartItems={cartItems} setCartItems={setCartItems} userFavItems={userFavItems} setUserFavItems={setUserFavItems}/>
+        )}
+        />
     </Switch>
     </div>
     </Router>
