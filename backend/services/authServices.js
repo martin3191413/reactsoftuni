@@ -13,7 +13,9 @@ const bcrypt = require('bcrypt');
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(data.password, salt);
 
-    const newUser = new User({username: data.username,password: hash, amountMoney: data.amountMoney});
+    const date = new Date();
+
+    const newUser = new User({username: data.username,password: hash, amountMoney: data.amountMoney, joinedAt: date});
 
     await newUser.save();
 }

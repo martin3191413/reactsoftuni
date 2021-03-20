@@ -51,7 +51,7 @@ const Searched = ({setSearchInput, loggedIn, setLoggedIn, setCartItems, cartItem
     return (
         <>
         <Header setSearchInput={setSearchInput} searchInput={searchInput}  loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCartItems={setCartItems} cartItems={cartItems}/>
-        <select className="dropdown" onChange={(e) => setSortType(e.target.value)} >
+        <select className="dropdown"style={{display: items.length == 0 ? 'none' : 'display'}}  onChange={(e) => setSortType(e.target.value)} >
        <option value="0">Sort By</option>
        <option value="1" >Price: Low-High</option>
         <option value="2">Price: High-Low</option>

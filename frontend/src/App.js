@@ -23,7 +23,6 @@ function App() {
 
   const [data, setData] = useState([]);
   const [loggedIn, setLoggedIn] = useState((localStorage.getItem('userId') ? true : false));
-  const [accountInfo, setAccountInfo] = useState('');
   const [cartItems, setCartItems] = useState(JSON.parse((localStorage.getItem('cartItems'))) || ([]));
   const [menShoes, setMenShoes] = useState([]);
   const [womenShoes, setWomenShoes] = useState([]);
@@ -34,25 +33,6 @@ function App() {
   useEffect(() => {
     fetchData();
   }, []);
-
-  const setAccountInfoData = () => {
-
-    const token = localStorage.getItem('userId');
-    if (token){
-      jwt.verify(token, 'mySecretSecret', function(err,data){
-        if (err){
-            console.log(err);
-        }
-        axios({
-            method: 'GET',
-            url: `/api/user/${data.id}`
-        })
-        .then(res => setAccountInfo(res.data));
-    });
-    }
-  };
-
-  setAccountInfoData();
 
   const fetchData = (e) => {
     axios({
@@ -101,7 +81,7 @@ function App() {
           <Register {...props} loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
         )}
         />
-        <PrivateRoute path="/cart" exact component={Cart} accountInfo={accountInfo} setAccountInfo={setAccountInfo} setSearchInput={setSearchInput} loggedIn={loggedIn} setLoggedIn={setLoggedIn} restricted={true} cartItems={cartItems} setCartItems={setCartItems} />
+        <PrivateRoute path="/cart" exact component={Cart} setSearchInput={setSearchInput} loggedIn={loggedIn} setLoggedIn={setLoggedIn} restricted={true} cartItems={cartItems} setCartItems={setCartItems} />
         <Route 
         path="/profile"
         exact
@@ -119,7 +99,7 @@ function App() {
         <Route
         path="/info"
         render={(props) => (
-          <AccountInfo {...props} accountInfo={accountInfo} searchInput={searchInput} setSearchInput={setSearchInput} data={data} loggedIn={loggedIn} setLoggedIn={setLoggedIn} cartItems={cartItems} setCartItems={setCartItems}  />
+          <AccountInfo {...props}  searchInput={searchInput} setSearchInput={setSearchInput} data={data} loggedIn={loggedIn} setLoggedIn={setLoggedIn} cartItems={cartItems} setCartItems={setCartItems}  />
         )} 
         />
     </Switch>

@@ -1,8 +1,15 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import Header from './Header';
 import Footer from './Footer';
+import jwt from 'jsonwebtoken';
+import axios from 'axios';
 
-const Cart = ({loggedIn, setLoggedIn, cartItems, setCartItems, setSearchInput, accountInfo, setAccountInfo}) => {
+const Cart = ({loggedIn, setLoggedIn, cartItems, setCartItems, setSearchInput}) => {
+
+    const [isError,setIsError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
+    const [classes,setClasses] = useState('');
+
     useEffect(() => {
         localStorage.setItem('cartItems', JSON.stringify(cartItems));
     }, [cartItems]);
@@ -77,14 +84,56 @@ const Cart = ({loggedIn, setLoggedIn, cartItems, setCartItems, setSearchInput, a
 
     const buyItems = () => {
         const totalMoney = Number(total(subtotal(cartItems),taxes(subtotal(cartItems))).toFixed(2));
+        
+        const token = localStorage.getItem('userId');
 
-        if (totalMoney > accountInfo.amountMoney){
-            console.log('Insufficient amount of money!');
-        }
-        else{
-            console.log(1);
-            setAccountInfo({...accountInfo, amountMoney: accountInfo.amountMoney - totalMoney});
-        }
+        jwt.verify(token, 'mySecretSecret', function(err,data){
+            if (err){
+                console.log(err);
+            }
+            axios({
+                method: 'GET',
+                url: `/api/user/${data.id}`
+            })
+            .then(res => {
+                if (totalMoney > res.data.amountMoney){
+                    setClasses('notifications');
+                   setIsError(true);
+                   setErrorMessage('Insufficient funds!');
+
+                   setTimeout(() => {
+                       setIsError(false);
+                   }, 3000);
+                }
+                else{
+
+                    const money = res.data.amountMoney - totalMoney;
+
+                    const payload = {
+                        money,
+                        id: res.data._id
+                    };
+
+                    axios({
+                        method: 'POST',
+                        url: '/api/user/update',
+                        data: payload
+                    })
+                    .then(res => {
+                        setClasses('successfull');
+                        setCartItems([]);
+                        setIsError(true);
+                        setErrorMessage(`-${totalMoney}$ from your account!`);
+
+                        setTimeout(() => {
+                            setIsError(false);
+                        }, 3000);
+                    })
+                    .catch(err => console.log(err));
+                }
+            })
+            .catch(err => console.log(err));
+        });
     };
 
     const message = <div className="empty-bag">
@@ -104,6 +153,9 @@ const Cart = ({loggedIn, setLoggedIn, cartItems, setCartItems, setSearchInput, a
     return (
         <>
         <Header setSearchInput={setSearchInput}  loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCartItems={setCartItems} cartItems={cartItems}/>
+        <section className={isError === false ? "" : classes}>
+            <p className="notification-message">{isError === false ? "" : errorMessage}</p>
+        </section>
         {cartItems.length === 0 ? message : cart }
       
         <div className="price-table">

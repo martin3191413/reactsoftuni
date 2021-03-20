@@ -240,6 +240,7 @@ margin-top: 130px;
   right: 4px;
   font-size: 20px;
   padding: 6px;
+  color: black;
 }
 
 .fa.fa-shopping-cart{
@@ -247,7 +248,9 @@ margin-top: 130px;
   position: relative;
   bottom: 19px;
   left: 20px;
-  padding: 6px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-right: 0px;
 }
 
 .fa.fa-shopping-cart:hover{
@@ -1070,4 +1073,20 @@ th{
 .input-field.profile-amount{
   padding-left: 85px;
   width: 200px;
+}
+
+.successfull {
+  display: block;
+  margin: 0 auto;
+  background-color: rgb(106, 236, 117);
+  border-radius: 6px;
+  width: 50%;
+  margin-top: 40px;
+  padding: 0.5%;
+}
+
+.successfull p.notification-message {
+  color: #22476b;
+  font-weight: bold;
+  text-align: center;
 }

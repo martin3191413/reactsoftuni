@@ -58,11 +58,17 @@ const Login = ({setLoggedIn, setUserCredentials}) => {
                 const needed = err.response.data.split(':')[2];
                 setErrorMessage(needed);
                  resetHandler();
+                 setTimeout(() => {
+                    setIsError(false);
+                }, 5000);
                  return;
             }
             else{
                 setErrorMessage(err.response.data);
                  resetHandler();
+                 setTimeout(() => {
+                    setIsError(false);
+                }, 5000);
                  return;
             }
         });

@@ -19,6 +19,10 @@ const userSchema = new mongoose.Schema({
     amountMoney:{
         type: Number,
         required: true
+    },
+    joinedAt: {
+        type: String,
+        required: true
     }
 });
 

@@ -4,8 +4,31 @@ import axios from 'axios';
 import Header from './Header';
 import Footer from './Footer';
 import jwt from 'jsonwebtoken';
+import moment from 'moment';
 
-const AccountInfo = ({loggedIn, setLoggedIn, cartItems, setCartItems, setSearchInput, accountInfo}) => {
+const AccountInfo = ({loggedIn, setLoggedIn, cartItems, setCartItems, setSearchInput}) => {
+
+    const [accountInfo, setAccountInfo] = useState('');
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+    const fetchData = () => {
+        const token = localStorage.getItem('userId');
+
+        jwt.verify(token, 'mySecretSecret', function(err,data){
+            if (err){
+                console.log(err);
+            }
+            axios({
+                method: 'GET',
+                url: `/api/user/${data.id}`
+            })
+            .then(res => setAccountInfo(res.data))
+            .catch(err => console.log(err));
+        });
+    };
 
     return (
         <>
@@ -16,7 +39,9 @@ const AccountInfo = ({loggedIn, setLoggedIn, cartItems, setCartItems, setSearchI
             <Link to="/orders">Orders</Link>
             <label htmlFor="email">Email</label>
             <input className="input-field profile" name="email" value={accountInfo.username} disabled></input>
-            <input className="input-field profile-amount" value={accountInfo.amountMoney} disabled></input>
+            <label htmlFor="email">Balance</label>
+            <input className="input-field profile-amount" value={`${accountInfo.amountMoney} $`} disabled></input>
+            <input value={`mySite Member Since ${moment(accountInfo.joinedAt).format('Do MMMM YYYY')}`}></input>
         </div>
         <Footer />
         </>

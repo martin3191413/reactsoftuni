@@ -35,7 +35,7 @@ const MenSection = ({loggedIn, setLoggedIn,data,cartItems, setCartItems, setSerc
 
   
     const listItems = menShoes.map((item) =>
-    <HomePageListItem item={item} key={item._id} setCartItems={setCartItems} cartItems={cartItems}/>
+    <HomePageListItem item={item} key={item._id} setCartItems={setCartItems} cartItems={cartItems} loggedIn={loggedIn}/>
     );
 
     return (

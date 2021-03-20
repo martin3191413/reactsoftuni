@@ -87,3 +87,11 @@ app.get('/api/user/:id', async(req,res) => {
         res.json(user);
 })
 
+app.post('/api/user/update',async (req,res) => {
+    console.log("REQ BODY:", req.body);
+
+    const user = await User.updateOne({_id: req.body.id}, {amountMoney: req.body.money});
+
+    res.status(200).json('User updated!');
+})
+
