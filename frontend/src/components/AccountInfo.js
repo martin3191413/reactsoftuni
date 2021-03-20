@@ -5,24 +5,7 @@ import Header from './Header';
 import Footer from './Footer';
 import jwt from 'jsonwebtoken';
 
-const AccountInfo = ({loggedIn, setLoggedIn, cartItems, setCartItems, setSearchInput}) => {
-
-    const token = localStorage.getItem('userId');
-
-    useEffect(() => {
-        jwt.verify(token, 'mySecretSecret', function(err,data){
-            if (err){
-                console.log(err);
-            }
-            axios({
-                method: 'GET',
-                url: `/api/user/${data.id}`
-            })
-            .then(res => setAccountInfo(res.data));
-        });
-    }, []);
-
-    const [accountInfo, setAccountInfo] = useState('');
+const AccountInfo = ({loggedIn, setLoggedIn, cartItems, setCartItems, setSearchInput, accountInfo}) => {
 
     return (
         <>

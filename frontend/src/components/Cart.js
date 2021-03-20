@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import Header from './Header';
 import Footer from './Footer';
 
-const Cart = ({loggedIn, setLoggedIn, cartItems, setCartItems, setSearchInput}) => {
+const Cart = ({loggedIn, setLoggedIn, cartItems, setCartItems, setSearchInput, accountInfo, setAccountInfo}) => {
     useEffect(() => {
         localStorage.setItem('cartItems', JSON.stringify(cartItems));
     }, [cartItems]);
@@ -76,7 +76,15 @@ const Cart = ({loggedIn, setLoggedIn, cartItems, setCartItems, setSearchInput}) 
     };
 
     const buyItems = () => {
-        setCartItems([]);
+        const totalMoney = Number(total(subtotal(cartItems),taxes(subtotal(cartItems))).toFixed(2));
+
+        if (totalMoney > accountInfo.amountMoney){
+            console.log('Insufficient amount of money!');
+        }
+        else{
+            console.log(1);
+            setAccountInfo({...accountInfo, amountMoney: accountInfo.amountMoney - totalMoney});
+        }
     };
 
     const message = <div className="empty-bag">
@@ -115,7 +123,7 @@ const Cart = ({loggedIn, setLoggedIn, cartItems, setCartItems, setSearchInput}) 
         </table>
         </div>
         <div className="cart-buy">
-            <button className="cart-buy-btn" disabled={cartItems.length === 0 ? true : false} onClick={buyItems}>Checkout</button>
+            <button className="cart-buy-btn" disabled={cartItems.length === 0 ? true : false} onClick={() =>buyItems()}>Checkout</button>
         </div>
         <Footer />
         </>

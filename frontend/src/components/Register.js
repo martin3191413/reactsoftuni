@@ -69,7 +69,7 @@ const Register = ({setLoggedIn}) => {
                 data: payload
             })
             .then((res) => {
-                console.log(res);
+                localStorage.setItem('userId', res.data);
                 history.push('/');
                 setLoggedIn(true);
                 localStorage.setItem('userEmail', username);
