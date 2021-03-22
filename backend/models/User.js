@@ -23,7 +23,8 @@ const userSchema = new mongoose.Schema({
     joinedAt: {
         type: String,
         required: true
-    }
+    },
+    orders: [{ type: mongoose.Types.ObjectId, ref: 'Order' }]
 });
 
 module.exports = mongoose.model('User', userSchema);

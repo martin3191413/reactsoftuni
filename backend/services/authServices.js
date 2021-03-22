@@ -18,6 +18,8 @@ const bcrypt = require('bcrypt');
     const newUser = new User({username: data.username,password: hash, amountMoney: data.amountMoney, joinedAt: date});
 
     await newUser.save();
+
+    return newUser;
 }
 
 async function login(data){

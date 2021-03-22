@@ -97,7 +97,7 @@ const Cart = ({loggedIn, setLoggedIn, cartItems, setCartItems, setSearchInput}) 
             })
             .then(res => {
                 if (totalMoney > res.data.amountMoney){
-                    setClasses('notifications');
+                   setClasses('notifications');
                    setIsError(true);
                    setErrorMessage('Insufficient funds!');
 
@@ -111,7 +111,8 @@ const Cart = ({loggedIn, setLoggedIn, cartItems, setCartItems, setSearchInput}) 
 
                     const payload = {
                         money,
-                        id: res.data._id
+                        id: res.data._id,
+                        cartItems
                     };
 
                     axios({

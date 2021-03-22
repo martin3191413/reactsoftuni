@@ -2,6 +2,7 @@
 import axios from 'axios';
 import React, {useState} from 'react';
 import { useHistory, Link } from "react-router-dom";
+import jwt from 'jsonwebtoken';
 
 const Register = ({setLoggedIn}) => {
 
@@ -62,14 +63,14 @@ const Register = ({setLoggedIn}) => {
         };
 
 
-     
             axios({
                 url: '/save/user',
                 method: 'POST',
                 data: payload
             })
             .then((res) => {
-                localStorage.setItem('userId', res.data);
+                const token = jwt.sign({id: res.data._id}, 'mySecretSecret');
+                localStorage.setItem('userId', token);
                 history.push('/');
                 setLoggedIn(true);
                 localStorage.setItem('userEmail', username);
