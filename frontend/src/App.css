@@ -754,6 +754,8 @@ th{
   color: white;
 }
 
+
+
 .cart-btn{
   border: none;
   color: #f5740f;
@@ -1066,13 +1068,14 @@ th{
 }
 
 .input-field.profile{
-  padding-left: 58px;
+  padding-left: 30px;
   width: 200px;
 }
 
 .input-field.profile-amount{
   padding-left: 75px;
   width: 200px;
+  margin-bottom: -80px;
 }
 
 .successfull {
@@ -1100,8 +1103,137 @@ th{
  color:rgb(109, 107, 107);
 }
 
-.order-history-item{
+
+.order-history-single{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.order-img{
+  height: 90px;
+  width: 90px;
+  position: relative;
+  left: 15px;
+}
+
+.order-history-singleItem{
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid gray;
+  border-left: 1px solid gray;
+  height: fit-content;
   width: 100%;
-  height: 200px;
-  border: 1px solid gray;
+}
+
+.order-info{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.order-model{
+  position: relative;
+  top: 20px;
+  left: 23px;
+}
+
+.order-price{
+  position: relative;
+  top: 45px;
+  right: 20px;
+}
+
+.order-subtotal{
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+
+.order-status{
+  position: relative;
+  top: 70px;
+  left: 250px;
+}
+
+.order-number{
+  width: 210px;
+  background-color: #58abee;
+  font-size: 16px;
+}
+
+.order-history-multipleItems{
+  display: flex;
+  flex-direction: row;
+  height: fit-content;
+ border-bottom: 1px solid gray;
+ border-left: 1px solid gray;
+ width: 100%;
+}
+
+.order-img-multipleItems{
+  width: 90px;
+  height: 90px;
+}
+
+.order-info-multipleItems{
+  display: flex;
+  flex-direction: column;
+}
+
+.one-item-info{
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  left: 10px;
+}
+
+.order-img-multipleItems{
+  padding: 10px;
+}
+
+.order-model-multipleItems{
+  position: relative;
+  top: 20px;
+  left: 5px;
+}
+
+.order-price-multipleItems{
+  position: relative;
+  top: 50px;
+  right: 38px;
+}
+
+.order-number-multipleItems{
+  width: 210px;
+  background-color: #58abee;
+  font-size: 16px;
+}
+
+.order-subtotal-multipleItems{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.order-status-multipleItems{
+  position: relative;
+  top: 80px;
+  left: 209px;
+}
+
+.header-history{
+  margin-top: 160px;
+
+}
+
+.history{
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
 }

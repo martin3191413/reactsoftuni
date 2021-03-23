@@ -49,13 +49,15 @@ const AccountInfo = ({loggedIn, setLoggedIn, cartItems, setCartItems, setSearchI
             if (order.items.length == 1){
                 const newOrder = {
                     madeAt: order.madeAt,
-                    items: order.items[0]
+                    items: order.items[0],
+                    id: order._id
                 };
                formattedOrders.push(newOrder);
             }
             else{
                 let newOrder = {
                     madeAt: order.madeAt,
+                    id: order._id,
                     items: {}
                 };
                 const itemsArr = [];
@@ -67,75 +69,69 @@ const AccountInfo = ({loggedIn, setLoggedIn, cartItems, setCartItems, setSearchI
                 formattedOrders.push(newOrder);
             }
         });
+        formattedOrders.sort(function(a,b){
+            return new Date(a.madeAt) - new Date(b.madeAt);
+        });
         setOrdersData(formattedOrders);
     };
 
-  
-    function getMultipleItemsOrders(ordersData){
-        const multipleItems = [];
+    const renderOrderHistory = (ordersData) => {
+
+        let singleItemsOrders = [];
+        let multipleItemsOrders = [];
 
         ordersData.map(order => {
             if (order.items.length !== undefined){
-                multipleItems.push(order);
+                multipleItemsOrders.push(order);
+            }
+            else{
+                singleItemsOrders.push(order);
             }
         });
 
-         const wholeInfo =  multipleItems.map(order => {
-               const data = order.items.map(item => (
-                <tr className="item-row" key={item._id}>
-                <td>
-                    <div className="item-info">
-                     <img src={item.image} alt="tshirt" className="item-img"></img>
-                      <div className="item-details">
-                      <p>{item.model}</p>
-                       <span>Price:  {item.price.toFixed(2)}$</span>
-                       <br></br>
-                       <button className="cart-btn">Remove</button>
-                       </div>
-                      </div>
-                  </td>
-                  <td><input type="number" className="cart-quantity-item"></input></td>
-                  <td><span className="price-cart">{item.price.toFixed(2)}$</span></td>
-                   </tr>
-               ));
-
-               return data;
-        });
-
-        return wholeInfo;
-    }
-
-    function getSingleItemsOrders(ordersData){
-        let singleItems = [];
-        
-        ordersData.map(order => {
-            if (order.items.length === undefined){
-                singleItems.push(order);
-            }
-        });
-
-        let data;
-
-        data = singleItems.map(order => (
-            <tr className="order-history-item" key={order.items._id}>
-                      <td>
-                          <div className="item-info">
-                           <img src={order.items.image} alt="tshirt" className="item-img"></img>
-                            <div className="item-details">
-                            <p>{order.items.model}</p>
-                             <br></br>
-                             </div>
-                            </div>
-                        </td>
-                        <td><span className="price-cart">{order.items.price.toFixed(2)}$</span></td>
-                         </tr>
+       let singleItemsData = singleItemsOrders.map(order => (
+        <div className="order-history-singleItem">
+        <span className="order-number">Order #{order.id}</span>
+        <div className="order-info">
+            <img className="order-img" src={order.items.image} alt="white-tshirt"></img>
+            <p className="order-model">{order.items.model}</p>
+            <br></br>
+            <span className="order-price">Price: {order.items.price.toFixed(2)}$</span>
+            <span className="order-subtotal">Total: 120.00$</span>
+        </div>
+    </div>
         ));
 
-        return data;
-    }
+        const multipleItemsData =  multipleItemsOrders.map(order => {
+            const data = order.items.map(item => (
+                <div className="one-item-info">
+                <img className="order-img-multipleItems" src={item.image} alt="white-tshirt"></img>
+                <p className="order-model-multipleItems">{item.model}</p>
+                <br></br>
+                <span className="order-price-multipleItems">Price: {item.price.toFixed(2)}$</span>
+                </div>
+            ));
 
-    const data = getMultipleItemsOrders(ordersData);
-    const data2 = getSingleItemsOrders(ordersData);
+            const row = <div className="order-history-multipleItems">
+            <span className="order-number-multipleItems">Order #{order.id}</span>
+            <div className="order-info-multipleItems">
+                {data}
+            </div>
+            <span className="order-subtotal-multipleItems">Total: 120.00$</span>
+            </div>;
+
+            return row;
+     });
+
+     let finalData = [];
+
+     finalData.push(singleItemsData, multipleItemsData);
+
+     return finalData;
+    };
+
+    const ordersHistory = renderOrderHistory(ordersData);
+
 
 
     return (
@@ -149,14 +145,10 @@ const AccountInfo = ({loggedIn, setLoggedIn, cartItems, setCartItems, setSearchI
             <input className="input-field profile" name="email" value={accountInfo.username} disabled></input>
             <label htmlFor="email">Balance</label>
             <input className="input-field profile-amount" value={`${accountInfo.amountMoney} $`} disabled></input>
-            <table className="cart-table">
-            <tr className="table-header">
-            <th>Product</th>
-            <th>Quantity</th>
-            <th>Subtotal</th>
-            </tr>
-            {data2}
-           </table>
+            <h2 className="header-history">Order History</h2>
+            <div className="history">
+                {ordersHistory}
+            </div>
              </div>
         <Footer />
         </>

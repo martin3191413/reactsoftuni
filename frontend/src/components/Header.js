@@ -53,7 +53,7 @@ const Header = ({loggedIn,setLoggedIn, setCartItems, cartItems, setSearchInput, 
             <div className="search">
                 <span className="searchBar"><Link className="sarch-link" to="/search"><i className="fa fa-search"></i></Link><form className="search-form"><input type="text"className="input-show" value={searchInput} onChange={(e) => setSearchInput(e.target.value)}  placeholder="Search"></input></form></span>
                 <span className="cart-items">
-                <Link to="/profile" className="profile-link"><i className="far fa-heart header"></i></Link>
+                <Link to="/favourites" className="profile-link"><i className="far fa-heart header"></i></Link>
                 <NavLink to="/cart" className="cart-link" activeClassName="active-cart"><i className="fa fa-shopping-cart"><small className={`cart-items-qty ${displayCartItems(cartItems)}`}>{cartItems.length}</small></i></NavLink>
                 </span>
             </div>

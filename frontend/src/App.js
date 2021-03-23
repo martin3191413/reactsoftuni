@@ -83,7 +83,7 @@ function App() {
         />
         <PrivateRoute path="/cart" exact component={Cart} setSearchInput={setSearchInput} loggedIn={loggedIn} setLoggedIn={setLoggedIn} restricted={true} cartItems={cartItems} setCartItems={setCartItems} />
         <Route 
-        path="/profile"
+        path="/favourites"
         exact
         render={(props) => (
           <UserProfile {...props} loggedIn={loggedIn}setSearchInput={setSearchInput}  setLoggedIn={setLoggedIn} cartItems={cartItems} setCartItems={setCartItems} userFavItems={userFavItems} setUserFavItems={setUserFavItems}/>
@@ -97,7 +97,7 @@ function App() {
         )} 
         />
         <Route
-        path="/info"
+        path="/profile"
         render={(props) => (
           <AccountInfo {...props}  searchInput={searchInput} setSearchInput={setSearchInput} data={data} loggedIn={loggedIn} setLoggedIn={setLoggedIn} cartItems={cartItems} setCartItems={setCartItems}  />
         )} 
