@@ -1067,15 +1067,17 @@ th{
   font-size: 100px;
 }
 
-.input-field.profile{
-  padding-left: 30px;
-  width: 200px;
+.profile{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: fit-content
 }
 
-.input-field.profile-amount{
-  padding-left: 75px;
-  width: 200px;
-  margin-bottom: -80px;
+.profile-amount{
+  text-align: center;
+  width: fit-content;
 }
 
 .successfull {
@@ -1162,6 +1164,8 @@ th{
   width: 210px;
   background-color: #58abee;
   font-size: 16px;
+  display: flex;
+  justify-content: first baseline;
 }
 
 .order-history-multipleItems{
@@ -1210,6 +1214,8 @@ th{
   width: 210px;
   background-color: #58abee;
   font-size: 16px;
+  display: flex;
+  justify-content:first baseline;
 }
 
 .order-subtotal-multipleItems{
@@ -1236,4 +1242,29 @@ th{
   justify-content: center;
   align-items: center;
   width: fit-content;
+}
+
+.made-at{
+  margin-top: 10px;
+}
+
+.contact-info-row{
+  display: flex;
+}
+
+.map{
+  flex: 50%;
+  margin-left: 50px;
+}
+
+.contacts{
+  flex: 50%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  
+}
+
+.contacts > div > span{
+  font-weight: bold;
 }

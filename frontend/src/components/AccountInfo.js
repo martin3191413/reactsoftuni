@@ -91,7 +91,9 @@ const AccountInfo = ({loggedIn, setLoggedIn, cartItems, setCartItems, setSearchI
 
        let singleItemsData = singleItemsOrders.map(order => (
         <div className="order-history-singleItem">
-        <span className="order-number">Order #{order.id}</span>
+        <span className="order-number">
+            Order #{order.id}
+        </span>
         <div className="order-info">
             <img className="order-img" src={order.items.image} alt="white-tshirt"></img>
             <p className="order-model">{order.items.model}</p>
@@ -113,7 +115,9 @@ const AccountInfo = ({loggedIn, setLoggedIn, cartItems, setCartItems, setSearchI
             ));
 
             const row = <div className="order-history-multipleItems">
-            <span className="order-number-multipleItems">Order #{order.id}</span>
+            <span className="order-number-multipleItems">
+                Order #{order.id}
+                </span>
             <div className="order-info-multipleItems">
                 {data}
             </div>

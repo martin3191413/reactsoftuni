@@ -1,42 +1,29 @@
 import React from 'react';
 import Map from './Map';
-import PromoOffer from './PromoOffer';
 import Header from './Header';
+import Footer from './Footer';
 
 const ContactInfo = ({loggedIn,setLoggedIn, cartItems, setCartItems, setSearchInput}) => {
     return (
         <>
        <Header setSearchInput={setSearchInput} loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCartItems={setCartItems} cartItems={cartItems}/>
-       <div className="order-history-singleItem">
-           <span className="order-number">Order #12356757</span>
-           <div className="order-info">
-               <img className="order-img" src="https://i.pinimg.com/originals/2f/bb/66/2fbb6650a2b6b07aee93909b1f248e24.png" alt="white-tshirt"></img>
-               <p className="order-model">Tommy Hilfiger</p>
-               <br></br>
-               <span className="order-price">Price: 120.00$</span>
+       <div className="contact-info-row">
+           <div className="map">
+           <Map />
            </div>
-           <span className="order-subtotal">Subtotal: 120.00$</span>
-           <span className="order-status">Status: Completed</span>
-       </div>
-       <div className="order-history-multipleItems">
-           <span className="order-number-multipleItems">Order #12356757</span>
-           <div className="order-info-multipleItems">
-               <div className="one-item-info">
-               <img className="order-img-multipleItems" src="https://i.pinimg.com/originals/2f/bb/66/2fbb6650a2b6b07aee93909b1f248e24.png" alt="white-tshirt"></img>
-               <p className="order-model-multipleItems">Tommy Hilfiger</p>
-               <br></br>
-               <span className="order-price-multipleItems">Price: 120.00$</span>
+           <div className="contacts">
+               <div className="container-contacts">
+              <span>Contacts Number: </span> 0884672541
                </div>
-               <div className="one-item-info">
-               <img className="order-img-multipleItems" src="https://i.pinimg.com/originals/2f/bb/66/2fbb6650a2b6b07aee93909b1f248e24.png" alt="white-tshirt"></img>
-               <p className="order-model-multipleItems">Tommy Hilfiger</p>
-               <br></br>
-               <span className="order-price-multipleItems">Price: 120.00$</span>
+               <div className="container-contacts">
+              <span>Contacts Email: </span> react@abv.bg
+               </div>
+               <div className="container-contacts">
+               <span>Our office:</span>  Mladost 2 Block 222
                </div>
            </div>
-           <span className="order-subtotal-multipleItems">Subtotal: 120.00$</span>
-           <span className="order-status-multipleItems">Status: Completed</span>
        </div>
+       <Footer />
        </>
     );
 };
