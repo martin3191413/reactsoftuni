@@ -112,7 +112,8 @@ const Cart = ({loggedIn, setLoggedIn, cartItems, setCartItems, setSearchInput}) 
                     const payload = {
                         money,
                         id: res.data._id,
-                        cartItems
+                        cartItems,
+                        totalMoney
                     };
 
                     axios({

@@ -30,6 +30,10 @@ const orderSchema = new mongoose.Schema({
     user: {
         type: String,
         required: true
+    },
+    totalMoney:{
+        type: Number,
+        required: true
     }
 })
 

@@ -93,7 +93,7 @@ app.post('/api/user/update',async (req,res) => {
 
    console.log("REQ BODY:", req.body);
 
-   const order = new Order({madeAt: new Date(), items: req.body.cartItems, user: req.body.id});
+   const order = new Order({madeAt: new Date(), items: req.body.cartItems, user: req.body.id, totalMoney: req.body.totalMoney});
 
     await order.save();
 

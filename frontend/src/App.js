@@ -14,7 +14,7 @@ import UserProfile from './components/UserProfile';
 import Searched from './components/Searched';
 import AccountInfo from './components/AccountInfo';
 import Cart from './components/Cart';
-import jwt from 'jsonwebtoken';
+import OrderHistory from './components/OrderHistory';
 import axios from 'axios';
 
 
@@ -45,8 +45,8 @@ function App() {
       setWomenShoes(response.data.filter(item => item.category === "Women"));
     });
   };
-  
 
+  
   return (
     <Router>
     <div className="container">
@@ -98,9 +98,17 @@ function App() {
         />
         <Route
         path="/profile"
+        exact
         render={(props) => (
-          <AccountInfo {...props}  searchInput={searchInput} setSearchInput={setSearchInput} data={data} loggedIn={loggedIn} setLoggedIn={setLoggedIn} cartItems={cartItems} setCartItems={setCartItems}  />
+          <AccountInfo {...props} searchInput={searchInput} setSearchInput={setSearchInput} data={data} loggedIn={loggedIn} setLoggedIn={setLoggedIn} cartItems={cartItems} setCartItems={setCartItems}  />
         )} 
+        />
+        <Route 
+        path="/profile/order-history"
+        exact
+        render={(props) => (
+          <OrderHistory {...props} />
+        )}
         />
     </Switch>
     </div>

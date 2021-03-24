@@ -1161,7 +1161,7 @@ th{
 }
 
 .order-number{
-  width: 210px;
+  width: 220px;
   background-color: #58abee;
   font-size: 16px;
   display: flex;
@@ -1211,7 +1211,7 @@ th{
 }
 
 .order-number-multipleItems{
-  width: 210px;
+  width: 220px;
   background-color: #58abee;
   font-size: 16px;
   display: flex;
@@ -1262,9 +1262,30 @@ th{
   display: flex;
   justify-content: center;
   flex-direction: column;
-  
+  margin-top: 60px;
+
 }
 
 .contacts > div > span{
   font-weight: bold;
+}
+
+.container-contacts{
+  margin-bottom: 15px;
+}
+
+.control-menu{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 230px;
+  width: fit-content;
+}
+
+.control-menu > span{
+  margin-bottom: 10px;
+}
+
+.control-panel{
+  padding: 10px;
 }
