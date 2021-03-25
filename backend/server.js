@@ -93,7 +93,7 @@ app.post('/api/user/update',async (req,res) => {
 
    console.log("REQ BODY:", req.body);
 
-   const order = new Order({madeAt: new Date(), items: req.body.cartItems, user: req.body.id, totalMoney: req.body.totalMoney});
+   const order = new Order({madeAt: new Date(), items: req.body.cartItems, user: req.body.id, totalMoney: req.body.totalMoney, refunded: false});
 
     await order.save();
 
@@ -115,4 +115,30 @@ app.post('/api/orders/:userId', async(req,res) => {
     const userOrders = await Order.find({}).where('user').equals(userId).lean();
 
     res.json(userOrders);
+})
+
+app.post('/api/orders/refund/:orderId', async(req,res) => {
+
+   try{
+       const order = await Order.findOne({_id: req.params.orderId});
+
+       const user = await User.findOne({_id: order.user});
+
+       if (order.refunded == true){
+           throw new Error('Order has been refunded already!');
+       }
+
+        user.refunds = user.refunds - 1;
+
+          await user.save();
+
+        order.refunded = true;
+
+         await order.save();
+
+        res.json('Order refunded successfully!');
+   }
+   catch(err){
+       res.status(405).send(err.message || 'Invalid Order Number!');
+   }
 })

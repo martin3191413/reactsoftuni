@@ -69,7 +69,7 @@ const Register = ({setLoggedIn}) => {
                 data: payload
             })
             .then((res) => {
-                const token = jwt.sign({id: res.data._id}, 'mySecretSecret');
+                const token = jwt.sign({id: res.data._id, refunds: res.data.refunds}, 'mySecretSecret');
                 localStorage.setItem('userId', token);
                 history.push('/');
                 setLoggedIn(true);

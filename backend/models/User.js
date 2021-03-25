@@ -24,7 +24,13 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    orders: [{ type: mongoose.Types.ObjectId, ref: 'Order' }]
+    orders: [{ type: mongoose.Types.ObjectId, ref: 'Order' }],
+    refunds: {
+        type: Number,
+        default: 3,
+        min: 0,
+        max: 3
+    }
 });
 
 module.exports = mongoose.model('User', userSchema);

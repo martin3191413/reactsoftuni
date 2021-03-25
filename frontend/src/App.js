@@ -15,6 +15,7 @@ import Searched from './components/Searched';
 import AccountInfo from './components/AccountInfo';
 import Cart from './components/Cart';
 import OrderHistory from './components/OrderHistory';
+import UserSettings from './components/UserSettings';
 import axios from 'axios';
 
 
@@ -108,6 +109,13 @@ function App() {
         exact
         render={(props) => (
           <OrderHistory {...props} searchInput={searchInput} setSearchInput={setSearchInput} data={data} loggedIn={loggedIn} setLoggedIn={setLoggedIn} cartItems={cartItems} setCartItems={setCartItems} />
+        )}
+        />
+        <Route 
+        path="/profile/settings"
+        exact
+        render={(props) => (
+          <UserSettings {...props} searchInput={searchInput} setSearchInput={setSearchInput} data={data} loggedIn={loggedIn} setLoggedIn={setLoggedIn} cartItems={cartItems} setCartItems={setCartItems} />
         )}
         />
     </Switch>
