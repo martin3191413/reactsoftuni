@@ -107,7 +107,7 @@ function App() {
         path="/profile/order-history"
         exact
         render={(props) => (
-          <OrderHistory {...props} />
+          <OrderHistory {...props} searchInput={searchInput} setSearchInput={setSearchInput} data={data} loggedIn={loggedIn} setLoggedIn={setLoggedIn} cartItems={cartItems} setCartItems={setCartItems} />
         )}
         />
     </Switch>

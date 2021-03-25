@@ -44,10 +44,10 @@ const AccountInfo = ({loggedIn, setLoggedIn, cartItems, setCartItems, setSearchI
             <h2>Account Info</h2>
             <span className="member">mySite Member Since {moment(accountInfo.joinedAt).format('Do MMMM YYYY')}</span>
             <label htmlFor="email">Email</label>
-            <input className="input-field profile" name="email" value={accountInfo.username} disabled></input>
+            <input className="profile" name="email" value={accountInfo.username} disabled></input>
             <label htmlFor="email">Balance</label>
-            <input className="input-field profile-amount" value={`${accountInfo.amountMoney} $`} disabled></input>
-             </div>
+            <input className="profile-amount" value={`${accountInfo.amountMoney} $`} disabled></input>
+         </div>
         <Footer />
         </>
     );

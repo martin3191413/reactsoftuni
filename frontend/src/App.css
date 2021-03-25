@@ -300,7 +300,7 @@ margin-top: 130px;
   height: 45px;
   border: none;
   margin-bottom: 30px;
-  padding-left: 18px;
+  padding-left: 8px;
   background-color: rgb(245, 244, 244);
   transition: 0.4s ease-in-out;
 }
@@ -1056,11 +1056,12 @@ th{
 
 .account{
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   position: relative;
-  top: 100px;
+  width: fit-content;
+  left: 700px;
 }
 
 .far.fa-user-circle{
@@ -1072,12 +1073,27 @@ th{
   justify-content: center;
   align-items: center;
   text-align: center;
-  width: fit-content
+  width: fit-content;
+  border-radius: 28px;
+  height: 45px;
+  border: none;
+  margin-bottom: 30px;
+  background-color: rgb(245, 244, 244);
+  transition: 0.4s ease-in-out;
 }
 
 .profile-amount{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   width: fit-content;
+  border-radius: 28px;
+  height: 45px;
+  border: none;
+  margin-bottom: 30px;
+  background-color: rgb(245, 244, 244);
+  transition: 0.4s ease-in-out;
 }
 
 .successfull {
@@ -1239,8 +1255,8 @@ th{
   margin-top: 50px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  position: relative;
+  left: 550px;
   width: fit-content;
 }
 
@@ -1278,7 +1294,7 @@ th{
   display: flex;
   flex-direction: column;
   position: relative;
-  top: 230px;
+  top: 170px;
   width: fit-content;
 }
 
@@ -1288,4 +1304,19 @@ th{
 
 .control-panel{
   padding: 10px;
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+}
+
+.profile-icon{
+  padding-right: 15px;
+  font-size: 30px;
+}
+
+.header-order{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
 }

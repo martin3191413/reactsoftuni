@@ -2,8 +2,10 @@ import React, {useState, useEffect} from 'react';
 import jwt from 'jsonwebtoken';
 import axios from 'axios';
 import UserControlMenu from './UserControlPanel';
+import Header from './Header';
+import Footer from './Footer';
 
-const OrderHistory = () => {
+const OrderHistory = ({loggedIn, setLoggedIn, cartItems, setCartItems,setSearchInput}) => {
 
     const [ordersData,setOrdersData] = useState([]);
 
@@ -133,12 +135,17 @@ const OrderHistory = () => {
 
     const history = renderOrderHistory(ordersData);
 
+    const noOrders = <h2>You don't have any orders yet</h2>;
+
     return (
         <>
+         <Header setSearchInput={setSearchInput}  loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCartItems={setCartItems} cartItems={cartItems}/>
         <UserControlMenu />
         <div className="history">
-            {history}
+            <h2 className="header-order">Order History</h2>
+            {ordersData.length !== 0 ? history : noOrders}
         </div>
+        <Footer />
         </>
     );
 };
