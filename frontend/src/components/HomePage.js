@@ -1,15 +1,17 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {UserContext} from './UserContext';
 import ImageBanner from './imageBanner';
 import WomenImageBanner from './womenImageBanner';
 import Footer from './Footer';
 import HomePageListItem from './HomePageListItem';
 import Header from './Header';
 
-const MainContent = ({loggedIn, setLoggedIn, data,setCartItems, cartItems, setSearchInput}) => {
+const MainContent = ({data}) => {
+
+    const {loggedIn, setLoggedIn, cartItems, setCartItems, userFavItems, setUserFavItems, searchInput, setSearchInput} = useContext(UserContext);
 
     let filteredData = data.filter((item) =>  item.category === "Men").slice(0,3);
 
-    
     const listItems = filteredData.map((item) =>
     <HomePageListItem item={item} key={item._id} setCartItems={setCartItems} cartItems={cartItems} loggedIn={loggedIn}/>
     );

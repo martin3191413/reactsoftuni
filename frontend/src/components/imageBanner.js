@@ -1,9 +1,10 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 const imageBanner = () => {
     return (
         <div className="imageBanner">
-            <button>Shop Now </button>
+            <Link to="/men"><button>Shop Now </button></Link>
         </div>
     );
 };

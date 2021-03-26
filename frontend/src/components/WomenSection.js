@@ -1,11 +1,12 @@
-import React, {useState,useEffect} from 'react';
+import React, {useState,useEffect, useContext} from 'react';
+import {UserContext} from './UserContext';
 import HomePageListItem from './HomePageListItem';
 import Footer from './Footer';
 import Header from './Header';
 
-const WomenSection = ({loggedIn, setLoggedIn,data,cartItems, setCartItems, setSearchInput}) => {
+const WomenSection = ({data}) => {
 
-
+  const {loggedIn, setLoggedIn, cartItems, setCartItems, userFavItems, setUserFavItems, searchInput,setSearchInput} = useContext(UserContext);
   const [sortType, setSortType] = useState('0');
   const [womenShoes, setWomenShoes] = useState([data]);
 

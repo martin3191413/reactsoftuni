@@ -93,10 +93,9 @@ app.post('/api/user/update',async (req,res) => {
 
    console.log("REQ BODY:", req.body);
 
-   const order = new Order({madeAt: new Date(), items: req.body.cartItems, user: req.body.id, totalMoney: req.body.totalMoney, refunded: false});
+   const order = new Order({madeAt: new Date(), items: req.body.cartItems, user: req.body.id, totalMoney: req.body.totalMoney, refunded: false, status: 'Completed'});
 
     await order.save();
-
 
     await User.updateOne({_id: req.body.id}, {amountMoney: req.body.money});
 
@@ -105,6 +104,7 @@ app.post('/api/user/update',async (req,res) => {
    user.orders.push(order);
 
     await user.save();
+    
   res.status(200).json('User updated!');
 });
 
@@ -122,6 +122,8 @@ app.post('/api/orders/refund/:orderId', async(req,res) => {
    try{
        const order = await Order.findOne({_id: req.params.orderId});
 
+       console.log(order);
+
        const user = await User.findOne({_id: order.user});
 
        if (order.refunded == true){
@@ -130,11 +132,15 @@ app.post('/api/orders/refund/:orderId', async(req,res) => {
 
         user.refunds = user.refunds - 1;
 
-          await user.save();
+       user.amountMoney += order.totalMoney;
 
+       await user.save();
+       
         order.refunded = true;
 
-         await order.save();
+        order.status = 'Refunded';
+
+        await order.save();
 
         res.json('Order refunded successfully!');
    }

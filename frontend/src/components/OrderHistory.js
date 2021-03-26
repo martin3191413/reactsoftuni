@@ -1,11 +1,14 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import jwt from 'jsonwebtoken';
 import axios from 'axios';
 import UserControlMenu from './UserControlPanel';
 import Header from './Header';
 import Footer from './Footer';
+import { UserContext } from './UserContext';
 
-const OrderHistory = ({loggedIn, setLoggedIn, cartItems, setCartItems,setSearchInput}) => {
+const OrderHistory = () => {
+
+    const {loggedIn, setLoggedIn, cartItems, setCartItems, userFavItems, setUserFavItems, searchInput,setSearchInput} = useContext(UserContext);
 
     const [ordersData,setOrdersData] = useState([]);
 
@@ -48,7 +51,8 @@ const OrderHistory = ({loggedIn, setLoggedIn, cartItems, setCartItems,setSearchI
                     madeAt: order.madeAt,
                     items: order.items[0],
                     id: order._id,
-                    totalMoney: order.totalMoney
+                    totalMoney: order.totalMoney,
+                    status: order.status
                 };
                formattedOrders.push(newOrder);
             }
@@ -57,7 +61,8 @@ const OrderHistory = ({loggedIn, setLoggedIn, cartItems, setCartItems,setSearchI
                     madeAt: order.madeAt,
                     id: order._id,
                     items: {},
-                    totalMoney: order.totalMoney
+                    totalMoney: order.totalMoney,
+                    status: order.status
                 };
                 const itemsArr = [];
                 order.items.map(item => {
@@ -99,6 +104,7 @@ const OrderHistory = ({loggedIn, setLoggedIn, cartItems, setCartItems,setSearchI
             <br></br>
             <span className="order-price">Price: {order.items.price.toFixed(2)}$</span>
             <span className="order-subtotal">Total: {order.totalMoney.toFixed(2)}$</span>
+            <span className={order.status === 'Completed' ? 'status green' : 'status red'}>Status: {order.status}</span>
         </div>
     </div>
         ));
@@ -121,6 +127,7 @@ const OrderHistory = ({loggedIn, setLoggedIn, cartItems, setCartItems,setSearchI
                 {data}
             </div>
             <span className="order-subtotal-multipleItems">Total: {order.totalMoney.toFixed(2)}$</span>
+            <span className={order.status === 'Completed' ? 'status green' : 'status red'}>Status: {order.status}</span>
             </div>;
 
             return row;

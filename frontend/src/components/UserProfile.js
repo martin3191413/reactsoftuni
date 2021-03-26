@@ -1,13 +1,15 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
+import {UserContext} from './UserContext';
 import Header from './Header';
 import UserProfileItem from './UserProfileItem';
 import Footer from './Footer';
 
-const UserProfile = ({loggedIn,setLoggedIn,setCartItems, cartItems, userFavItems, setUserFavItems,setSearchInput }) => {
+const UserProfile = () => {
+
+    const {loggedIn, setLoggedIn, cartItems, setCartItems, userFavItems, setUserFavItems, searchInput,setSearchInput} = useContext(UserContext);
 
     const [displayIcons, setDisplayIcons] = useState(false);
 
-  
     const favItems = userFavItems.map(item => (
         <UserProfileItem item={item} key={item._id} cartItems={cartItems} setCartItems={setCartItems} loggedIn={loggedIn} displayIcons={displayIcons} userFavItems={userFavItems} setUserFavItems={setUserFavItems}/>
     ));

@@ -1,13 +1,15 @@
 import axios from 'axios';
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
+import {UserContext} from './UserContext';
 import { useHistory, Link } from "react-router-dom";
 import jwt from 'jsonwebtoken';
 
-const Login = ({setLoggedIn, setUserCredentials}) => {
+const Login = () => {
 
     const history = useHistory();
     const classes = "notifications";
 
+    const {setLoggedIn} = useContext(UserContext);
     const [username,setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [isError, setIsError] = useState(false);
@@ -47,8 +49,7 @@ const Login = ({setLoggedIn, setUserCredentials}) => {
             data: payload
         })
         .then((res) => {
-            const token = jwt.sign({id: res.data._id, refunds: res.data.refunds}, 'mySecretSecret');
-             localStorage.setItem('userId', token);
+            localStorage.setItem('userId', res.data);
             localStorage.setItem('userEmail', username);
             history.push('/');
             setLoggedIn(true);

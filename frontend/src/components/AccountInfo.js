@@ -1,13 +1,16 @@
-import React, {useState,useEffect} from 'react';
+import React, {useState,useEffect, useContext} from 'react';
 import UserControlPanel from './UserControlPanel';
 import axios from 'axios';
 import Header from './Header';
 import Footer from './Footer';
 import jwt from 'jsonwebtoken';
 import moment from 'moment';
+import { UserContext } from './UserContext';
 
 
-const AccountInfo = ({loggedIn, setLoggedIn, cartItems, setCartItems, setSearchInput}) => {
+const AccountInfo = () => {
+
+    const {loggedIn, setLoggedIn, cartItems, setCartItems, userFavItems, setUserFavItems, searchInput,setSearchInput} = useContext(UserContext);
 
     const [accountInfo, setAccountInfo] = useState('');
 
@@ -23,6 +26,7 @@ const AccountInfo = ({loggedIn, setLoggedIn, cartItems, setCartItems, setSearchI
             if (err){
                 console.log(err);
             }
+            console.log(data);
             axios({
                 method: 'GET',
                 url: `/api/user/${data.id}`

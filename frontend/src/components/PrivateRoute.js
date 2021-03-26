@@ -1,11 +1,15 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Route, Redirect } from 'react-router-dom';
+import { UserContext } from './UserContext';
 
-const PrivateRoute = ({ loggedIn, setLoggedIn,component: Component, cartItems, setCartItems, userFavItems, setUserFavItems,}) => {
+const PrivateRoute = ({component: Component}) => {
+
+    const {loggedIn} = useContext(UserContext);
+
     return (
         <Route render={(props) => (
             loggedIn === true?
-                <Component {...props} id={window.location.pathname.split('/')[2]} userFavItems={userFavItems} setUserFavItems={setUserFavItems} cartItems={cartItems} setCartItems={setCartItems} loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+                <Component {...props} id={window.location.pathname.split('/')[2]}/>
             : <Redirect to="/login" />
         )} />
     );

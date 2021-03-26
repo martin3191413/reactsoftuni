@@ -38,6 +38,10 @@ const orderSchema = new mongoose.Schema({
     refunded:{
         type: Boolean,
         required: true
+    },
+    status: {
+        type: String,
+        required: true
     }
 })
 

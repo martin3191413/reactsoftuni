@@ -1,9 +1,12 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
+import {UserContext} from './UserContext';
 import Header from './Header';
 import HomePageListItem from './HomePageListItem';
 import Footer from './Footer';
 
-const Searched = ({setSearchInput, loggedIn, setLoggedIn, setCartItems, cartItems, data,searchInput}) => {
+const Searched = ({data}) => {
+
+  const {loggedIn, setLoggedIn, cartItems, setCartItems, userFavItems, setUserFavItems, searchInput,setSearchInput} = useContext(UserContext);
 
     const [sortType, setSortType] = useState('0');
 

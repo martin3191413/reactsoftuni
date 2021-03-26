@@ -1,11 +1,12 @@
-import React, {useState,useEffect} from 'react';
+import React, {useState,useEffect, useContext} from 'react';
+import {UserContext} from './UserContext';
 import HomePageListItem from './HomePageListItem';
 import Header from './Header';
 import Footer from './Footer';
 
-const MenSection = ({loggedIn, setLoggedIn,data,cartItems, setCartItems, setSerchInput}) => {
+const MenSection = ({data}) => {
 
-
+  const {loggedIn, setLoggedIn, cartItems, setCartItems, userFavItems, setUserFavItems, searchInput,setSearchInput} = useContext(UserContext); 
   const [sortType, setSortType] = useState('0');
   const [menShoes, setMenShoes] = useState([data]);
 
@@ -40,7 +41,7 @@ const MenSection = ({loggedIn, setLoggedIn,data,cartItems, setCartItems, setSerc
 
     return (
         <>
-        <Header  loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCartItems={setCartItems} cartItems={cartItems} setSearchInput={setSerchInput}/>
+        <Header  loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCartItems={setCartItems} cartItems={cartItems} setSearchInput={setSearchInput}/>
         <div className="trd">Men's Trainers & Shoes ({data.length})
         <form>
         <select className="dropdown" onChange={(e) => setSortType(e.target.value)}>

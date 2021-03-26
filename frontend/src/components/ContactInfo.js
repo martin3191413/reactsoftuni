@@ -1,9 +1,13 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {UserContext} from './UserContext';
 import Map from './Map';
 import Header from './Header';
 import Footer from './Footer';
 
-const ContactInfo = ({loggedIn,setLoggedIn, cartItems, setCartItems, setSearchInput}) => {
+const ContactInfo = () => {
+
+    const {loggedIn, setLoggedIn, cartItems, setCartItems, userFavItems, setUserFavItems, searchInput,setSearchInput} = useContext(UserContext);
+
     return (
         <>
        <Header setSearchInput={setSearchInput} loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCartItems={setCartItems} cartItems={cartItems}/>

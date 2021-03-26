@@ -1,10 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
+import {UserContext} from './UserContext';
 import Header from './Header';
 import Footer from './Footer';
 import jwt from 'jsonwebtoken';
 import axios from 'axios';
 
-const Cart = ({loggedIn, setLoggedIn, cartItems, setCartItems, setSearchInput}) => {
+const Cart = () => {
+
+    const {loggedIn, setLoggedIn, cartItems, setCartItems, userFavItems, setUserFavItems, searchInput,setSearchInput} = useContext(UserContext);
 
     const [isError,setIsError] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');

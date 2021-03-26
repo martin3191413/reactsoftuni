@@ -1,12 +1,15 @@
 
 import axios from 'axios';
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import { useHistory, Link } from "react-router-dom";
 import jwt from 'jsonwebtoken';
+import { UserContext } from './UserContext';
 
-const Register = ({setLoggedIn}) => {
+const Register = () => {
 
     const history = useHistory();
+
+    const {loggedIn, setLoggedIn, cartItems, setCartItems, userFavItems, setUserFavItems, searchInput,setSearchInput} = useContext(UserContext);
 
     const [username,setUsername] = useState('');
     const [password, setPassword] = useState('');

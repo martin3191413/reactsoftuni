@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Footer from './Footer';
 import {Link} from 'react-router-dom';
 import Header from './Header';
 import axios from 'axios';
+import { UserContext } from './UserContext';
 
-const DetailsPage = ({loggedIn, setLoggedIn,id, cartItems, setCartItems, userFavItems, setUserFavItems, setSearchInput}) => {
+const DetailsPage = ({id}) => {
+
+    const {loggedIn, setLoggedIn, cartItems, setCartItems, userFavItems, setUserFavItems, searchInput,setSearchInput} = useContext(UserContext);
+
     const [data,setData] = useState({});
     const [inputValue, setInputValue] = useState(1);
     const [favouriteBtn, setFavouriteBtn] = useState('fa fa-heart');
