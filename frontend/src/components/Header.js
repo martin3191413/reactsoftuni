@@ -1,9 +1,11 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {NavLink, Link} from 'react-router-dom';
+import {NavLink, Link, useHistory} from 'react-router-dom';
 import { SearchContext } from './SearchContext';
 import { UserContext } from './UserContext';
 
 const Header = () => {
+
+    const history = useHistory();
 
     const {loggedIn, setLoggedIn, cartItems, setCartItems} = useContext(UserContext);
     const {searchInput, setSearchInput} = useContext(SearchContext);
@@ -15,10 +17,10 @@ const Header = () => {
     const [userEmail,setUserEmail] = useState((localStorage.getItem('userEmail')) || null);
 
     const logout = () => {
+        history.push('/');
         localStorage.clear();
         setLoggedIn(false);
         setCartItems([]);
-        window.location.href = '/';
     };
 
     const displayCartItems = (cartItems) => {
@@ -32,7 +34,7 @@ const Header = () => {
         return classes;
     };
 
-    const successfull = <Link to="/profile" className="user-link"><span className="email">Hi, {userEmail}</span><i className="far fa-user"></i> | <Link className="user-link" onClick={logout}>Logout</Link></Link>;
+    const successfull = <Link to="/profile" className="user-link"><span className="email">Hi, {userEmail}</span><i className="far fa-user"></i> | <Link to="/" className="user-link" onClick={logout}>Logout</Link></Link>;
 
     const unsuccessfull = <><Link to="/login" className="user-link-login">Login</Link> | <Link to="/register" className="user-link-register">Register</Link></>;
 

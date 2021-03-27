@@ -1,12 +1,10 @@
-import React, {useState,useEffect, useContext} from 'react';
-import {UserContext} from './UserContext';
+import React, {useState,useEffect} from 'react';
 import HomePageListItem from './HomePageListItem';
 import Header from './Header';
 import Footer from './Footer';
 
 const MenSection = ({data}) => {
 
-  const {loggedIn,cartItems, setCartItems} = useContext(UserContext);
   const [sortType, setSortType] = useState('0');
   const [menShoes, setMenShoes] = useState([data]);
 
@@ -17,16 +15,16 @@ const MenSection = ({data}) => {
 
 
     const sortMenShoes = (data) => {
-      if (sortType === "0"){
+      if (sortType === '0'){
         setMenShoes(data);
       }
-      if (sortType === "1"){
+      if (sortType === '1'){
         const sortedShoes = [...menShoes].sort(function(a,b){
           return a.price - b.price;
         });
          setMenShoes(sortedShoes);
       }
-      if (sortType === "2"){
+      if (sortType === '2'){
         const sortedShoes = [...menShoes].sort(function(a,b){
           return b.price - a.price;
         });
@@ -36,7 +34,7 @@ const MenSection = ({data}) => {
 
   
     const listItems = menShoes.map((item) =>
-    <HomePageListItem item={item} key={item._id} setCartItems={setCartItems} cartItems={cartItems} loggedIn={loggedIn}/>
+    <HomePageListItem item={item} key={item._id}/>
     );
 
     return (

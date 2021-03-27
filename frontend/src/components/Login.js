@@ -1,12 +1,12 @@
 import axios from 'axios';
 import React, {useState, useContext} from 'react';
 import {UserContext} from './UserContext';
-import { useHistory, Link } from "react-router-dom";
+import { useHistory, Link } from 'react-router-dom';
 
 const Login = () => {
 
     const history = useHistory();
-    const classes = "notifications";
+    const classes = 'notifications';
 
     const {setLoggedIn} = useContext(UserContext);
     const [username,setUsername] = useState('');
@@ -83,15 +83,15 @@ const Login = () => {
                 <Link to="/" className="login-logo"><span className="link-logo">mySite</span></Link>
             </div>
         <div>
-            <section className={isError === false ? "" : classes}>
-            <p className="notification-message">{isError === false ? "" : errorMessage}</p>
+            <section className={isError === false ? '' : classes}>
+            <p className="notification-message">{isError === false ? '' : errorMessage}</p>
         </section>
             <form className="login">
             <h1 className="login-header">Sign In</h1>
-            <label for="email" className="login-email">Email Adress</label>
+            <label htmlFor="email" className="login-email">Email Adress</label>
             <input id="email" type="text"  name="email" className="input-field" value={username} onChange={onChangeUsername}></input>
-            <label for="password" className="login-label">Password</label>
-            <input id="password" type="password" name="password"className="input-field" value={password} onChange={onChangePassword}></input>
+            <label htmlFor="password" className="login-label">Password</label>
+            <input id="password" type="password" autoComplete="off" name="password"className="input-field" value={password} onChange={onChangePassword}></input>
             <button type="submit" className="signIn" onClick={submitHandler}>Sign In</button>
             <div className="login-divider">
                <span>OR</span>

@@ -72,7 +72,7 @@ const UserSettings = () => {
             <form className="refund-form">
                 <span className="error-msg">{errorMessage}</span>
                 <label htmlFor="refund" className="refund-label">Refund</label>
-                <input className="input-field order-refund" name="refund" disabled={refunds === 0 ? true : false} placeholder="#Order Id" value={orderNumber} onChange={(e) => setOrderNumber(e.target.value)}></input>
+                <input className="input-field order-refund" type="text" name="refund" disabled={refunds === 0 ? true : false} placeholder="#Order Id" value={orderNumber} onChange={(e) => setOrderNumber(e.target.value)}></input>
                 <button onClick={(e) => refundHandler(e)} disabled={refunds === 0 ? true : false}>Refund</button>
                 {refunds !== 0 ? refundsMessage : nonRefundsMesasge}
             </form>            

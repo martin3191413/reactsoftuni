@@ -1,9 +1,12 @@
-import React, {useEffect}  from 'react';
+import React, {useContext, useEffect}  from 'react';
 import {Link, useHistory} from 'react-router-dom';
+import { UserContext } from './UserContext';
 
-const HomePageListItem = ({loggedIn,item,setCartItems, cartItems}) => {
+const HomePageListItem = ({item}) => {
 
     const history = useHistory();
+
+    const {loggedIn,cartItems, setCartItems} = useContext(UserContext);
 
     useEffect(() => {
         localStorage.setItem('cartItems', JSON.stringify(cartItems));

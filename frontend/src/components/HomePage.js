@@ -1,5 +1,4 @@
-import React, {useContext} from 'react';
-import {UserContext} from './UserContext';
+import React from 'react';
 import ImageBanner from './imageBanner';
 import WomenImageBanner from './womenImageBanner';
 import Footer from './Footer';
@@ -8,18 +7,16 @@ import Header from './Header';
 
 const MainContent = ({data}) => {
 
-    const {loggedIn, setLoggedIn, cartItems, setCartItems} = useContext(UserContext);
-
     let filteredData = data.filter((item) =>  item.category === "Men").slice(0,3);
 
     const listItems = filteredData.map((item) =>
-    <HomePageListItem item={item} key={item._id} setCartItems={setCartItems} cartItems={cartItems} loggedIn={loggedIn}/>
+    <HomePageListItem item={item} key={item._id}/>
     );
 
     const filteredWomenData = data.filter((item) => item.category === "Women").slice(0,3);
 
     const womenItems = filteredWomenData.map((item) => 
-    <HomePageListItem item={item} key={item._id} setCartItems={setCartItems} cartItems={cartItems} loggedIn={loggedIn} />
+    <HomePageListItem item={item} key={item._id}/>
     );
 
     return (

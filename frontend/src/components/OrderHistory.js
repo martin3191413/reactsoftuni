@@ -2,18 +2,21 @@ import React, {useState, useEffect} from 'react';
 import jwt from 'jsonwebtoken';
 import axios from 'axios';
 import UserControlMenu from './UserControlPanel';
+import LoadingBar from './LoadingBar';
 import Header from './Header';
 import Footer from './Footer';
 
 const OrderHistory = () => {
 
     const [ordersData,setOrdersData] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         fetchData();
     }, []);
 
     const fetchData = () => {
+        setLoading(true);
         const token = localStorage.getItem('userId');
 
         jwt.verify(token, 'mySecretSecret', function(err,data){
@@ -74,6 +77,7 @@ const OrderHistory = () => {
             return new Date(a.madeAt) - new Date(b.madeAt);
         });
         setOrdersData(formattedOrders);
+        setLoading(false);
     };
 
     const renderOrderHistory = (ordersData) => {
@@ -137,18 +141,21 @@ const OrderHistory = () => {
      return finalData;
     };
 
-    const history = renderOrderHistory(ordersData);
+    const items = renderOrderHistory(ordersData);
+
 
     const noOrders = <h2>You don't have any orders yet</h2>;
+
+    const history = <div className="history">
+    <h2 className="header-order">Order History</h2>
+    {ordersData.length !== 0 ? items : noOrders}
+    </div>;
 
     return (
         <>
          <Header/>
         <UserControlMenu />
-        <div className="history">
-            <h2 className="header-order">Order History</h2>
-            {ordersData.length !== 0 ? history : noOrders}
-        </div>
+       {loading === true ? <LoadingBar /> : history}
         <Footer />
         </>
     );

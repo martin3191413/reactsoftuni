@@ -1,5 +1,4 @@
-import React, {useState,useEffect, useContext} from 'react';
-import {UserContext} from './UserContext';
+import React, {useState,useEffect} from 'react';
 import HomePageListItem from './HomePageListItem';
 import Footer from './Footer';
 import Header from './Header';
@@ -7,7 +6,6 @@ import Header from './Header';
 
 const WomenSection = ({data}) => {
 
-  const {loggedIn,cartItems, setCartItems} = useContext(UserContext);
   const [sortType, setSortType] = useState('0');
   const [womenShoes, setWomenShoes] = useState([data]);
 
@@ -37,7 +35,7 @@ const WomenSection = ({data}) => {
 
   
     const listItems = womenShoes.map((item) =>
-    <HomePageListItem item={item} key={item._id} setCartItems={setCartItems} cartItems={cartItems} loggedIn={loggedIn}/>
+    <HomePageListItem item={item} key={item._id}/>
     );
 
     return (
