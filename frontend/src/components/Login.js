@@ -2,7 +2,6 @@ import axios from 'axios';
 import React, {useState, useContext} from 'react';
 import {UserContext} from './UserContext';
 import { useHistory, Link } from "react-router-dom";
-import jwt from 'jsonwebtoken';
 
 const Login = () => {
 

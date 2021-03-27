@@ -7,7 +7,7 @@ import { UserContext } from './UserContext';
 
 const DetailsPage = ({id}) => {
 
-    const {loggedIn, setLoggedIn, cartItems, setCartItems, userFavItems, setUserFavItems, searchInput,setSearchInput} = useContext(UserContext);
+    const { cartItems, setCartItems, userFavItems, setUserFavItems} = useContext(UserContext);
 
     const [data,setData] = useState({});
     const [inputValue, setInputValue] = useState(1);
@@ -78,7 +78,7 @@ const DetailsPage = ({id}) => {
 
     return (
         <div>
-     <Header setSearchInput={setSearchInput}  loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCartItems={setCartItems} cartItems={cartItems}/>
+       <Header/>
         <div className="row">
             <div className="column">
                 <img src={data.image}></img>

@@ -1,16 +1,12 @@
-import React, {useState,useEffect, useContext} from 'react';
+import React, {useState,useEffect} from 'react';
 import UserControlPanel from './UserControlPanel';
 import axios from 'axios';
 import Header from './Header';
 import Footer from './Footer';
 import jwt from 'jsonwebtoken';
 import moment from 'moment';
-import { UserContext } from './UserContext';
-
 
 const AccountInfo = () => {
-
-    const {loggedIn, setLoggedIn, cartItems, setCartItems, userFavItems, setUserFavItems, searchInput,setSearchInput} = useContext(UserContext);
 
     const [accountInfo, setAccountInfo] = useState('');
 
@@ -41,7 +37,7 @@ const AccountInfo = () => {
 
     return (
         <>
-        <Header setSearchInput={setSearchInput}  loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCartItems={setCartItems} cartItems={cartItems}/>
+        <Header/>
         <UserControlPanel />
         <div className="account">
             <i className="far fa-user-circle"></i>

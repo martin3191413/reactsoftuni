@@ -1,14 +1,11 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState, useEffect} from 'react';
 import jwt from 'jsonwebtoken';
 import axios from 'axios';
 import UserControlMenu from './UserControlPanel';
 import Header from './Header';
 import Footer from './Footer';
-import { UserContext } from './UserContext';
 
 const OrderHistory = () => {
-
-    const {loggedIn, setLoggedIn, cartItems, setCartItems, userFavItems, setUserFavItems, searchInput,setSearchInput} = useContext(UserContext);
 
     const [ordersData,setOrdersData] = useState([]);
 
@@ -146,7 +143,7 @@ const OrderHistory = () => {
 
     return (
         <>
-         <Header setSearchInput={setSearchInput}  loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCartItems={setCartItems} cartItems={cartItems}/>
+         <Header/>
         <UserControlMenu />
         <div className="history">
             <h2 className="header-order">Order History</h2>

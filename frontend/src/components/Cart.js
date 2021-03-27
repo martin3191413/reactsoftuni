@@ -7,8 +7,7 @@ import axios from 'axios';
 
 const Cart = () => {
 
-    const {loggedIn, setLoggedIn, cartItems, setCartItems, userFavItems, setUserFavItems, searchInput,setSearchInput} = useContext(UserContext);
-
+    const {cartItems, setCartItems} = useContext(UserContext);
     const [isError,setIsError] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const [classes,setClasses] = useState('');
@@ -157,7 +156,7 @@ const Cart = () => {
 
     return (
         <>
-        <Header setSearchInput={setSearchInput}  loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCartItems={setCartItems} cartItems={cartItems}/>
+        <Header/>
         <section className={isError === false ? "" : classes}>
             <p className="notification-message">{isError === false ? "" : errorMessage}</p>
         </section>

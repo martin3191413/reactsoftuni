@@ -8,7 +8,7 @@ import Header from './Header';
 
 const MainContent = ({data}) => {
 
-    const {loggedIn, setLoggedIn, cartItems, setCartItems, userFavItems, setUserFavItems, searchInput, setSearchInput} = useContext(UserContext);
+    const {loggedIn, setLoggedIn, cartItems, setCartItems} = useContext(UserContext);
 
     let filteredData = data.filter((item) =>  item.category === "Men").slice(0,3);
 
@@ -24,7 +24,7 @@ const MainContent = ({data}) => {
 
     return (
         <>
-        <Header  loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCartItems={setCartItems} cartItems={cartItems} setSearchInput={setSearchInput}/>
+        <Header/>
         <div className="trd"> Men's Collection Trending Now
         <div className="mainContent">
             {listItems}

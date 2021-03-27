@@ -4,9 +4,10 @@ import HomePageListItem from './HomePageListItem';
 import Footer from './Footer';
 import Header from './Header';
 
+
 const WomenSection = ({data}) => {
 
-  const {loggedIn, setLoggedIn, cartItems, setCartItems, userFavItems, setUserFavItems, searchInput,setSearchInput} = useContext(UserContext);
+  const {loggedIn,cartItems, setCartItems} = useContext(UserContext);
   const [sortType, setSortType] = useState('0');
   const [womenShoes, setWomenShoes] = useState([data]);
 
@@ -41,7 +42,7 @@ const WomenSection = ({data}) => {
 
     return (
         <>
-        <Header setSearchInput={setSearchInput}  loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCartItems={setCartItems} cartItems={cartItems}/>
+        <Header/>
         <div className="trd">Women's Trainers & Shoes ({data.length})
         <form>
         <select className="dropdown" onChange={(e) => setSortType(e.target.value)}>

@@ -3,10 +3,12 @@ import {UserContext} from './UserContext';
 import Header from './Header';
 import HomePageListItem from './HomePageListItem';
 import Footer from './Footer';
+import { SearchContext } from './SearchContext';
 
 const Searched = ({data}) => {
 
-  const {loggedIn, setLoggedIn, cartItems, setCartItems, userFavItems, setUserFavItems, searchInput,setSearchInput} = useContext(UserContext);
+  const {loggedIn,cartItems, setCartItems} = useContext(UserContext);
+  const {searchInput} = useContext(SearchContext);
 
     const [sortType, setSortType] = useState('0');
 
@@ -53,7 +55,7 @@ const Searched = ({data}) => {
 
     return (
         <>
-        <Header setSearchInput={setSearchInput} searchInput={searchInput}  loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCartItems={setCartItems} cartItems={cartItems}/>
+        <Header/>
         <select className="dropdown"style={{display: items.length == 0 ? 'none' : 'display'}}  onChange={(e) => setSortType(e.target.value)} >
        <option value="0">Sort By</option>
        <option value="1" >Price: Low-High</option>

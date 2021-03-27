@@ -1,7 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {NavLink, Link} from 'react-router-dom';
+import { SearchContext } from './SearchContext';
+import { UserContext } from './UserContext';
 
-const Header = ({loggedIn,setLoggedIn, setCartItems, cartItems, setSearchInput, searchInput}) => {
+const Header = () => {
+
+    const {loggedIn, setLoggedIn, cartItems, setCartItems} = useContext(UserContext);
+    const {searchInput, setSearchInput} = useContext(SearchContext);
 
     useEffect(() => {
         setUserEmail(localStorage.getItem('userEmail'));

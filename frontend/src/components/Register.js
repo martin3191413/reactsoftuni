@@ -9,7 +9,7 @@ const Register = () => {
 
     const history = useHistory();
 
-    const {loggedIn, setLoggedIn, cartItems, setCartItems, userFavItems, setUserFavItems, searchInput,setSearchInput} = useContext(UserContext);
+    const {setLoggedIn} = useContext(UserContext);
 
     const [username,setUsername] = useState('');
     const [password, setPassword] = useState('');

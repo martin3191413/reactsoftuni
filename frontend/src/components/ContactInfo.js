@@ -1,16 +1,13 @@
-import React, {useContext} from 'react';
-import {UserContext} from './UserContext';
+import React from 'react';
 import Map from './Map';
 import Header from './Header';
 import Footer from './Footer';
 
 const ContactInfo = () => {
 
-    const {loggedIn, setLoggedIn, cartItems, setCartItems, userFavItems, setUserFavItems, searchInput,setSearchInput} = useContext(UserContext);
-
     return (
         <>
-       <Header setSearchInput={setSearchInput} loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCartItems={setCartItems} cartItems={cartItems}/>
+       <Header/>
        <div className="contact-info-row">
            <div className="map">
            <Map />

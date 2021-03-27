@@ -1,19 +1,16 @@
-import React, {useState, useEffect, useContext} from 'react';
-import {UserContext} from './UserContext';
+import React, {useState, useEffect} from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import UserControlPanel from './UserControlPanel';
 import axios from 'axios';
 import jwt from 'jsonwebtoken';
 
+
 const UserSettings = () => {
 
-    const {loggedIn, setLoggedIn, cartItems, setCartItems, userFavItems, setUserFavItems, searchInput,setSearchInput} = useContext(UserContext);
-    
     const [orderNumber, setOrderNumber] = useState('');
     const [refunds, setRefunds] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
-
 
     useEffect(() => {
         getRefunds();
@@ -69,7 +66,7 @@ const UserSettings = () => {
 
     return (
         <>
-        <Header setSearchInput={setSearchInput}  loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCartItems={setCartItems} cartItems={cartItems}/>
+        <Header/>
         <UserControlPanel />
         <div className="user-settings">
             <form className="refund-form">

@@ -17,12 +17,12 @@ import Cart from './components/Cart';
 import OrderHistory from './components/OrderHistory';
 import UserSettings from './components/UserSettings';
 import {UserContext} from './components/UserContext';
+import {SearchContext} from './components/SearchContext';
 import axios from 'axios';
 
 
 function App() {
   
-
   const [data, setData] = useState([]);
   const [loggedIn, setLoggedIn] = useState((localStorage.getItem('userId') ? true : false));
   const [cartItems, setCartItems] = useState(JSON.parse((localStorage.getItem('cartItems'))) || ([]));
@@ -52,7 +52,8 @@ function App() {
   return (
     <Router>
     <div className="container">
-      <UserContext.Provider value={{loggedIn, setLoggedIn, cartItems, setCartItems, userFavItems, setUserFavItems, searchInput, setSearchInput}}>
+      <SearchContext.Provider value={{searchInput, setSearchInput}}>
+      <UserContext.Provider value={{loggedIn, setLoggedIn, cartItems, setCartItems, userFavItems, setUserFavItems}}>
       <Switch>
       <PublicRoute path="/" exact component={HomePage} restricted={false} data={data} />
       <PublicRoute path="/login" exact component={Login} restricted={false}/>
@@ -122,6 +123,7 @@ function App() {
         />
     </Switch>
     </UserContext.Provider>
+    </SearchContext.Provider>
     </div>
     </Router>
   );
