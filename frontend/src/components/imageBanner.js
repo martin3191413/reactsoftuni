@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 const imageBanner = () => {
     return (
         <div className="imageBanner">
-            <Link to="/men"><button>Shop Now </button></Link>
+            <Link to="/men"><button className="bannerBtn">Shop Now </button></Link>
         </div>
     );
 };

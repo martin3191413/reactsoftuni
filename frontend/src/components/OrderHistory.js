@@ -5,6 +5,7 @@ import UserControlMenu from './UserControlPanel';
 import LoadingBar from './LoadingBar';
 import Header from './Header';
 import Footer from './Footer';
+import moment from 'moment';
 
 const OrderHistory = () => {
 
@@ -82,63 +83,56 @@ const OrderHistory = () => {
 
     const renderOrderHistory = (ordersData) => {
 
-        let singleItemsOrders = [];
-        let multipleItemsOrders = [];
+        let items = [];
 
         ordersData.map(order => {
             if (order.items.length !== undefined){
-                multipleItemsOrders.push(order);
+                const data = order.items.map(item => (
+                    <div className="one-item-info">
+                    <img className="order-img-multipleItems" src={item.image} alt="white-tshirt"></img>
+                    <p className="order-model-multipleItems">{item.model}</p>
+                    <br></br>
+                    <span className="order-price-multipleItems">Price: {item.price.toFixed(2)}$</span>
+                    </div>
+                ));
+    
+                const row = <div className="order-history-multipleItems">
+                <span className="order-number-multipleItems">
+                    Order #{order.id}
+                    <br></br>
+                   {moment(order.madeAt).format('MMMM Do YY, h:mm')}
+                    </span>
+                <div className="order-info-multipleItems">
+                    {data}
+                </div>
+                <span className="order-subtotal-multipleItems">Total: {order.totalMoney.toFixed(2)}$</span>
+                <span className={order.status === 'Completed' ? 'status green' : 'status red'}>Status: {order.status}</span>
+                </div>;
+    
+                items.push(row);
             }
             else{
-                singleItemsOrders.push(order);
+               const row = <div className="order-history-singleItem">
+                     <span className="order-number">
+                    Order #{order.id}
+                    <br></br>
+                    {moment(order.madeAt).format('MMMM Do YY, h:mm')}
+                     </span>
+                  <div className="order-info">
+                  <img className="order-img" src={order.items.image} alt="white-tshirt"></img>
+                  <p className="order-model">{order.items.model}</p>
+                   <br></br>
+                   <span className="order-price">Price: {order.items.price.toFixed(2)}$</span>
+                     <span className="order-subtotal">Total: {order.totalMoney.toFixed(2)}$</span>
+                    <span className={order.status === 'Completed' ? 'status green' : 'status red'}>Status: {order.status}</span>
+                   </div>
+                     </div>;
+
+                     items.push(row);
             }
         });
 
-       let singleItemsData = singleItemsOrders.map(order => (
-        <div className="order-history-singleItem">
-        <span className="order-number">
-            Order #{order.id}
-        </span>
-        <div className="order-info">
-            <img className="order-img" src={order.items.image} alt="white-tshirt"></img>
-            <p className="order-model">{order.items.model}</p>
-            <br></br>
-            <span className="order-price">Price: {order.items.price.toFixed(2)}$</span>
-            <span className="order-subtotal">Total: {order.totalMoney.toFixed(2)}$</span>
-            <span className={order.status === 'Completed' ? 'status green' : 'status red'}>Status: {order.status}</span>
-        </div>
-    </div>
-        ));
-
-        const multipleItemsData =  multipleItemsOrders.map(order => {
-            const data = order.items.map(item => (
-                <div className="one-item-info">
-                <img className="order-img-multipleItems" src={item.image} alt="white-tshirt"></img>
-                <p className="order-model-multipleItems">{item.model}</p>
-                <br></br>
-                <span className="order-price-multipleItems">Price: {item.price.toFixed(2)}$</span>
-                </div>
-            ));
-
-            const row = <div className="order-history-multipleItems">
-            <span className="order-number-multipleItems">
-                Order #{order.id}
-                </span>
-            <div className="order-info-multipleItems">
-                {data}
-            </div>
-            <span className="order-subtotal-multipleItems">Total: {order.totalMoney.toFixed(2)}$</span>
-            <span className={order.status === 'Completed' ? 'status green' : 'status red'}>Status: {order.status}</span>
-            </div>;
-
-            return row;
-     });
-
-     let finalData = [];
-
-     finalData.push(singleItemsData, multipleItemsData);
-
-     return finalData;
+     return items;
     };
 
     const items = renderOrderHistory(ordersData);

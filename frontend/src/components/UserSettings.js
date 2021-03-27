@@ -3,6 +3,7 @@ import Header from './Header';
 import Footer from './Footer';
 import UserControlPanel from './UserControlPanel';
 import axios from 'axios';
+import LoadingBar from './LoadingBar';
 import jwt from 'jsonwebtoken';
 
 
@@ -11,12 +12,14 @@ const UserSettings = () => {
     const [orderNumber, setOrderNumber] = useState('');
     const [refunds, setRefunds] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         getRefunds();
     }, []);
 
     const getRefunds = () => {
+        setLoading(true);
         const token = localStorage.getItem('userId');
 
         jwt.verify(token, 'mySecretSecret', function(err,data){
@@ -31,6 +34,8 @@ const UserSettings = () => {
             .then(res => setRefunds(res.data.refunds))
             .catch(err => console.log(err));
         });
+
+        setLoading(false);
     };
 
     const refundHandler = (e) => {
@@ -64,19 +69,21 @@ const UserSettings = () => {
     const refundsMessage = <span className="refunds-msg">You have only {refunds} remaining {refunds > 1 ? 'refunds' : 'refund'}!</span>;
     const nonRefundsMesasge = <span className="refunds-msg">You have no refunds left!</span>;
 
+    const settings = <div className="user-settings">
+    <form className="refund-form">
+        <span className="error-msg">{errorMessage}</span>
+        <label htmlFor="refund" className="refund-label">Refund</label>
+        <input className="input-field order-refund" type="text" name="refund" disabled={refunds === 0 ? true : false} placeholder="#Order Id" value={orderNumber} onChange={(e) => setOrderNumber(e.target.value)}></input>
+        <button onClick={(e) => refundHandler(e)} disabled={refunds === 0 ? true : false}>Refund</button>
+        {refunds !== 0 ? refundsMessage : nonRefundsMesasge}
+    </form>            
+</div>;
+
     return (
         <>
         <Header/>
         <UserControlPanel />
-        <div className="user-settings">
-            <form className="refund-form">
-                <span className="error-msg">{errorMessage}</span>
-                <label htmlFor="refund" className="refund-label">Refund</label>
-                <input className="input-field order-refund" type="text" name="refund" disabled={refunds === 0 ? true : false} placeholder="#Order Id" value={orderNumber} onChange={(e) => setOrderNumber(e.target.value)}></input>
-                <button onClick={(e) => refundHandler(e)} disabled={refunds === 0 ? true : false}>Refund</button>
-                {refunds !== 0 ? refundsMessage : nonRefundsMesasge}
-            </form>            
-        </div>
+        {loading === true ? <LoadingBar /> : settings}
         <Footer />
         </>
     );

@@ -361,23 +361,8 @@ margin-top: 130px;
   background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.3)), url("./components/photos/men.jpg") center/cover no-repeat;
 }
 
-.imageBanner button{
-  height: 40px;
-  width: 100px;
-  border-radius: 58px 58px 58px 58px;
-  outline: none;
-  justify-content:center;
-  align-items: center;
-  cursor: pointer;
-  margin-bottom: 30px;
-  margin-left: 20px;
-  text-decoration: none;
-  color: rgb(0, 0, 0);
-  border: 0.5px solid black;
-  background-color: rgb(255, 255, 255);
-}
 
-.imageBanner button:hover{
+.imageBannerBtn:hover{
   opacity: 0.6;
   cursor: pointer;
 }
@@ -396,7 +381,7 @@ margin-top: 130px;
   background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.3)), url('./components/photos/shop.jpg') center/cover no-repeat;
 }
 
-.womenImageBanner button{
+.bannerBtn{
   height: 40px;
   width: 100px;
   border-radius: 58px 58px 58px 58px;
@@ -418,7 +403,7 @@ margin-top: 130px;
   opacity: 0.9;
 }
 
-.womenImageBanner button:hover{
+.bannerBtn:hover{
   opacity: 0.6;
   cursor: pointer;
 }
