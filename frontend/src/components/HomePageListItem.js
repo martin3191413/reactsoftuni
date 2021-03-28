@@ -1,10 +1,12 @@
 import React, {useContext, useEffect}  from 'react';
 import {Link, useHistory} from 'react-router-dom';
 import { UserContext } from './UserContext';
+import { useAlert } from 'react-alert';
 
 const HomePageListItem = ({item}) => {
 
     const history = useHistory();
+    const alert = useAlert();
 
     const {loggedIn,cartItems, setCartItems} = useContext(UserContext);
 
@@ -13,6 +15,8 @@ const HomePageListItem = ({item}) => {
     }, [cartItems]);
 
     const onClickHandler = (item) => {
+        alert.show('Item added to Cart');
+
         if (!loggedIn){
             history.push('/login');
             return;

@@ -13,6 +13,7 @@ const UserSettings = () => {
     const [refunds, setRefunds] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [loading, setLoading] = useState(false);
+    const [className, setClassName] = useState('');
 
     useEffect(() => {
         getRefunds();
@@ -46,6 +47,16 @@ const UserSettings = () => {
             orderNumber
         };
 
+        if (orderNumber === ''){
+            setErrorMessage('Invalid Number Order!');
+            setClassName('error-msg');
+            setTimeout(() => {
+                setErrorMessage('');
+            }, 3000);
+
+            return;
+        }
+
         axios({
             method: "POST",
             url: `/api/orders/refund/${orderNumber}`,
@@ -55,6 +66,7 @@ const UserSettings = () => {
             getRefunds();
             setOrderNumber('');
             setErrorMessage('Your order has been refunded successfully!');
+            setClassName('successfull-msg');
 
             setTimeout(() => {
                 setErrorMessage('');
@@ -62,6 +74,7 @@ const UserSettings = () => {
         })
         .catch(err => {
             setErrorMessage(err.response.data);
+            setClassName('error-msg');
             setOrderNumber('');
         });
     };
@@ -71,13 +84,22 @@ const UserSettings = () => {
 
     const settings = <div className="user-settings">
     <form className="refund-form">
-        <span className="error-msg">{errorMessage}</span>
+        <span className={className}>{errorMessage}</span>
         <label htmlFor="refund" className="refund-label">Refund</label>
-        <input className="input-field order-refund" type="text" name="refund" disabled={refunds === 0 ? true : false} placeholder="#Order Id" value={orderNumber} onChange={(e) => setOrderNumber(e.target.value)}></input>
-        <button onClick={(e) => refundHandler(e)} disabled={refunds === 0 ? true : false}>Refund</button>
+        <input className="input-field order-refund" type="text" name="refund" disabled={refunds === 0 ? true : false} placeholder="#Order Number" value={orderNumber} onChange={(e) => setOrderNumber(e.target.value)}></input>
+        <button onClick={(e) => refundHandler(e)} className="refund-btn" disabled={refunds === 0 ? true : false}>Refund</button>
         {refunds !== 0 ? refundsMessage : nonRefundsMesasge}
-    </form>            
-</div>;
+    </form>
+    <div className="edit-password">
+        <label htmlFor="password" className="edit-password">Password</label>
+        <input className="input-field edit-passwordInput" type="password" disabled='true' value="**********"></input>
+        <button className=" edit-password-btn">Edit</button>
+    </div>
+    <div className="delete-acc">
+    <span className="delete-acc-span">Delete Account</span>
+    <button className="delete-acc-btn">Delete</button>
+    </div>            
+    </div>;
 
     return (
         <>
