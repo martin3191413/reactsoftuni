@@ -5,6 +5,7 @@ import Header from './Header';
 import axios from 'axios';
 import { UserContext } from './UserContext';
 import LoadingBar from './LoadingBar';
+import {useAlert} from 'react-alert';
 
 const DetailsPage = ({id}) => {
 
@@ -14,6 +15,8 @@ const DetailsPage = ({id}) => {
     const [inputValue, setInputValue] = useState(1);
     const [favouriteBtn, setFavouriteBtn] = useState('fa fa-heart');
     const [loading, setLoading] = useState(false);
+
+    const alert = useAlert();
 
     const fetchData = (e) => {
         setLoading(true);
@@ -50,9 +53,11 @@ const DetailsPage = ({id}) => {
         setInputValue(e.target.value);
     };
 
-    const onClickHandler = (id) => {
-        let itemInCart = cartItems.find(x => x._id === id);
 
+    const onClickHandler = (id) => {
+        alert.show('Item added to Cart!');
+
+        let itemInCart = cartItems.find(x => x._id === id);
 
         if (itemInCart){
             let oldCartItems = [...cartItems];

@@ -1,13 +1,17 @@
 
 import axios from 'axios';
 import React, {useState, useContext} from 'react';
-import { useHistory, Link } from "react-router-dom";
+import { useHistory, Link } from 'react-router-dom';
 import jwt from 'jsonwebtoken';
 import { UserContext } from './UserContext';
+import {useAlert} from 'react-alert';
+
 
 const Register = () => {
 
     const history = useHistory();
+
+    const alert = useAlert();
 
     const {setLoggedIn} = useContext(UserContext);
 
@@ -74,6 +78,10 @@ const Register = () => {
             .then((res) => {
                 const token = jwt.sign({id: res.data._id, refunds: res.data.refunds}, 'mySecretSecret');
                 localStorage.setItem('userId', token);
+                alert.show(`Hello, ${username}!`, {
+                    timeout: 3000,
+                    type: 'info'
+                });
                 history.push('/');
                 setLoggedIn(true);
                 localStorage.setItem('userEmail', username);

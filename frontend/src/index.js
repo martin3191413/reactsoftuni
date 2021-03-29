@@ -8,9 +8,9 @@ import AlertTemplate from 'react-alert-template-basic';
 const options = {
   // you can also just use 'bottom center'
   position: positions.BOTTOM_CENTER,
-  timeout: 2000,
+  timeout: 3000,
   type: 'success',
-  offset: '30px',
+  offset: '20px',
   // you can also just use 'scale'
   transition: 'fade'
 };

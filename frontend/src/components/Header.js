@@ -2,10 +2,13 @@ import React, {useContext, useEffect, useState} from 'react';
 import {NavLink, Link, useHistory} from 'react-router-dom';
 import { SearchContext } from './SearchContext';
 import { UserContext } from './UserContext';
+import {useAlert} from 'react-alert';
 
 const Header = () => {
 
     const history = useHistory();
+
+    const alert = useAlert();
 
     const {loggedIn, setLoggedIn, cartItems, setCartItems} = useContext(UserContext);
     const {searchInput, setSearchInput} = useContext(SearchContext);
@@ -17,6 +20,12 @@ const Header = () => {
     const [userEmail,setUserEmail] = useState((localStorage.getItem('userEmail')) || null);
 
     const logout = () => {
+
+        alert.show(`Goodbye, ${userEmail}`, {
+            type: 'info',
+            timeout: 3000
+        });
+
         history.push('/');
         localStorage.clear();
         setLoggedIn(false);

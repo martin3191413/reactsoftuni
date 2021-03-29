@@ -2,11 +2,14 @@ import axios from 'axios';
 import React, {useState, useContext} from 'react';
 import {UserContext} from './UserContext';
 import { useHistory, Link } from 'react-router-dom';
+import {useAlert} from 'react-alert';
 
 const Login = () => {
 
     const history = useHistory();
     const classes = 'notifications';
+
+    const alert = useAlert();
 
     const {setLoggedIn} = useContext(UserContext);
     const [username,setUsername] = useState('');
@@ -73,6 +76,10 @@ const Login = () => {
                 }, 5000);
                  return;
             }
+        });
+        alert.show(`Hello, ${username}!`, {
+            timeout: 3000,
+            type: 'info'
         });
     };
 

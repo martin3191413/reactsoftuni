@@ -15,7 +15,7 @@ const HomePageListItem = ({item}) => {
     }, [cartItems]);
 
     const onClickHandler = (item) => {
-        alert.show('Item added to Cart');
+        alert.show('Item added to Cart!');
 
         if (!loggedIn){
             history.push('/login');

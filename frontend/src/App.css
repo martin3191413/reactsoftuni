@@ -127,7 +127,7 @@ ul > li:hover{
 .mainContent{
   display:flex;
   justify-content: center;
-  align-items: center;
+  align-items: baseline;
   position: relative;
   width:70%;
   height:100%;
