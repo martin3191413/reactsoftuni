@@ -18,6 +18,7 @@ import OrderHistory from './components/OrderHistory';
 import UserSettings from './components/UserSettings';
 import {UserContext} from './components/UserContext';
 import {SearchContext} from './components/SearchContext';
+import Stripe from './components/Stripe';
 import axios from 'axios';
 
 
@@ -121,7 +122,14 @@ function App() {
           <UserSettings {...props}/>
         )}
         />
-    </Switch>
+
+    </Switch> <Route 
+        path="/payment"
+        exact
+        render={(props) => (
+          <Stripe {...props}/>
+        )}
+        />
     </UserContext.Provider>
     </SearchContext.Provider>
     </div>

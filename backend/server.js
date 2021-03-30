@@ -7,6 +7,8 @@ const Order = require('./models/Order');
 const User = require('./models/User');
 const authServices = require('./services/authServices');
 
+const stripe = require('stripe')('sk_test_51IaKmoGtpROy8rrpRPpQuxX4QQV5G6TSXSotbvatxAA2guxRM5VRv6XrEKvuCMhi575hlYdEZRmCosOJn3D80haQ00rWjf5mZf');
+
 mongoose.connect('mongodb://localhost/reactApp', {useNewUrlParser: true, useUnifiedTopology: true})
 
 mongoose.connection.on('connected', () => {
@@ -147,4 +149,23 @@ app.post('/api/orders/refund/:orderId', async(req,res) => {
    catch(err){
        res.status(405).send(err.message || 'Invalid Order Number!');
    }
+})
+
+app.post('/api/stripe-payment', async(req,res) => {
+
+    const {id,amount} = req.body;
+
+    try{
+        const payment = await stripe.paymentIntents.create({
+            amount,
+            currency: 'USD',
+            payment_method: id,
+            confirm: true
+        })
+
+        res.json('Everything went fine!, Order taken!');
+    }
+    catch(err){
+        console.log(err);
+    }
 })

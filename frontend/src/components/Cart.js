@@ -85,6 +85,7 @@ const Cart = () => {
     };
 
     const buyItems = () => {
+
         const totalMoney = Number(total(subtotal(cartItems),taxes(subtotal(cartItems))).toFixed(2));
         
         const token = localStorage.getItem('userId');
