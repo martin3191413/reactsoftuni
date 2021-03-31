@@ -1426,6 +1426,7 @@ background-color: white;
   box-shadow: 0 6px 9px rgba(50, 50, 93, 0.06), 0 2px 5px rgba(0, 0, 0, 0.08),
     inset 0 1px 0 #829fff;
   border-radius: 4px;
+  color: #fff;
 }
 
 .FormRow {
@@ -1436,6 +1437,7 @@ background-color: white;
   margin-left: 15px;
   border-top: 1px solid #819efc;
   font-weight: 500;
+  color: #fff;
 }
 
 .FormRowLabel {
@@ -1466,6 +1468,7 @@ background-color: white;
 .StripeElement {
   width: 100%;
   padding: 11px 15px 11px 0;
+  color: #fff;
 }
 
 .Form {
@@ -1490,7 +1493,7 @@ background-color: white;
   width: calc(100% - 30px);
   height: 40px;
   margin: 40px 15px 0;
-  background-color: #f6a4eb;
+  background-color: #fa666e;
   box-shadow: 0 6px 9px rgba(50, 50, 93, 0.06), 0 2px 5px rgba(0, 0, 0, 0.08),
     inset 0 1px 0 #ffb9f6;
   border-radius: 4px;
@@ -1501,8 +1504,13 @@ background-color: white;
 }
 
 .stripe-btn:active {
-  background-color: #d782d9;
+  background-color: #fa666e;
   box-shadow: 0 6px 9px rgba(50, 50, 93, 0.06), 0 2px 5px rgba(0, 0, 0, 0.08);
   border: none;
   transform: scale(0.99);
 }
+
+.stripe-btn:disabled{
+  background-color: #920c13;
+}
+
