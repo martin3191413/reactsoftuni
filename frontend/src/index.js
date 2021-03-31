@@ -17,12 +17,20 @@ const options = {
   transition: 'fade'
 };
 
+const ELEMENTS_OPTIONS = {
+  fonts: [
+    {
+      cssSrc: "https://fonts.googleapis.com/css?family=Roboto"
+    }
+  ]
+};
+
 const stripePromise = loadStripe('pk_test_51IaKmoGtpROy8rrpIpy1ujso4zf4zh5Aw0FVGvzfwACGjtrfPeBX3nFm7eO2btkZwNq1R0wU7aNdHoV7yq7bZhPp00hLpTtmBt');
 
 ReactDOM.render(
   <React.StrictMode>
     <AlertProvider template={AlertTemplate} {...options}>
-      <Elements stripe={stripePromise}>
+      <Elements stripe={stripePromise} options={ELEMENTS_OPTIONS}>
     <App />
     </Elements>
     </AlertProvider>
