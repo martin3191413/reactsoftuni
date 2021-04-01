@@ -6,6 +6,7 @@ import {
 } from '@stripe/react-stripe-js';
 import {UserContext} from './UserContext';
 import {useHistory} from 'react-router-dom';
+import {PaymentContext} from './PaymentContext';
 
 import axios from 'axios';
 
@@ -71,9 +72,11 @@ const Stripe = () => {
   const stripe = useStripe();
   const elements = useElements();
 
+  const {cartItems, setCartItems} = useContext(UserContext);
+  const {confirmed,setConfirmed} = useContext(PaymentContext);
+
   const [processing, setProcessing] = useState(false);
   const [isError, setIsError] = useState(false);
-  const {cartItems, setCartItems} = useContext(UserContext);
   const [errorMessage, setErrorMessage] = useState('');
   const [billingDetails, setBillingDetails] = useState({
     email: "",
@@ -123,6 +126,7 @@ const Stripe = () => {
       })
       .then(res => {
         setProcessing(false);
+        setConfirmed({confirmedOrder: true, userOrderEmail: billingDetails.email});
         history.push('/successfull-order');
       });
     }

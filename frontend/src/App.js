@@ -6,6 +6,7 @@ import  Login from './components/Login';
 import ContactInfo from './components/ContactInfo';
 import Register from './components/Register';
 import DetailsPage from './components/DetailsPage';
+import SecuredPaymentCheckout from './components/SecuredPaymentCheckout';
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
 import MenSection from './components/MenSection';
@@ -19,6 +20,7 @@ import UserSettings from './components/UserSettings';
 import SuccessfullOrder from './components/SuccessfullOrder';
 import {UserContext} from './components/UserContext';
 import {SearchContext} from './components/SearchContext';
+import {PaymentContext} from './components/PaymentContext';
 import Stripe from './components/Stripe';
 import axios from 'axios';
 
@@ -32,6 +34,10 @@ function App() {
   const [womenShoes, setWomenShoes] = useState([]);
   const [userFavItems, setUserFavItems] = useState(JSON.parse((localStorage.getItem('userFavItems'))) || []);
   const [searchInput, setSearchInput] = useState('');
+  const [confirmed, setConfirmed] = useState({
+    userOrderEmail: '',
+    confirmedOrder: false
+  });
 
 
   useEffect(() => {
@@ -54,6 +60,7 @@ function App() {
   return (
     <Router>
     <div className="container">
+      <PaymentContext.Provider value={{confirmed, setConfirmed}} >
       <SearchContext.Provider value={{searchInput, setSearchInput}}>
       <UserContext.Provider value={{loggedIn, setLoggedIn, cartItems, setCartItems, userFavItems, setUserFavItems}}>
       <Switch>
@@ -130,16 +137,11 @@ function App() {
           <Stripe {...props}/>
         )}
         />
-        <Route
-        path="/successfull-order"
-        exact
-        render={(props) => (
-          <SuccessfullOrder {...props} />
-        )}
-        />
+        <SecuredPaymentCheckout component={SuccessfullOrder} />
     </Switch> 
     </UserContext.Provider>
     </SearchContext.Provider>
+    </PaymentContext.Provider>
     </div>
     </Router>
   );
