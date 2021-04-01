@@ -16,6 +16,7 @@ import AccountInfo from './components/AccountInfo';
 import Cart from './components/Cart';
 import OrderHistory from './components/OrderHistory';
 import UserSettings from './components/UserSettings';
+import SuccessfullOrder from './components/SuccessfullOrder';
 import {UserContext} from './components/UserContext';
 import {SearchContext} from './components/SearchContext';
 import Stripe from './components/Stripe';
@@ -122,14 +123,21 @@ function App() {
           <UserSettings {...props}/>
         )}
         />
-
-    </Switch> <Route 
+        <Route 
         path="/payment"
         exact
         render={(props) => (
           <Stripe {...props}/>
         )}
         />
+        <Route
+        path="/successfull-order"
+        exact
+        render={(props) => (
+          <SuccessfullOrder {...props} />
+        )}
+        />
+    </Switch> 
     </UserContext.Provider>
     </SearchContext.Provider>
     </div>

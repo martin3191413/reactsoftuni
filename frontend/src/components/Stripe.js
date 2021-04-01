@@ -123,7 +123,7 @@ const Stripe = () => {
       })
       .then(res => {
         setProcessing(false);
-        history.push('/successfull-payment');
+        history.push('/successfull-order');
       });
     }
     else{
@@ -135,6 +135,7 @@ const Stripe = () => {
   };
 
   return (
+    <>
     <div className="AppWrapper">
       <section className={isError === false ? '' : 'notifications'}>
             <p className="notification-message">{isError === false ? '' : errorMessage}</p>
@@ -184,6 +185,7 @@ const Stripe = () => {
       <button type="submit" disabled={!stripe} disabled={isError ? true : false} className="stripe-btn">{processing ? 'Processing...' : `Pay $${totalPrice(cartItems)}`}</button>
     </form>
     </div>
+    </>
   );
 };
 
