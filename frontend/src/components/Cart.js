@@ -1,4 +1,5 @@
 import React, {useEffect, useState, useContext} from 'react';
+import {useHistory} from 'react-router-dom';
 import {UserContext} from './UserContext';
 import Header from './Header';
 import Footer from './Footer';
@@ -6,6 +7,8 @@ import jwt from 'jsonwebtoken';
 import axios from 'axios';
 
 const Cart = () => {
+    
+    const history = useHistory();
 
     const {cartItems, setCartItems} = useContext(UserContext);
     const [isError,setIsError] = useState(false);
@@ -125,14 +128,7 @@ const Cart = () => {
                         data: payload
                     })
                     .then(res => {
-                        setClasses('successfull');
-                        setCartItems([]);
-                        setIsError(true);
-                        setErrorMessage(`-${totalMoney}$ from your account!`);
-
-                        setTimeout(() => {
-                            setIsError(false);
-                        }, 3000);
+                        history.push('/payment');
                     })
                     .catch(err => console.log(err));
                 }
@@ -180,7 +176,7 @@ const Cart = () => {
         </table>
         </div>
         <div className="cart-buy">
-            <button className="cart-buy-btn" disabled={cartItems.length === 0 ? true : false} onClick={() =>buyItems()}>Checkout</button>
+            <button className={cartItems.length === 0 ? "cart-buy-btn-not-allowed" : "cart-buy-btn"} disabled={cartItems.length === 0 ? true : false}  onClick={() =>buyItems()}>Checkout</button>
         </div>
         <Footer />
         </>

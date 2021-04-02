@@ -2,16 +2,16 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
 import HomePage from './components/HomePage';
-import  Login from './components/Login';
 import ContactInfo from './components/ContactInfo';
-import Register from './components/Register';
+import RegisterContainer from './components/AuthenticationPages/RegisterContainer';
+import LoginContainer from './components/AuthenticationPages/LoginContainer';
 import DetailsPage from './components/DetailsPage';
 import SecuredPaymentCheckout from './components/SecuredPaymentCheckout';
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
 import MenSection from './components/MenSection';
 import WomenSection from './components/WomenSection';
-import UserProfile from './components/UserProfile';
+import UserFavourites from './components/UserFavourites';
 import Searched from './components/Searched';
 import AccountInfo from './components/AccountInfo';
 import Cart from './components/Cart';
@@ -65,7 +65,13 @@ function App() {
       <UserContext.Provider value={{loggedIn, setLoggedIn, cartItems, setCartItems, userFavItems, setUserFavItems}}>
       <Switch>
       <PublicRoute path="/" exact component={HomePage} restricted={false} data={data} />
-      <PublicRoute path="/login" exact component={Login} restricted={false}/>
+      <Route 
+      path="/login"
+      exact
+      render={(props) => (
+        <LoginContainer  {...props}/>
+      )}
+      />
       <Route 
         path="/men"
         exact
@@ -87,21 +93,15 @@ function App() {
        )}
        />
        <PrivateRoute path="/details/:id"  exact component={DetailsPage} />
-        <Route
+       <Route 
        path="/register"
-        exact
-        render={(props) => (
-          <Register {...props}/>
-        )}
-        />
+       exact
+       render={(props) => (
+         <RegisterContainer {...props} />
+       )}
+       />
         <PrivateRoute path="/cart" exact component={Cart}/>
-        <Route 
-        path="/favourites"
-        exact
-        render={(props) => (
-          <UserProfile {...props}/>
-        )}
-        />
+        <PrivateRoute path="/favourites" exact component={UserFavourites} />
         <Route
         path="/search"
         exact
@@ -116,27 +116,9 @@ function App() {
           <AccountInfo {...props} />
         )} 
         />
-        <Route 
-        path="/profile/order-history"
-        exact
-        render={(props) => (
-          <OrderHistory {...props}/>
-        )}
-        />
-        <Route 
-        path="/profile/settings"
-        exact
-        render={(props) => (
-          <UserSettings {...props}/>
-        )}
-        />
-        <Route 
-        path="/payment"
-        exact
-        render={(props) => (
-          <Stripe {...props}/>
-        )}
-        />
+        <PrivateRoute path="/profile/order-history" exact component={OrderHistory} />
+        <PrivateRoute path="/profile/settings" exact component={UserSettings} />
+        <PrivateRoute path="/payment" excat component={Stripe} />
         <SecuredPaymentCheckout component={SuccessfullOrder} />
     </Switch> 
     </UserContext.Provider>

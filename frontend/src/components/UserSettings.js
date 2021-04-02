@@ -90,15 +90,6 @@ const UserSettings = () => {
         <button onClick={(e) => refundHandler(e)} className="refund-btn" disabled={refunds === 0 ? true : false}>Refund</button>
         {refunds !== 0 ? refundsMessage : nonRefundsMesasge}
     </form>
-    <div className="edit-password">
-        <label htmlFor="password" className="edit-password">Password</label>
-        <input className="input-field edit-passwordInput" type="password" disabled='true' value="**********"></input>
-        <button className=" edit-password-btn">Edit</button>
-    </div>
-    <div className="delete-acc">
-    <span className="delete-acc-span">Delete Account</span>
-    <button className="delete-acc-btn">Delete</button>
-    </div>            
     </div>;
 
     return (

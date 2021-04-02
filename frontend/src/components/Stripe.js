@@ -73,7 +73,7 @@ const Stripe = () => {
   const elements = useElements();
 
   const {cartItems, setCartItems} = useContext(UserContext);
-  const {confirmed,setConfirmed} = useContext(PaymentContext);
+  const {setConfirmed} = useContext(PaymentContext);
 
   const [processing, setProcessing] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -128,6 +128,7 @@ const Stripe = () => {
         setProcessing(false);
         setConfirmed({confirmedOrder: true, userOrderEmail: billingDetails.email});
         history.push('/successfull-order');
+        setCartItems([]);
       });
     }
     else{
@@ -186,7 +187,7 @@ const Stripe = () => {
       <div className="FormGroup">
         <CardField />
       </div>
-      <button type="submit" disabled={!stripe} disabled={isError ? true : false} className="stripe-btn">{processing ? 'Processing...' : `Pay $${totalPrice(cartItems)}`}</button>
+      <button type="submit" disabled={!stripe} disabled={isError ? true : false} className={ processing ? 'stripe-btn-disabled' : 'stripe-btn'}>{processing ? 'Processing...' : `Pay $${totalPrice(cartItems)}`}</button>
     </form>
     </div>
     </>

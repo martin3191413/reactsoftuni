@@ -138,7 +138,7 @@ const OrderHistory = () => {
     const items = renderOrderHistory(ordersData);
 
 
-    const noOrders = <h2>You don't have any orders yet</h2>;
+    const noOrders = <h2 className="no-orders">You don't have any orders yet</h2>;
 
     const history = <div className="history">
     <h2 className="header-order">Order History</h2>

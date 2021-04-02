@@ -4,9 +4,11 @@ import Header from './Header';
 import UserProfileItem from './UserProfileItem';
 import Footer from './Footer';
 
-const UserProfile = () => {
+const UserFavourites = ({id}) => {
 
-    const {loggedIn, setLoggedIn, cartItems, setCartItems, userFavItems, setUserFavItems, searchInput,setSearchInput} = useContext(UserContext);
+    console.log(id);
+
+    const {loggedIn, setLoggedIn, cartItems, setCartItems, userFavItems, setUserFavItems,setSearchInput} = useContext(UserContext);
 
     const [displayIcons, setDisplayIcons] = useState(false);
 
@@ -43,4 +45,4 @@ const UserProfile = () => {
     );
 };
 
-export default UserProfile;
+export default UserFavourites;

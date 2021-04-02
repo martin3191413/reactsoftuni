@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react';
+import {useHistory} from 'react-router-dom';
 import Header from './Header';
 import HomePageListItem from './HomePageListItem';
 import Footer from './Footer';
@@ -6,8 +7,14 @@ import { SearchContext } from './SearchContext';
 
 const Searched = ({data}) => {
 
-  const {searchInput} = useContext(SearchContext);
+  const history = useHistory();
 
+  const {searchInput} = useContext(SearchContext);
+          
+  if (searchInput === ''){
+    history.push('/');
+  }
+        
     const [sortType, setSortType] = useState('0');
 
     const filteredItemsBySearch = data.filter(item => item.model.toLowerCase().includes(searchInput.toLowerCase()));

@@ -69,7 +69,6 @@ const Register = () => {
             amountMoney
         };
 
-
             axios({
                 url: '/save/user',
                 method: 'POST',
