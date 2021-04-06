@@ -8,10 +8,15 @@ const SuccessfullOrder = () => {
 
     const {confirmed} = useContext(PaymentContext);
 
+    const payload = {
+        userEmail: confirmed.userOrderEmail
+    };
 
     axios({
-        method: 'get',
-        url: '/api/email'
+        method: 'post',
+        url: '/api/email',
+        data: payload
+        
     })
     .then(res => console.log(res))
     .catch(err => console.log(err));

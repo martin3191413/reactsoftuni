@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+const nodemailer = require('nodemailer');
 const port = process.env.PORT || 5000;
 const Shoe = require('./models/Shoe');
 const Order = require('./models/Order');
@@ -168,4 +169,39 @@ app.post('/api/stripe-payment', async(req,res) => {
     catch(err){
         console.log(err);
     }
+})
+
+
+app.post('/api/email', async (req,res) => {
+
+    console.log(req.body);
+
+    const userEmail = req.body.userEmail;
+
+    let transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: 'marto1232a@gmail.com', 
+          pass: 'Marto123%',
+        }
+      });
+
+      let info = {
+        from: '"React Project Softuni" <marto1232a@gmail.com>',
+        to: userEmail,
+        subject: "Order Details Demo",
+        text: "Thats your confirmation email about Order N#123123123. Expect shipment details soon! Greetings!",
+        html: "<b>Thats your confirmation email about Order N#123123123. Expect shipment details soon! Greetings!?</b>", 
+      };
+
+      transporter.sendMail(info, function(err,data){
+          if (err){
+              console.log(err);
+          }
+          else{
+              console.log(data);
+          }
+      })
+
+
 })
