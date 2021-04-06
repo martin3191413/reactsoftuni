@@ -5,6 +5,7 @@ import Header from './Header';
 import Footer from './Footer';
 import jwt from 'jsonwebtoken';
 import axios from 'axios';
+import {useAlert} from 'react-alert';
 
 const Cart = () => {
     
@@ -14,6 +15,8 @@ const Cart = () => {
     const [isError,setIsError] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const [classes,setClasses] = useState('');
+
+    const alert = useAlert();
 
     useEffect(() => {
         localStorage.setItem('cartItems', JSON.stringify(cartItems));
@@ -36,6 +39,10 @@ const Cart = () => {
         }
         else{
             if (item.qty === 1){
+                alert.show('Invalid item quantity', {
+                    type: 'error',
+                    timeout: 3000
+                });
                 return;
             }
             let oldCartItems = [...cartItems];

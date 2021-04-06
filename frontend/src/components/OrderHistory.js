@@ -100,7 +100,7 @@ const OrderHistory = () => {
                 <span className="order-number-multipleItems">
                     Order #{order.id}
                     <br></br>
-                   {moment(order.madeAt).format('MMMM Do YY, h:mm')}
+                   {moment(order.madeAt).format('MMMM Do YYYY, h:mm a')}
                     </span>
                 <div className="order-info-multipleItems">
                     {data}
@@ -116,7 +116,7 @@ const OrderHistory = () => {
                      <span className="order-number">
                     Order #{order.id}
                     <br></br>
-                    {moment(order.madeAt).format('MMMM Do YY, h:mm')}
+                    {moment(order.madeAt).format('MMMM Do YYYY, h:mm a')}
                      </span>
                   <div className="order-info">
                   <img className="order-img" src={order.items.image} alt="white-tshirt"></img>

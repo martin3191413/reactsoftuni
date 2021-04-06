@@ -15,13 +15,13 @@ const HomePageListItem = ({item}) => {
     }, [cartItems]);
 
     const onClickHandler = (item) => {
-        alert.show('Item added to Cart!');
-
         if (!loggedIn){
             history.push('/login');
             return;
         }
         let itemInCart = cartItems.find(x => x._id === item._id);
+
+        alert.show('Item added to Cart!');
 
         if (itemInCart){
             let oldCartItems = [...cartItems];
@@ -40,7 +40,7 @@ const HomePageListItem = ({item}) => {
         <>
         <div className="card" key={item._id} >
       <Link className="a-home" to={`details/${item._id}`}><img className="img" src={item.image} alt="item "></img></Link>
-        <p className="card-desc">{item.description}</p>
+        <p className="card-desc">{item.model}</p>
         <span className="price">{item.price}</span>
         <div className="btn">
             <span className="btn btn-text" onClick={() => onClickHandler(item)}>Add to Cart</span>
