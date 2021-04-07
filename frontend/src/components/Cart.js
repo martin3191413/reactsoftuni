@@ -6,11 +6,13 @@ import Footer from './Footer';
 import jwt from 'jsonwebtoken';
 import axios from 'axios';
 import {useAlert} from 'react-alert';
+import {PaymentContext} from './PaymentContext';
 
 const Cart = () => {
     
     const history = useHistory();
-
+    
+    const {confirmed,setConfirmed} = useContext(PaymentContext);
     const {cartItems, setCartItems} = useContext(UserContext);
     const [isError,setIsError] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
@@ -135,6 +137,7 @@ const Cart = () => {
                         data: payload
                     })
                     .then(res => {
+                        setConfirmed({...confirmed, orderId: res.data.id});
                         history.push('/payment');
                     })
                     .catch(err => console.log(err));

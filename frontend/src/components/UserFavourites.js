@@ -4,9 +4,7 @@ import Header from './Header';
 import UserProfileItem from './UserProfileItem';
 import Footer from './Footer';
 
-const UserFavourites = ({id}) => {
-
-    console.log(id);
+const UserFavourites = ({}) => {
 
     const {loggedIn, setLoggedIn, cartItems, setCartItems, userFavItems, setUserFavItems,setSearchInput} = useContext(UserContext);
 

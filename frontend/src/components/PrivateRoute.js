@@ -7,8 +7,6 @@ const PrivateRoute = ({component: Component}) => {
     const location = useLocation();
     const {loggedIn} = useContext(UserContext);
 
-    console.log(location);
-
     return (
         <Route render={(props) => (
             loggedIn === true?

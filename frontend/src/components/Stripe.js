@@ -73,7 +73,7 @@ const Stripe = () => {
   const elements = useElements();
 
   const {cartItems, setCartItems} = useContext(UserContext);
-  const {setConfirmed} = useContext(PaymentContext);
+  const {confirmed,setConfirmed} = useContext(PaymentContext);
 
   const [processing, setProcessing] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -126,7 +126,7 @@ const Stripe = () => {
       })
       .then(res => {
         setProcessing(false);
-        setConfirmed({confirmedOrder: true, userOrderEmail: billingDetails.email});
+        setConfirmed({...confirmed,confirmedOrder: true, userOrderEmail: billingDetails.email});
         history.push('/successfull-order');
         setCartItems([]);
       });

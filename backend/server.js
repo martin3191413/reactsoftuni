@@ -98,9 +98,9 @@ app.post('/api/user/update',async (req,res) => {
 
    const order = new Order({madeAt: new Date(), items: req.body.cartItems, user: req.body.id, totalMoney: req.body.totalMoney, refunded: false, status: 'Completed'});
 
-    await order.save();
+   await order.save();
 
-    await User.updateOne({_id: req.body.id}, {amountMoney: req.body.money});
+   await User.updateOne({_id: req.body.id}, {amountMoney: req.body.money});
 
    const user = await User.findOne({_id: req.body.id});
 
@@ -108,7 +108,7 @@ app.post('/api/user/update',async (req,res) => {
 
     await user.save();
     
-  res.status(200).json('User updated!');
+  res.status(200).json({id: order._id});
 });
 
 app.post('/api/orders/:userId', async(req,res) => {
@@ -174,8 +174,6 @@ app.post('/api/stripe-payment', async(req,res) => {
 
 app.post('/api/email', async (req,res) => {
 
-    console.log(req.body);
-
     const userEmail = req.body.userEmail;
 
     let transporter = nodemailer.createTransport({
@@ -190,8 +188,8 @@ app.post('/api/email', async (req,res) => {
         from: '"React Project Softuni" <marto1232a@gmail.com>',
         to: userEmail,
         subject: "Order Details Demo",
-        text: "Thats your confirmation email about Order N#123123123. Expect shipment details soon! Greetings!",
-        html: "<b>Thats your confirmation email about Order N#123123123. Expect shipment details soon! Greetings!?</b>", 
+        text: `Thats your confirmation email about Order N#${req.body.orderId}. Expect shipment details soon! Greetings!`,
+        html: `<b>Thats your confirmation email about Order N#${req.body.orderId}. Expect shipment details soon! Greetings!!</b>`, 
       };
 
       transporter.sendMail(info, function(err,data){
