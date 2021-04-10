@@ -38,7 +38,7 @@ const HomePageListItem = ({item}) => {
 
     return (
         <>
-        <div className="card" key={item._id} >
+        <div className="card" key={item._id}>
       <Link className="a-home" to={`details/${item._id}`}><img className="img" src={item.image} alt="item "></img></Link>
         <p className="card-desc">{item.model}</p>
         <span className="price">{item.price}</span>

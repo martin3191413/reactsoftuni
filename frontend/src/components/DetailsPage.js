@@ -13,7 +13,7 @@ const DetailsPage = ({id}) => {
 
     const [data,setData] = useState({});
     const [inputValue, setInputValue] = useState(1);
-    const [favouriteBtn, setFavouriteBtn] = useState('fa fa-heart');
+    const [favouriteBtn, setFavouriteBtn] = useState('');
     const [loading, setLoading] = useState(false);
 
     const alert = useAlert();
@@ -75,13 +75,14 @@ const DetailsPage = ({id}) => {
         if (favouriteBtn === 'far fa-heart'){
             setFavouriteBtn('fa fa-heart');
             setUserFavItems([...userFavItems, {...data, liked: true}]);
-            localStorage.setItem('userFavItems', JSON.stringify(userFavItems));
+            const updatedFavItems = [...userFavItems, {...data, liked: true}];
+            localStorage.setItem('userFavItems', JSON.stringify(updatedFavItems));
         }
         else{
             setFavouriteBtn('far fa-heart');
             const filteredItems = userFavItems.filter(item => item._id !== data._id);
             setUserFavItems(filteredItems);
-            localStorage.setItem('userFavItems', JSON.stringify(userFavItems));
+            localStorage.setItem('userFavItems', JSON.stringify(filteredItems));
         }
     };
 
@@ -93,7 +94,7 @@ const DetailsPage = ({id}) => {
         <p className="product-home"><Link className="to-home" to="/">Home </Link>/ {data.model}</p>
         <h1 >{data.model}</h1>
         <div className="details-info">
-        <span className="price">{data.price}</span>
+        <span className="price">{data.price}$</span>
         <select className="details-select">
             <option>Select Size</option>
             <option>41</option>
