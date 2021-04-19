@@ -15,3 +15,20 @@ export const FetchDataOneItem = (id) => {
     method: 'GET'
   });
 };
+
+export const getUser = (id) => {
+
+  return axios({
+    url: `/api/user/${id}`,
+    method: 'GET'
+  });
+};
+
+export const makeOrder = (payload) => {
+ 
+  return axios({
+    method: 'POST',
+    url: '/api/user/update',
+    data: payload
+});
+};

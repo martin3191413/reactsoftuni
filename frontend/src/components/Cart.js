@@ -7,6 +7,7 @@ import Footer from './Footer';
 import jwt from 'jsonwebtoken';
 import axios from 'axios';
 import {PaymentContext} from './PaymentContext';
+import * as fetchDataServices from './services/fetchDataServices';
 
 const Cart = () => {
     
@@ -36,20 +37,16 @@ const Cart = () => {
     };
 
     const taxes = (subtotalPrice) => {
-
-        const taxes = subtotalPrice * 0.20;
-
-        return taxes;
+        return subtotalPrice * 0.20;
     };
 
     const total = (subtotalPrice, taxes) =>{
-        const total = subtotalPrice + taxes;
-        return total;
+        return subtotalPrice + taxes;
     };
 
     const buyItems = () => {
 
-        const totalMoney = Number(total(subtotal(cartItems),taxes(subtotal(cartItems))).toFixed(2));
+        const orderCost = Number(total(subtotal(cartItems),taxes(subtotal(cartItems))).toFixed(2));
         
         const token = localStorage.getItem('userId');
 
@@ -57,12 +54,10 @@ const Cart = () => {
             if (err){
                 console.log(err);
             }
-            axios({
-                method: 'GET',
-                url: `/api/user/${data.id}`
-            })
+
+            fetchDataServices.getUser(data.id)
             .then(res => {
-                if (totalMoney > res.data.amountMoney){
+                if (orderCost > res.data.amountMoney){
                    setClasses('notifications');
                    setIsError(true);
                    setErrorMessage('Insufficient funds!');
@@ -72,21 +67,14 @@ const Cart = () => {
                    }, 3000);
                 }
                 else{
-
-                    const money = res.data.amountMoney - totalMoney;
-
                     const payload = {
-                        money,
+                        money: res.data.amountMoney - orderCost,
                         id: res.data._id,
                         cartItems,
-                        totalMoney
+                        orderCost
                     };
 
-                    axios({
-                        method: 'POST',
-                        url: '/api/user/update',
-                        data: payload
-                    })
+                    fetchDataServices.makeOrder(payload)
                     .then(res => {
                         setConfirmed({...confirmed, orderId: res.data.id});
                         history.push('/payment');

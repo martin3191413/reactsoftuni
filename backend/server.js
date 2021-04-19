@@ -87,16 +87,16 @@ app.post('/api/login', async (req,res) => {
 })
 
 app.get('/api/user/:id', async(req,res) => {
-    const user = await User.findOne({_id: req.params.id});
+   const user = await User.findOne({_id: req.params.id});
     
-        res.json(user);
+  res.json(user);
 })
 
 app.post('/api/user/update',async (req,res) => {
 
    console.log("REQ BODY:", req.body);
 
-   const order = new Order({madeAt: new Date(), items: req.body.cartItems, user: req.body.id, totalMoney: req.body.totalMoney, refunded: false, status: 'Completed'});
+   const order = new Order({madeAt: new Date(), items: req.body.cartItems, user: req.body.id, totalMoney: req.body.orderCost, refunded: false, status: 'Completed'});
 
    await order.save();
 
