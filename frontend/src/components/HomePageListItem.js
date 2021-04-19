@@ -41,7 +41,7 @@ const HomePageListItem = ({item}) => {
         <div className="card" key={item._id}>
       <Link className="a-home" to={`details/${item._id}`}><img className="img" src={item.image} alt="item "></img></Link>
         <p className="card-desc">{item.model}</p>
-        <span className="price">{item.price}</span>
+        <span className="price">{item.price}$</span>
         <div className="btn">
             <span className="btn btn-text" onClick={() => onClickHandler(item)}>Add to Cart</span>
         </div>

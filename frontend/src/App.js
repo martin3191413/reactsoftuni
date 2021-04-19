@@ -1,29 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
-import HomePage from './components/HomePage';
-import ContactInfo from './components/ContactInfo';
-import RegisterContainer from './components/AuthenticationPages/RegisterContainer';
-import LoginContainer from './components/AuthenticationPages/LoginContainer';
-import DetailsPage from './components/DetailsPage';
-import SecuredPaymentCheckout from './components/SecuredPaymentCheckout';
-import PrivateRoute from './components/PrivateRoute';
-import PublicRoute from './components/PublicRoute';
-import MenSection from './components/MenSection';
-import WomenSection from './components/WomenSection';
-import UserFavourites from './components/UserFavourites';
-import Searched from './components/Searched';
-import AccountInfo from './components/AccountInfo';
-import Cart from './components/Cart';
-import OrderHistory from './components/OrderHistory';
-import UserSettings from './components/UserSettings';
-import SuccessfullOrder from './components/SuccessfullOrder';
 import {UserContext} from './components/UserContext';
 import {SearchContext} from './components/SearchContext';
 import {PaymentContext} from './components/PaymentContext';
-import Stripe from './components/Stripe';
+import {HomePage,ContactInfo,RegisterContainer,LoginContainer,DetailsPage,SecuredPaymentCheckout,PrivateRoute,PublicRoute,
+MenSection,WomenSection,UserFavourites,Searched,AccountInfo,Cart,OrderHistory,UserSettings,SuccessfullOrder,Stripe} from './components/import';
 import axios from 'axios';
-
 
 function App() {
   

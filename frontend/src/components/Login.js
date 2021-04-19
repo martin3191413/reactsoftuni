@@ -55,6 +55,10 @@ const Login = () => {
             localStorage.setItem('userEmail', username);
             history.push('/');
             setLoggedIn(true);
+            alert.show(`Hello, ${username}!`, {
+                timeout: 3000,
+                type: 'info'
+            });
         })
         .catch((err) => {
             setIsError(true);
@@ -76,10 +80,6 @@ const Login = () => {
                 }, 5000);
                  return;
             }
-        });
-        alert.show(`Hello, ${username}!`, {
-            timeout: 3000,
-            type: 'info'
         });
     };
 
