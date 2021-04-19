@@ -7,3 +7,11 @@ export const FetchData = (url,method) => {
         method: method
     });
 };
+
+export const FetchDataOneItem = (id) => {
+
+  return axios({
+    url: `/api/shoes/${id}`,
+    method: 'GET'
+  });
+};

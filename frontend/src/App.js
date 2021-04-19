@@ -28,8 +28,8 @@ function App() {
   useEffect(() => {
     fetchDataServices.FetchData('/api/shoes', 'GET')
     .then(response => {
-      setData({wholeData: response.data,menShoes: response.data.filter(item => item.category === 'Men')
-      ,womenShoes: response.data.filter(item => item.category === 'Women') });
+      setData({wholeData: response.data, menShoes: response.data.filter(item => item.category === 'Men')
+      , womenShoes: response.data.filter(item => item.category === 'Women') });
     });
   }, []);
 

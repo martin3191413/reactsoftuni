@@ -2,10 +2,10 @@ import React, { useState, useEffect, useContext } from 'react';
 import Footer from './Footer';
 import {Link} from 'react-router-dom';
 import Header from './Header';
-import axios from 'axios';
 import { UserContext } from './UserContext';
 import LoadingBar from './LoadingBar';
 import {useAlert} from 'react-alert';
+import * as fetchDataServices from './services/fetchDataServices';
 
 const DetailsPage = ({id}) => {
 
@@ -18,18 +18,15 @@ const DetailsPage = ({id}) => {
 
     const alert = useAlert();
 
-    const fetchData = (e) => {
+    useEffect(() => {
         setLoading(true);
-        axios({
-            url: `/api/shoes/${id}`,
-            method: "GET"
-        })
-        .then((response) => {
+        fetchDataServices.FetchDataOneItem(id)
+        .then(response => {
             setData(response.data);
 
-            const item = userFavItems.find(item => item._id == response.data._id);
+            const isFavItem = userFavItems.find(item => item._id == response.data._id);
 
-            if (item){
+            if (isFavItem){
                 setFavouriteBtn('fa fa-heart');
             }
             else{
@@ -38,11 +35,8 @@ const DetailsPage = ({id}) => {
 
             setLoading(false);
         })
-        .catch((err) => console.log(err));
-    };
+        .catch(err => console.log(err));
 
-    useEffect(() => {
-        fetchData();
         localStorage.setItem('userFavItems', JSON.stringify(userFavItems));
     }, []);
 
