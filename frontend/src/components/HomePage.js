@@ -18,7 +18,7 @@ const MainContent = ({data}) => {
     return (
         <>
         <Header/>
-        <div className="trd"> Men's Collection Trending Now
+        { <div className="trd"> Men's Collection Trending Now
         <div className="mainContent">
             {listItems}
         </div>
@@ -30,7 +30,7 @@ const MainContent = ({data}) => {
         </div>
         <WomenImageBanner />
         <Footer />
-        </div>
+        </div>}
         </>
 
     );

@@ -7,7 +7,6 @@ export {default as LoginContainer} from './AuthenticationPages/LoginContainer';
 export {default as DetailsPage} from './DetailsPage';
 export {default as SecuredPaymentCheckout} from './SecuredPaymentCheckout';
 export {default as PrivateRoute} from './PrivateRoute';
-export {default as PublicRoute} from './PublicRoute';
 export {default as MenSection} from './MenSection';
 export {default as WomenSection} from './WomenSection';
 export {default as UserFavourites} from './UserFavourites';

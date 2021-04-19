@@ -32,7 +32,6 @@ const MenSection = ({data}) => {
       }
     };
 
-  
     const listItems = menShoes.map((item) =>
     <HomePageListItem item={item} key={item._id}/>
     );
