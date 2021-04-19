@@ -47,7 +47,6 @@ const Searched = ({data}) => {
             const filteredShoes = [...filteredItemsBySearch].filter(item => item.category === 'Women');
             setSearchedItems(filteredShoes);
           }
-        
       };
   
 

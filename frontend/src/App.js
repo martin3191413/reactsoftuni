@@ -6,8 +6,7 @@ import {SearchContext} from './components/SearchContext';
 import {PaymentContext} from './components/PaymentContext';
 import {HomePage,ContactInfo,RegisterContainer,LoginContainer,DetailsPage,SecuredPaymentCheckout,PrivateRoute,
 MenSection,WomenSection,UserFavourites,Searched,AccountInfo,Cart,OrderHistory,UserSettings,SuccessfullOrder,Stripe} from './components/import';
-import axios from 'axios';
-
+import * as fetchDataServices from './components/services/fetchDataServices';
 
 function App() {
   
@@ -26,23 +25,14 @@ function App() {
     orderId: '',
   });
 
-
   useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = (e) => {
-    axios({
-      url: "/api/shoes",
-      method: "GET"
-    })
-    .then((response) => {
+    fetchDataServices.FetchData('/api/shoes', 'GET')
+    .then(response => {
       setData({wholeData: response.data,menShoes: response.data.filter(item => item.category === 'Men')
       ,womenShoes: response.data.filter(item => item.category === 'Women') });
     });
-  };
+  }, []);
 
-  
   return (
     <Router>
     <div className="container">
@@ -97,7 +87,7 @@ function App() {
         path="/search"
         exact
         render={(props) => (
-          <Searched {...props} data={data}/>
+          <Searched {...props} data={data.wholeData}/>
         )} 
         />
         <Route
