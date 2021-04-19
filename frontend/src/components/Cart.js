@@ -2,10 +2,10 @@ import React, {useEffect, useState, useContext} from 'react';
 import {useHistory} from 'react-router-dom';
 import {UserContext} from './UserContext';
 import Header from './Header';
+import CartItem from './CartItem';
 import Footer from './Footer';
 import jwt from 'jsonwebtoken';
 import axios from 'axios';
-import {useAlert} from 'react-alert';
 import {PaymentContext} from './PaymentContext';
 
 const Cart = () => {
@@ -13,66 +13,17 @@ const Cart = () => {
     const history = useHistory();
     
     const {confirmed,setConfirmed} = useContext(PaymentContext);
-    const {cartItems, setCartItems} = useContext(UserContext);
+    const {cartItems} = useContext(UserContext);
     const [isError,setIsError] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const [classes,setClasses] = useState('');
-
-    const alert = useAlert();
 
     useEffect(() => {
         localStorage.setItem('cartItems', JSON.stringify(cartItems));
     }, [cartItems]);
 
-    const removeClickHandler = (id) => {
-        const cartItems = JSON.parse(localStorage.getItem('cartItems'));
-        const filteredCartItems = cartItems.filter(item => item._id !== id);
-        setCartItems(filteredCartItems);
-        localStorage.setItem('cartItems', JSON.stringify(filteredCartItems));
-    };
-
-    const onChangeHandler = (e, item) => {
-        if (e.target.value > item.qty){
-            let oldCartItems = [...cartItems];
-            oldCartItems = oldCartItems.filter((x) => x._id !== item._id);
-            const editedItem = {...item, qty: item.qty + 1};
-            setCartItems([...oldCartItems, editedItem]);
-            localStorage.setItem('cartItems', JSON.stringify(cartItems));
-        }
-        else{
-            if (item.qty === 1){
-                alert.show('Invalid item quantity', {
-                    type: 'error',
-                    timeout: 3000
-                });
-                return;
-            }
-            let oldCartItems = [...cartItems];
-            oldCartItems = oldCartItems.filter((x) => x._id !== item._id);
-            const editedItem = {...item, qty: item.qty - 1};
-            setCartItems([...oldCartItems, editedItem]);
-            localStorage.setItem('cartItems', JSON.stringify(cartItems));
-        }
-
-    };
-
-
     const items = cartItems.map((item) => (
-        <tr className="item-row" key={item._id}>
-                <td>
-                    <div className="item-info">
-                        <img src={item.image} alt="tshirt" className="item-img"></img>
-                        <div className="item-details">
-                            <p>{item.model}</p>
-                            <span>Price:  {item.price.toFixed(2)}$</span>
-                            <br></br>
-                            <button className="cart-btn" onClick={ () => removeClickHandler(item._id)}>Remove</button>
-                        </div>
-                    </div>
-                </td>
-                <td><input type="number" className="cart-quantity-item" onChange={(e) => onChangeHandler(e, item)}  value={item.qty}></input></td>
-                <td><span className="price-cart">{item.price.toFixed(2)}$</span></td>
-            </tr>
+        <CartItem item={item} key={item._id} />
     ));
 
     const subtotal = (cartItems) => {

@@ -12,10 +12,9 @@ const DetailsPage = ({id}) => {
     const { cartItems, setCartItems, userFavItems, setUserFavItems} = useContext(UserContext);
 
     const [data,setData] = useState({});
-    const [inputValue, setInputValue] = useState(1);
-    const [favouriteBtn, setFavouriteBtn] = useState('');
+    const [qtyItem, setQtyItem] = useState('1');
+    const [favouriteBtnClassName, setFavouriteBtnClassName] = useState('');
     const [loading, setLoading] = useState(false);
-
     const alert = useAlert();
 
     useEffect(() => {
@@ -23,30 +22,17 @@ const DetailsPage = ({id}) => {
         fetchDataServices.FetchDataOneItem(id)
         .then(response => {
             setData(response.data);
-
-            const isFavItem = userFavItems.find(item => item._id == response.data._id);
-
-            if (isFavItem){
-                setFavouriteBtn('fa fa-heart');
-            }
-            else{
-                setFavouriteBtn('far fa-heart');
-            }
-
+            userFavItems.find(item => item._id === response.data._id) ? setFavouriteBtnClassName('fa fa-heart') : setFavouriteBtnClassName('far fa-heart');
             setLoading(false);
         })
         .catch(err => console.log(err));
 
         localStorage.setItem('userFavItems', JSON.stringify(userFavItems));
-    }, []);
+    }, [userFavItems]);
 
     const onChangeInput = (e) => {
-        if (e.target.value < 1){
-           return;
-        }
-        setInputValue(e.target.value);
+        e.target.value > 0 ? setQtyItem(e.target.value) : setQtyItem('1');
     };
-
 
     const onClickHandler = (id) => {
         alert.show('Item added to Cart!');
@@ -59,21 +45,21 @@ const DetailsPage = ({id}) => {
 
            setCartItems([...oldCartItems, {...itemInCart, qty: itemInCart.qty + 1}]);
         }
-          else{
-           const item = {...data, qty: inputValue};
-          setCartItems([...cartItems, item]);
+        else{
+           const newItem = {...data, qty: qtyItem};
+          setCartItems([...cartItems, newItem]);
         }
     };
 
     const toggleClassName = () => {
-        if (favouriteBtn === 'far fa-heart'){
-            setFavouriteBtn('fa fa-heart');
+        if (favouriteBtnClassName === 'far fa-heart'){
+            setFavouriteBtnClassName('fa fa-heart');
             setUserFavItems([...userFavItems, {...data, liked: true}]);
             const updatedFavItems = [...userFavItems, {...data, liked: true}];
             localStorage.setItem('userFavItems', JSON.stringify(updatedFavItems));
         }
         else{
-            setFavouriteBtn('far fa-heart');
+            setFavouriteBtnClassName('far fa-heart');
             const filteredItems = userFavItems.filter(item => item._id !== data._id);
             setUserFavItems(filteredItems);
             localStorage.setItem('userFavItems', JSON.stringify(filteredItems));
@@ -95,9 +81,9 @@ const DetailsPage = ({id}) => {
             <option>42</option>
             <option>43</option>
         </select>
-        <input type="number" value={inputValue} className="details-input" onChange={onChangeInput}></input> 
+        <input type="number" value={qtyItem} className="details-input" onChange={onChangeInput}></input> 
         <button className="details-btn" onClick={() => onClickHandler(id)}>Add to Cart</button>
-        <button className="details-btn favourite" onClick={(e) => toggleClassName(e)}>Favourite <i className={favouriteBtn}></i></button>
+        <button className="details-btn favourite" onClick={(e) => toggleClassName(e)}>Favourite <i className={favouriteBtnClassName}></i></button>
         </div>
         <h3>Product Details    <i className="fa fa-indent"></i> </h3>
         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
