@@ -1,3 +1,5 @@
+export {default as Header} from './Header';
+export {default as Footer} from './Footer';
 export {default as HomePage} from './HomePage';
 export {default as ContactInfo} from './ContactInfo';
 export {default as RegisterContainer} from './AuthenticationPages/RegisterContainer';
@@ -15,4 +17,7 @@ export {default as Cart} from './Cart';
 export {default as OrderHistory} from './OrderHistory';
 export {default as UserSettings} from './UserSettings';
 export {default as SuccessfullOrder} from './SuccessfullOrder';
+export {default as HomePageListItem} from './HomePageListItem';
+export {default as ImageBanner} from './ImageBanner';
+export {default as WomenImageBanner} from './WomenImageBanner';
 export {default as Stripe} from './Stripe';

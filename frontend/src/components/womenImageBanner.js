@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-const imageBanner = () => {
+
+const WomenImageBanner = () => {
     return (
         <div className="womenImageBanner">
             <Link to="/women"><button className="bannerBtn">Shop Now </button></Link>
@@ -8,4 +9,4 @@ const imageBanner = () => {
     );
 };
 
-export default imageBanner;
+export default WomenImageBanner;

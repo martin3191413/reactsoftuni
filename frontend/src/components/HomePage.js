@@ -1,21 +1,17 @@
-import React from 'react';
-import ImageBanner from './imageBanner';
-import WomenImageBanner from './womenImageBanner';
-import Footer from './Footer';
-import HomePageListItem from './HomePageListItem';
-import Header from './Header';
+
+import {Header, Footer, ImageBanner, WomenImageBanner, HomePageListItem} from './import';
 
 const MainContent = ({data}) => {
 
-    let filteredData = data.filter((item) =>  item.category === "Men").slice(0,3);
+    let firstThreeItemsMen = data.filter((item) =>  item.category === "Men").slice(0,3);
 
-    const listItems = filteredData.map((item) =>
+    const listItems = firstThreeItemsMen.map((item) =>
     <HomePageListItem item={item} key={item._id}/>
     );
 
-    const filteredWomenData = data.filter((item) => item.category === "Women").slice(0,3);
+    const firstThreeItemsWomen = data.filter((item) => item.category === "Women").slice(0,3);
 
-    const womenItems = filteredWomenData.map((item) => 
+    const womenItems = firstThreeItemsWomen.map((item) => 
     <HomePageListItem item={item} key={item._id}/>
     );
 

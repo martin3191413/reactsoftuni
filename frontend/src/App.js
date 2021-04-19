@@ -8,6 +8,7 @@ import {HomePage,ContactInfo,RegisterContainer,LoginContainer,DetailsPage,Secure
 MenSection,WomenSection,UserFavourites,Searched,AccountInfo,Cart,OrderHistory,UserSettings,SuccessfullOrder,Stripe} from './components/import';
 import axios from 'axios';
 
+
 function App() {
   
   const [data, setData] = useState([]);
