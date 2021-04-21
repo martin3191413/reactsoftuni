@@ -6,6 +6,7 @@ import LoadingBar from './LoadingBar';
 import Header from './Header';
 import Footer from './Footer';
 import moment from 'moment';
+import * as fetchDataServices from './services/fetchDataServices';
 
 const OrderHistory = () => {
 
@@ -16,33 +17,42 @@ const OrderHistory = () => {
         fetchData();
     }, []);
 
-    const fetchData = () => {
-        setLoading(true);
-        const token = localStorage.getItem('userId');
+    const token = localStorage.getItem('userId');
 
-        jwt.verify(token, 'mySecretSecret', function(err,data){
-            if (err){
-                console.log(err);
-            }
-            axios({
-                method: 'GET',
-                url: `/api/user/${data.id}`
-            })
-            .then(res => {
-                axios({
-                    method: 'POST',
-                    url: `/api/orders/${data.id}`
-                })
-                .then(data => {
-                    formatData(data.data);
-                } )
-                .catch(err => console.log(err));
+    console.log(fetchDataServices.getAllOrdersByUser(token)
+    .then(res => {
 
-            })
-            .catch(err => console.log(err));
-        });
+    }));
+   
+    // const fetchData = () => {
+    //     setLoading(true);
+    //     const token = localStorage.getItem('userId');
 
-    };
+       
+
+    //     // jwt.verify(token, 'mySecretSecret', function(err,data){
+    //     //     if (err){
+    //     //         console.log(err);
+    //     //     }
+    //     //     axios({
+    //     //         method: 'GET',
+    //     //         url: `/api/user/${data.id}`
+    //     //     })
+    //     //     .then(res => {
+    //     //         axios({
+    //     //             method: 'POST',
+    //     //             url: `/api/orders/${data.id}`
+    //     //         })
+    //     //         .then(data => {
+    //     //             formatData(data.data);
+    //     //         } )
+    //     //         .catch(err => console.log(err));
+
+    //     //     })
+    //     //     .catch(err => console.log(err));
+    //     // });
+
+    // };
 
     const formatData = (data) => {
         let formattedOrders = [];

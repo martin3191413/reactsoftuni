@@ -1,4 +1,5 @@
 import axios from 'axios';
+import jwt from 'jsonwebtoken';
  
 export const FetchData = (url,method) => {
 
@@ -30,5 +31,19 @@ export const makeOrder = (payload) => {
     method: 'POST',
     url: '/api/user/update',
     data: payload
+});
+};
+
+export const getAllOrdersByUser = (userToken) => {
+
+ return jwt.verify(userToken, 'mySecretSecret', function(err,data){
+    if (err){
+        console.log(err);
+    }
+
+    return axios({
+      method: 'GET',
+      url: `/api/orders/${data.id}`
+      });
 });
 };

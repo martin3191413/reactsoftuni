@@ -111,7 +111,7 @@ app.post('/api/user/update',async (req,res) => {
   res.status(200).json({id: order._id});
 });
 
-app.post('/api/orders/:userId', async(req,res) => {
+app.get('/api/orders/:userId', async(req,res) => {
 
     const userId = req.params.userId;
 

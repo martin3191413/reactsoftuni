@@ -4,7 +4,6 @@ import Header from './Header';
 import Footer from './Footer';
 
 const ContactInfo = () => {
-
     return (
         <>
        <Header/>

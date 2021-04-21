@@ -2,11 +2,11 @@ import React, {useEffect, useState, useContext} from 'react';
 import {useHistory} from 'react-router-dom';
 import {UserContext} from './UserContext';
 import Header from './Header';
-import CartItem from './CartItem';
 import Footer from './Footer';
 import jwt from 'jsonwebtoken';
-import axios from 'axios';
 import {PaymentContext} from './PaymentContext';
+import CartTable from './CartTable';
+import EmptyCartBag from './EmptyCartBag';
 import * as fetchDataServices from './services/fetchDataServices';
 
 const Cart = () => {
@@ -22,10 +22,6 @@ const Cart = () => {
     useEffect(() => {
         localStorage.setItem('cartItems', JSON.stringify(cartItems));
     }, [cartItems]);
-
-    const items = cartItems.map((item) => (
-        <CartItem item={item} key={item._id} />
-    ));
 
     const subtotal = (cartItems) => {
         let subtotalPrice = 0;
@@ -86,27 +82,13 @@ const Cart = () => {
         });
     };
 
-    const message = <div className="empty-bag">
-        <h3>Bag</h3>
-        <h3>There are no items in your bag.</h3>
-    </div>;
-
-    const cart =  <table className="cart-table">
-    <tr className="table-header">
-    <th>Product</th>
-    <th>Quantity</th>
-    <th>Subtotal</th>
-    </tr>
-    {items}
-    </table>;
-
     return (
         <>
         <Header/>
         <section className={isError === false ? "" : classes}>
             <p className="notification-message">{isError === false ? "" : errorMessage}</p>
         </section>
-        {cartItems.length === 0 ? message : cart }
+        {cartItems.length === 0 ? <EmptyCartBag /> : <CartTable items={cartItems} /> }
       
         <div className="price-table">
         <table className="final-price">
