@@ -1,8 +1,6 @@
-import React from 'react';
 
-const OrderHistoryManager = ({data}) => {
-
-    const formatData = (data) => {
+export const formatOrderHistoryData = (data) => {
+    
         let formattedOrders = [];
         data.map(order => {
             if (order.items.length == 1){
@@ -35,15 +33,6 @@ const OrderHistoryManager = ({data}) => {
         formattedOrders.sort(function(a,b){
             return new Date(a.madeAt) - new Date(b.madeAt);
         });
-        setOrdersData(formattedOrders);
-        setLoading(false);
-    };
-    
-    return (
-        <div>
-            
-        </div>
-    );
-};
 
-export default OrderHistoryManager;
+        return formattedOrders;
+};
